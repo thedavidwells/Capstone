@@ -8,6 +8,10 @@
 
 #import "CurrentUser.h"
 
+@interface CurrentUser()
+@property (nonatomic) NSMutableString *firstAndLastName;
+@end
+
 @implementation CurrentUser
 
 - (NSArray *)usersArray
@@ -36,6 +40,18 @@
         }
     }
     return self.userType;
+}
+
+- (NSString *)getFirstAndLastName
+{
+    self.firstAndLastName = [[NSMutableString alloc] init];
+    for (int i=0; i<[self.usersArray count]; i++) {
+        if ([[self getCurrentUser] isEqualToString:[[self.usersArray objectAtIndex:i] valueForKey:@"username"]]) {
+            [self.firstAndLastName appendString:[NSString stringWithFormat:@"%@ ", [[self.usersArray objectAtIndex:i] valueForKey:@"fName"]]];
+            [self.firstAndLastName appendString:[NSString stringWithFormat:@"%@", [[self.usersArray objectAtIndex:i] valueForKey:@"lName"]]];
+        }
+    }
+    return self.firstAndLastName;
 }
 
 @end

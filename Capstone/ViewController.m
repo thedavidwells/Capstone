@@ -8,11 +8,15 @@
 
 #import "ViewController.h"
 #import "CurrentUser.h"
+#import "StudentView.h"
 #import <Parse/Parse.h>
 
 static const BOOL _debug = YES;
 
 @interface ViewController ()
+{
+    CGRect frame;
+}
 @property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) NSString *userName;
 @property (nonatomic) NSArray *usersArray;
@@ -31,6 +35,13 @@ static const BOOL _debug = YES;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = [self.currentUser getFirstAndLastName];
+    
+    // height and width are switched to account for iPad's orientation
+    frame = CGRectMake(0,
+                       (self.navigationController.navigationBar.frame.size.height + 20),
+                       (self.view.frame.size.height - (self.navigationController.navigationBar.frame.size.height + 20)),
+                       self.view.frame.size.width);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -43,6 +54,8 @@ static const BOOL _debug = YES;
     
     if ([self.userType isEqualToString:@"student"]) {
         self.navigationItem.rightBarButtonItem = nil;
+        StudentView *studentView = [[StudentView alloc] initWithFrame:frame];
+        [self.view addSubview:studentView];
     }
 }
 

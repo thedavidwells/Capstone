@@ -18,6 +18,7 @@
 
 - (NSString *)getCurrentUser;
 - (NSString *)getUserType;
+- (NSString *)getFirstAndLastName;
 
 /*
 Other things a current user may have...

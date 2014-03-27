@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3C0581C218D68BD5003D7C12 /* SupportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0581C118D68BD5003D7C12 /* SupportTableViewController.m */; };
+		3C32D58E18E3F5F3006CA2DE /* StudentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C32D58D18E3F5F3006CA2DE /* StudentView.m */; };
+		3C32D59018E3F62B006CA2DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C32D58F18E3F62B006CA2DE /* Parse.framework */; };
 		3C8DCB6418D6A83400779B57 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8DCB6318D6A83400779B57 /* CurrentUser.m */; };
 		3C8DCB6618D6B66B00779B57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8DCB6518D6B66B00779B57 /* MessageUI.framework */; };
 		3CE1F18418D63E2D00DE7B86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE1F18318D63E2D00DE7B86 /* Foundation.framework */; };
@@ -24,7 +26,6 @@
 		3CE1F1A518D63E2D00DE7B86 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE1F18718D63E2D00DE7B86 /* UIKit.framework */; };
 		3CE1F1AD18D63E2D00DE7B86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CE1F1AB18D63E2D00DE7B86 /* InfoPlist.strings */; };
 		3CE1F1AF18D63E2D00DE7B86 /* CapstoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE1F1AE18D63E2D00DE7B86 /* CapstoneTests.m */; };
-		3CE1F1B918D63E9700DE7B86 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE1F1B818D63E9700DE7B86 /* Parse.framework */; };
 		3CE1F1BB18D63EB000DE7B86 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE1F1BA18D63EB000DE7B86 /* SystemConfiguration.framework */; };
 		3CE1F1BD18D63EB800DE7B86 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE1F1BC18D63EB800DE7B86 /* Social.framework */; };
 		3CE1F1BF18D63EBF00DE7B86 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE1F1BE18D63EBF00DE7B86 /* Security.framework */; };
@@ -52,6 +53,9 @@
 /* Begin PBXFileReference section */
 		3C0581C018D68BD5003D7C12 /* SupportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportTableViewController.h; sourceTree = "<group>"; };
 		3C0581C118D68BD5003D7C12 /* SupportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportTableViewController.m; sourceTree = "<group>"; };
+		3C32D58C18E3F5F3006CA2DE /* StudentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentView.h; sourceTree = "<group>"; };
+		3C32D58D18E3F5F3006CA2DE /* StudentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentView.m; sourceTree = "<group>"; };
+		3C32D58F18E3F62B006CA2DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		3C8DCB6218D6A83400779B57 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		3C8DCB6318D6A83400779B57 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		3C8DCB6518D6B66B00779B57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -100,6 +104,7 @@
 				3CE1F18418D63E2D00DE7B86 /* Foundation.framework in Frameworks */,
 				3CE1F1CD18D63EFE00DE7B86 /* CoreLocation.framework in Frameworks */,
 				3CE1F1CB18D63EF600DE7B86 /* Accounts.framework in Frameworks */,
+				3C32D59018E3F62B006CA2DE /* Parse.framework in Frameworks */,
 				3CE1F1C918D63EEF00DE7B86 /* AudioToolbox.framework in Frameworks */,
 				3CE1F1C718D63EE700DE7B86 /* CFNetwork.framework in Frameworks */,
 				3CE1F1C518D63EDF00DE7B86 /* libz.dylib in Frameworks */,
@@ -110,7 +115,6 @@
 				3CE1F1BB18D63EB000DE7B86 /* SystemConfiguration.framework in Frameworks */,
 				3CE1F18618D63E2D00DE7B86 /* CoreGraphics.framework in Frameworks */,
 				3CE1F18818D63E2D00DE7B86 /* UIKit.framework in Frameworks */,
-				3CE1F1B918D63E9700DE7B86 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +161,8 @@
 		3C4596C518D79197006E63BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3C32D58C18E3F5F3006CA2DE /* StudentView.h */,
+				3C32D58D18E3F5F3006CA2DE /* StudentView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -183,6 +189,7 @@
 		3CE1F18218D63E2D00DE7B86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C32D58F18E3F62B006CA2DE /* Parse.framework */,
 				3C8DCB6518D6B66B00779B57 /* MessageUI.framework */,
 				3CE1F1CC18D63EFE00DE7B86 /* CoreLocation.framework */,
 				3CE1F1CA18D63EF600DE7B86 /* Accounts.framework */,
@@ -359,6 +366,7 @@
 			files = (
 				3CE1F1D018D6402700DE7B86 /* LoginViewController.m in Sources */,
 				3CE1F19A18D63E2D00DE7B86 /* ViewController.m in Sources */,
+				3C32D58E18E3F5F3006CA2DE /* StudentView.m in Sources */,
 				3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */,
 				3C0581C218D68BD5003D7C12 /* SupportTableViewController.m in Sources */,
 				3CE1F19418D63E2D00DE7B86 /* AppDelegate.m in Sources */,
@@ -493,6 +501,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/BlueOwl/Desktop/Capstone,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Capstone/Capstone-Prefix.pch";
@@ -510,6 +519,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/BlueOwl/Desktop/Capstone,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Capstone/Capstone-Prefix.pch";
