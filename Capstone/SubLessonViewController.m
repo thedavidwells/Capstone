@@ -69,6 +69,7 @@
     UILabel *lessonTitle = [[UILabel alloc] initWithFrame:lessonTitleRect];
     lessonTitle.center = CGPointMake(self.view.bounds.size.height/2, self.view.bounds.size.width/5.5);
     lessonTitle.text = self.lessonTitle;
+    lessonTitle.font = [UIFont systemFontOfSize:20.0];
     lessonTitle.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:lessonTitle];
 }
@@ -128,7 +129,7 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:textEditorViewController];
     nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
-    [self.tView deselectRowAtIndexPath: indexPath animated:YES];
+    [self.tView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

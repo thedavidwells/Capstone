@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TextEditorViewController : UIViewController
+@interface TextEditorViewController : UIViewController <UITextViewDelegate>
 
 - (instancetype)initWithSubLesson:(NSString *)subLessonTitle;
 

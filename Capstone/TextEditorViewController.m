@@ -41,6 +41,35 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(exitLesson:)];
+    [self placeStepByStepInstructionView];
+    [self placeTextEditorView];
+}
+
+- (void)placeStepByStepInstructionView
+{
+    CGRect stepFrame = CGRectMake(0,
+                                  self.navigationController.navigationBar.frame.size.height + 20,
+                                  300,
+                                  (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + 20)));
+    UIView *stepByStepInstructionView = [[UIView alloc] initWithFrame:stepFrame];
+    stepByStepInstructionView.backgroundColor = UIColorFromRGB(0xEBEBEB);
+    [self.view addSubview:stepByStepInstructionView];
+}
+
+- (void)placeTextEditorView
+{
+    [[UITextView appearance] setTintColor:[UIColor whiteColor]];
+    CGRect textEditorViewFrame = CGRectMake(300,
+                                      self.navigationController.navigationBar.frame.size.height + 20,
+                                      724,
+                                      (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + 20)));
+    UITextView *textEditorView = [[UITextView alloc] initWithFrame:textEditorViewFrame];
+    textEditorView.backgroundColor = UIColorFromRGB(0x6B6B6B);
+    textEditorView.font = [UIFont systemFontOfSize:18.0];
+    textEditorView.textColor = [UIColor whiteColor];
+    textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
+    textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self.view addSubview:textEditorView];
 }
 
 - (void)didReceiveMemoryWarning

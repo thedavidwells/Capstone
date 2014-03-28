@@ -8,6 +8,7 @@
 
 #import "StudentViewController.h"
 #import "LessonsDataSource.h"
+#import "QuizzesDataSource.h"
 #import "SubLessonViewController.h"
 #import "CurrentUser.h"
 
@@ -17,8 +18,10 @@ static const int statusBarHeight = 20;
 @interface StudentViewController ()
 @property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
+@property (nonatomic) QuizzesDataSource *quizzesDataSource;
 @property (nonatomic) CGRect viewFrame;
-@property (nonatomic) UITableView *tView;
+@property (nonatomic) UITableView *lessonTableView;
+@property (nonatomic) UITableView *quizTableView;
 @end
 
 @implementation StudentViewController
@@ -48,6 +51,14 @@ static const int statusBarHeight = 20;
     return _lessonsDataSource;
 }
 
+- (QuizzesDataSource *)quizzesDataSource
+{
+    if (!_quizzesDataSource) {
+        _quizzesDataSource = [[QuizzesDataSource alloc] init];
+    }
+    return _quizzesDataSource;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,7 +73,8 @@ static const int statusBarHeight = 20;
                                                                                           target:self
                                                                                           action:@selector(logoutAction:)];
     [self placeLessonsLabel];
-    [self initializeTableView];
+    [self placeQuizzesLabel];
+    [self initializeTableViews];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,6 +91,16 @@ static const int statusBarHeight = 20;
     lessonsLabel.text = @"Lessons";
     lessonsLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:lessonsLabel];
+}
+
+- (void)placeQuizzesLabel
+{
+    CGRect quizzesFrame = CGRectMake(0, 0, 100, 50);
+    UILabel *quizzesLabel = [[UILabel alloc] initWithFrame:quizzesFrame];
+    quizzesLabel.center = CGPointMake(self.view.bounds.size.width/4 + self.view.bounds.size.width/2, (navBarHeight + statusBarHeight*3));
+    quizzesLabel.text = @"Quizzes";
+    quizzesLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:quizzesLabel];
 }
 
 - (IBAction)logoutAction:(id)sender
@@ -99,31 +121,31 @@ static const int statusBarHeight = 20;
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 # pragma mark - table view
 
-- (void)initializeTableView
+- (void)initializeTableViews
 {
-    self.tView = [[UITableView alloc] initWithFrame:CGRectMake(106,
+    self.lessonTableView = [[UITableView alloc] initWithFrame:CGRectMake(106,
                                                                (navBarHeight + (statusBarHeight*4)),
                                                                300,
                                                                self.view.frame.size.width - (navBarHeight + (statusBarHeight*2)))
                                               style:UITableViewStyleGrouped];
-    self.tView.delegate = self;
-    self.tView.dataSource = self;
-    self.tView.backgroundColor = [UIColor whiteColor];
-    self.tView.scrollEnabled = NO;
-    [self.view addSubview:self.tView];
+    self.lessonTableView.delegate = self;
+    self.lessonTableView.dataSource = self;
+    self.lessonTableView.backgroundColor = [UIColor whiteColor];
+    self.lessonTableView.scrollEnabled = NO;
+    [self.view addSubview:self.lessonTableView];
+    
+    self.quizTableView = [[UITableView alloc] initWithFrame:CGRectMake(618,
+                                                                (navBarHeight + (statusBarHeight*4)),
+                                                                300,
+                                                                self.view.frame.size.width - (navBarHeight + (statusBarHeight*2)))
+                                                        style:UITableViewStyleGrouped];
+    self.quizTableView.delegate = self;
+    self.quizTableView.dataSource = self;
+    self.quizTableView.backgroundColor = [UIColor whiteColor];
+    self.quizTableView.scrollEnabled = NO;
+    [self.view addSubview:self.quizTableView];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -143,14 +165,20 @@ static const int statusBarHeight = 20;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *s = [[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row];
-    
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
- 
-    cell.textLabel.text = s;
+    
+    if (tableView == self.lessonTableView) {
+        NSString *s = [[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row];
+        cell.textLabel.text = s;
+    }
+    else {
+        NSString *s = [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row];
+        cell.textLabel.text = s;
+    }
+
     return cell;
 }
 
@@ -158,11 +186,22 @@ static const int statusBarHeight = 20;
 {
     NSLog(@"row %li was selected", indexPath.row);
     
-    SubLessonViewController *subLessonViewController = [[SubLessonViewController alloc] initWithLesson:[[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row]];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:subLessonViewController];
-    nav.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:nav animated:YES completion:nil];
-    [self.tView deselectRowAtIndexPath: indexPath animated:YES];
+    if (tableView == self.lessonTableView) {
+        SubLessonViewController *subLessonViewController = [[SubLessonViewController alloc] initWithLesson:[[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row]];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:subLessonViewController];
+        nav.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:nav animated:YES completion:nil];
+        [self.lessonTableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
+                                                        message:[NSString stringWithFormat:@"%@ is unavailable at this time. Please contact your teacher if you think this is in error.", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
+                                                       delegate:self
+                                              cancelButtonTitle:@"Okay"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [self.quizTableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 @end
