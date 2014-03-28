@@ -69,6 +69,7 @@
     UILabel *lessonTitle = [[UILabel alloc] initWithFrame:lessonTitleRect];
     lessonTitle.center = CGPointMake(self.view.bounds.size.height/2, self.view.bounds.size.width/5.5);
     lessonTitle.text = self.lessonTitle;
+    lessonTitle.font = [UIFont systemFontOfSize:20.0];
     lessonTitle.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:lessonTitle];
 }
