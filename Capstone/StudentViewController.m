@@ -14,6 +14,7 @@ static const int statusBarHeight = 20;
 @interface StudentViewController ()
 @property (nonatomic) CGRect viewFrame;
 @property (nonatomic) UITableView *tView;
+@property (nonatomic) NSMutableArray *lessonNames;
 @end
 
 @implementation StudentViewController
@@ -34,6 +35,15 @@ static const int statusBarHeight = 20;
     // height and width are switched to account for iPad's orientation
     self.viewFrame = CGRectMake(0, statusBarHeight, self.view.frame.size.height, self.view.frame.size.width - statusBarHeight);
     self.view.frame = self.viewFrame;
+    
+    self.lessonNames = [[NSMutableArray alloc] initWithObjects:@"Introduction",
+                        @"Functions",
+                        @"'For' Loops",
+                        @"'While' Loops",
+                        @"Control Flow",
+                        @"Data Structures",
+                        @"Objects I",
+                        @"Objects II", nil];
     
     [self placeLessonsLabel];
     [self initializeTableView];
@@ -98,12 +108,14 @@ static const int statusBarHeight = 20;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *s = [self.lessonNames objectAtIndex:indexPath.row];
+    
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
  
-    cell.textLabel.text = [NSString stringWithFormat:@"Lesson %li", indexPath.row+1];
+    cell.textLabel.text = s;
     return cell;
 }
 
