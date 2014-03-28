@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SubLessonViewController : UIViewController
+@interface SubLessonViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (instancetype)initWithLesson:(NSString *)lessonTitle;
 

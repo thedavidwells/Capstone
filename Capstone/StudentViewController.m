@@ -122,6 +122,7 @@ static const int statusBarHeight = 20;
     self.tView.delegate = self;
     self.tView.dataSource = self;
     self.tView.backgroundColor = [UIColor whiteColor];
+    self.tView.scrollEnabled = NO;
     [self.view addSubview:self.tView];
 }
 
@@ -161,6 +162,7 @@ static const int statusBarHeight = 20;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:subLessonViewController];
     nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
+    [self.tView deselectRowAtIndexPath: indexPath animated:YES];
 }
 
 @end

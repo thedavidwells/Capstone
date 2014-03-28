@@ -40,6 +40,7 @@
 		3CE1F1D018D6402700DE7B86 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE1F1CF18D6402700DE7B86 /* LoginViewController.m */; };
 		3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE1F1D318D65BED00DE7B86 /* SettingsTableViewController.m */; };
 		3CEF4EFF18E4A9E1006A1E8F /* StudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEF4EFE18E4A9E1006A1E8F /* StudentViewController.m */; };
+		3CF0A21D18E5F3E600C633EE /* TextEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		3CE1F1D318D65BED00DE7B86 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		3CEF4EFD18E4A9E1006A1E8F /* StudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentViewController.h; sourceTree = "<group>"; };
 		3CEF4EFE18E4A9E1006A1E8F /* StudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentViewController.m; sourceTree = "<group>"; };
+		3CF0A21B18E5F3E600C633EE /* TextEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditorViewController.h; sourceTree = "<group>"; };
+		3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 				3CEF4EFE18E4A9E1006A1E8F /* StudentViewController.m */,
 				3C61DFDA18E519F900B99B2A /* SubLessonViewController.h */,
 				3C61DFDB18E519F900B99B2A /* SubLessonViewController.m */,
+				3CF0A21B18E5F3E600C633EE /* TextEditorViewController.h */,
+				3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF0A21D18E5F3E600C633EE /* TextEditorViewController.m in Sources */,
 				3CE1F1D018D6402700DE7B86 /* LoginViewController.m in Sources */,
 				3CE1F19A18D63E2D00DE7B86 /* ViewController.m in Sources */,
 				3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */,
