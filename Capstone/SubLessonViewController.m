@@ -128,7 +128,7 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:textEditorViewController];
     nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
-    [self.tView deselectRowAtIndexPath: indexPath animated:YES];
+    [self.tView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*
