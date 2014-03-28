@@ -1,0 +1,127 @@
+// Lessons
+// -Title
+// -Ratings
+// -Description
+// -Author
+// -Lesson Goal
+// -Attempt Count (heoric)
+// -Max Attempts (heoric)
+// -Score
+// -Sub Lessons
+// --Title
+// --Sub Lesson Goal
+// --Steps
+// ---step
+// ----Goal Of Step
+// ----Expected Result
+// ----Hints
+// ----Goals
+// ----Status
+// ----Previous / Initial text
+// Lesson Object
+{
+    Title: "Lesson Title",
+    Rating: 3,
+    Description: "Rating description",
+    Author: "Author Name",
+    LessonGoal: "A goal for this lesson.",
+    AttemptCount: 3,
+    MaxAttempts: 5,
+    Score: 24,
+    SubLessons:
+        [
+            {
+                Title: "Sub Lesson Title",
+                LessonGoal: "Sub lesson Goal.",
+                Steps: 
+                    [
+                        {
+                            StepGoal: "The goal of this step is...",
+                            ExpectedResult:
+                                {
+                                    answer: "this could be a number or line of text or possibly an object",
+                                    comparitor: "function(studentAnswer, correctAnswer){return studentAnswer == correctAnswer;}"
+                                },
+                            Hints: 
+                                [
+                                "A hint 1",
+                                "A hint 2",
+                                "..."
+                                ],
+                            Goal: "A string describing the goal of this step.",
+                            Status: "Pending/Incomplete/Complete",
+                            StartingText: "The initial text the student should start with, could be code or something else.",
+                            ProgressedText: "The text the student entered previously"
+                        },
+                        {
+                            StepGoal: "The goal of this step is...",
+                            ExpectedResult:
+                                {
+                                    answer: "this could be a number or line of text or possibly an object",
+                                    comparitor: "function(studentAnswer, correctAnswer){return studentAnswer == correctAnswer;}"
+                                },
+                            Hints: 
+                                [
+                                "A hint 1",
+                                "A hint 2",
+                                "..."
+                                ],
+                            Goal: "A string describing the goal of this step.",
+                            Status: "Pending/Incomplete/Complete",
+                            StartingText: "The initial text the student should start with, could be code or something else.",
+                            ProgressedText: "The text the student entered previously"
+                        }
+                    ],
+            },
+            {
+                Title: "Sub Lesson Title",
+                LessonGoal: "Sub lesson Goal.",
+                Steps: 
+                    [
+                        {
+                            StepGoal: "The goal of this step is...",
+                            ExpectedResult:
+                                {
+                                    answer: "this could be a number or line of text or possibly an object",
+                                    comparitor: function(studentAnswer, correctAnswer){
+                                        // This should return true or false
+                                        return studentAnswer == correctAnswer;
+                                    }
+                                },
+                            Hints: 
+                                [
+                                "A hint 1",
+                                "A hint 2",
+                                "..."
+                                ],
+                            Goal: "A string describing the goal of this step.",
+                            Status: "Pending/Incomplete/Complete",
+                            StartingText: "The initial text the student should start with, could be code or something else.",
+                            ProgressedText: "The text the student entered previously"
+                        },
+                        {
+                            StepGoal: "The goal of this step is...",
+                            ExpectedResult:
+                                {
+                                    answer: "this could be a number or line of text or possibly an object",
+                                    comparitor: function(studentAnswer, correctAnswer){
+                                        // This should return true or false
+                                        return studentAnswer == correctAnswer;
+                                    }
+                                },
+                            Hints: 
+                                [
+                                "A hint 1",
+                                "A hint 2",
+                                "..."
+                                ],
+                            Goal: "A string describing the goal of this step.",
+                            Status: "Pending/Incomplete/Complete",
+                            StartingText: "The initial text the student should start with, could be code or something else.",
+                            ProgressedText: "The text the student entered previously"
+                        }
+                    ],
+            }
+
+        ],
+}
