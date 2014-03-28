@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic) NSString *userType;
 
 - (IBAction)loginAction:(id)sender;
 

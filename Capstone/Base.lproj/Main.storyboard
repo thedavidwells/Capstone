@@ -65,7 +65,6 @@
                         <outlet property="passwordField" destination="emr-Rh-20L" id="cGE-aH-N2J"/>
                         <outlet property="scrollView" destination="8Ib-9D-dCF" id="pf1-cd-iwV"/>
                         <outlet property="usernameField" destination="JBd-B2-Guw" id="KSZ-zk-Pzf"/>
-                        <segue destination="yvo-ix-MCw" kind="modal" identifier="loginSuccessful" id="ttb-Yw-AuP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WqH-BU-X6b" userLabel="First Responder" sceneMemberID="firstResponder"/>

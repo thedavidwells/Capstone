@@ -8,9 +8,12 @@
 
 #import "LoginViewController.h"
 #import "ViewController.h"
+#import "StudentViewController.h"
+#import "CurrentUser.h"
+#import <Parse/Parse.h>
 
 @interface LoginViewController ()
-
+@property (nonatomic) CurrentUser *currentUser;
 @end
 
 @implementation LoginViewController
@@ -21,6 +24,14 @@
     if (self) {
     }
     return self;
+}
+
+- (CurrentUser *)currentUser
+{
+    if (!_currentUser) {
+        _currentUser = [[CurrentUser alloc] init];
+    }
+    return _currentUser;
 }
 
 - (void)viewDidLoad
@@ -77,7 +88,13 @@
                                  password:self.passwordField.text
                                     block:^(PFUser *user, NSError *error) {
                                         if (!error) {
-                                            [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
+                                            self.userType = [self.currentUser getUserType];
+                                            if ([self.userType isEqualToString:@"student"]) {
+                                                StudentViewController *studentViewController = [[StudentViewController alloc] init];
+                                                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:studentViewController];
+                                                nav.modalPresentationStyle = UIModalPresentationFullScreen;
+                                                [self presentViewController:nav animated:YES completion:nil];
+                                            }
                                         }
                                         else {
                                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Failed"

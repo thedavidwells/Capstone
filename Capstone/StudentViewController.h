@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StudentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface StudentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
+
+- (IBAction)logoutAction:(id)sender;
 
 @end
