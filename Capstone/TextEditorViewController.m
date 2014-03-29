@@ -7,11 +7,15 @@
 //
 
 #import "TextEditorViewController.h"
+#import "ResultsViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+static const int statusBarHeight = 20;
+
 @interface TextEditorViewController ()
 @property (nonatomic) NSString *subLessonTitle;
+@property (nonatomic) UITextView *textEditorView;
 @end
 
 @implementation TextEditorViewController
@@ -41,6 +45,9 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(exitLesson:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
+                                                                                          target:self
+                                                                                          action:@selector(runCode:)];
     [self placeStepByStepInstructionView];
     [self placeTextEditorView];
 }
@@ -48,9 +55,9 @@
 - (void)placeStepByStepInstructionView
 {
     CGRect stepFrame = CGRectMake(0,
-                                  self.navigationController.navigationBar.frame.size.height + 20,
+                                  self.navigationController.navigationBar.frame.size.height + statusBarHeight,
                                   300,
-                                  (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + 20)));
+                                  (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
     UIView *stepByStepInstructionView = [[UIView alloc] initWithFrame:stepFrame];
     stepByStepInstructionView.backgroundColor = UIColorFromRGB(0xEBEBEB);
     [self.view addSubview:stepByStepInstructionView];
@@ -60,16 +67,16 @@
 {
     [[UITextView appearance] setTintColor:[UIColor whiteColor]];
     CGRect textEditorViewFrame = CGRectMake(300,
-                                      self.navigationController.navigationBar.frame.size.height + 20,
+                                      self.navigationController.navigationBar.frame.size.height + statusBarHeight,
                                       724,
-                                      (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + 20)));
-    UITextView *textEditorView = [[UITextView alloc] initWithFrame:textEditorViewFrame];
-    textEditorView.backgroundColor = UIColorFromRGB(0x6B6B6B);
-    textEditorView.font = [UIFont systemFontOfSize:18.0];
-    textEditorView.textColor = [UIColor whiteColor];
-    textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
-    textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [self.view addSubview:textEditorView];
+                                      (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
+    self.textEditorView = [[UITextView alloc] initWithFrame:textEditorViewFrame];
+    self.textEditorView.backgroundColor = UIColorFromRGB(0x6B6B6B);
+    self.textEditorView.font = [UIFont systemFontOfSize:18.0];
+    self.textEditorView.textColor = [UIColor whiteColor];
+    self.textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self.view addSubview:self.textEditorView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,6 +93,14 @@
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes", nil];
     [alert show];
+}
+
+- (IBAction)runCode:(id)sender
+{
+    ResultsViewController *resultsViewController = [[ResultsViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:resultsViewController];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

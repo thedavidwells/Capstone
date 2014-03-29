@@ -87,7 +87,8 @@ static const int statusBarHeight = 20;
 {
     CGRect lessonsFrame = CGRectMake(0, 0, 100, 50);
     UILabel *lessonsLabel = [[UILabel alloc] initWithFrame:lessonsFrame];
-    lessonsLabel.center = CGPointMake(self.view.bounds.size.width/4, (navBarHeight + statusBarHeight*3));
+    lessonsLabel.center = CGPointMake(self.view.bounds.size.width/4,
+                                      (self.navigationController.navigationBar.frame.size.height + statusBarHeight*3));
     lessonsLabel.text = @"Lessons";
     lessonsLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:lessonsLabel];
@@ -97,7 +98,8 @@ static const int statusBarHeight = 20;
 {
     CGRect quizzesFrame = CGRectMake(0, 0, 100, 50);
     UILabel *quizzesLabel = [[UILabel alloc] initWithFrame:quizzesFrame];
-    quizzesLabel.center = CGPointMake(self.view.bounds.size.width/4 + self.view.bounds.size.width/2, (navBarHeight + statusBarHeight*3));
+    quizzesLabel.center = CGPointMake(self.view.bounds.size.width/4 + self.view.bounds.size.width/2,
+                                      (self.navigationController.navigationBar.frame.size.height + statusBarHeight*3));
     quizzesLabel.text = @"Quizzes";
     quizzesLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:quizzesLabel];
@@ -170,9 +172,13 @@ static const int statusBarHeight = 20;
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyCheck"]];
+    imgView.center = CGPointMake(cell.frame.size.width - cell.frame.size.width/5, 30);
+    
     if (tableView == self.lessonTableView) {
         NSString *s = [[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row];
         cell.textLabel.text = s;
+        [cell addSubview:imgView];
     }
     else {
         NSString *s = [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row];
@@ -195,7 +201,7 @@ static const int statusBarHeight = 20;
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
-                                                        message:[NSString stringWithFormat:@"%@ is unavailable at this time. Please contact your teacher if you think this is in error.", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
+                                                        message:[NSString stringWithFormat:@"%@ is unavailable at this time. Please contact your teacher if you think this is an error.", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
                                                        delegate:self
                                               cancelButtonTitle:@"Okay"
                                               otherButtonTitles:nil];
