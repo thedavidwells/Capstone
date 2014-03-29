@@ -158,14 +158,67 @@
 		3C0581C318D68F0A003D7C12 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				3C2D91F818E673D900CB23F4 /* User Data */,
+				3C2D91F918E673DF00CB23F4 /* Lesson Data */,
+				3C2D91FA18E673F400CB23F4 /* Quiz Data */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		3C2D91F718E6739B00CB23F4 /* Text Editor VC's */ = {
+			isa = PBXGroup;
+			children = (
+				3CF0A21B18E5F3E600C633EE /* TextEditorViewController.h */,
+				3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */,
+				3C2D91F418E6716D00CB23F4 /* ResultsViewController.h */,
+				3C2D91F518E6716D00CB23F4 /* ResultsViewController.m */,
+			);
+			name = "Text Editor VC's";
+			sourceTree = "<group>";
+		};
+		3C2D91F818E673D900CB23F4 /* User Data */ = {
+			isa = PBXGroup;
+			children = (
 				3C8DCB6218D6A83400779B57 /* CurrentUser.h */,
 				3C8DCB6318D6A83400779B57 /* CurrentUser.m */,
+			);
+			name = "User Data";
+			sourceTree = "<group>";
+		};
+		3C2D91F918E673DF00CB23F4 /* Lesson Data */ = {
+			isa = PBXGroup;
+			children = (
 				3C61DFD718E50AB700B99B2A /* LessonsDataSource.h */,
 				3C61DFD818E50AB700B99B2A /* LessonsDataSource.m */,
+			);
+			name = "Lesson Data";
+			sourceTree = "<group>";
+		};
+		3C2D91FA18E673F400CB23F4 /* Quiz Data */ = {
+			isa = PBXGroup;
+			children = (
 				3CF0A21E18E611D600C633EE /* QuizzesDataSource.h */,
 				3CF0A21F18E611D600C633EE /* QuizzesDataSource.m */,
 			);
-			name = DataSource;
+			name = "Quiz Data";
+			sourceTree = "<group>";
+		};
+		3C2D91FB18E6741D00CB23F4 /* Student VC's */ = {
+			isa = PBXGroup;
+			children = (
+				3CEF4EFD18E4A9E1006A1E8F /* StudentViewController.h */,
+				3CEF4EFE18E4A9E1006A1E8F /* StudentViewController.m */,
+			);
+			name = "Student VC's";
+			sourceTree = "<group>";
+		};
+		3C2D91FC18E6743000CB23F4 /* Sub Lesson VC's */ = {
+			isa = PBXGroup;
+			children = (
+				3C61DFDA18E519F900B99B2A /* SubLessonViewController.h */,
+				3C61DFDB18E519F900B99B2A /* SubLessonViewController.m */,
+			);
+			name = "Sub Lesson VC's";
 			sourceTree = "<group>";
 		};
 		3C4596C418D758AD006E63BD /* Login */ = {
@@ -180,14 +233,9 @@
 		3C4596C518D79197006E63BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3CEF4EFD18E4A9E1006A1E8F /* StudentViewController.h */,
-				3CEF4EFE18E4A9E1006A1E8F /* StudentViewController.m */,
-				3C61DFDA18E519F900B99B2A /* SubLessonViewController.h */,
-				3C61DFDB18E519F900B99B2A /* SubLessonViewController.m */,
-				3CF0A21B18E5F3E600C633EE /* TextEditorViewController.h */,
-				3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */,
-				3C2D91F418E6716D00CB23F4 /* ResultsViewController.h */,
-				3C2D91F518E6716D00CB23F4 /* ResultsViewController.m */,
+				3C2D91FB18E6741D00CB23F4 /* Student VC's */,
+				3C2D91FC18E6743000CB23F4 /* Sub Lesson VC's */,
+				3C2D91F718E6739B00CB23F4 /* Text Editor VC's */,
 			);
 			name = Views;
 			sourceTree = "<group>";
