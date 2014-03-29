@@ -12,6 +12,7 @@
 
 @interface TextEditorViewController ()
 @property (nonatomic) NSString *subLessonTitle;
+@property (nonatomic) UITextView *textEditorView;
 @end
 
 @implementation TextEditorViewController
@@ -63,13 +64,13 @@
                                       self.navigationController.navigationBar.frame.size.height + 20,
                                       724,
                                       (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + 20)));
-    UITextView *textEditorView = [[UITextView alloc] initWithFrame:textEditorViewFrame];
-    textEditorView.backgroundColor = UIColorFromRGB(0x6B6B6B);
-    textEditorView.font = [UIFont systemFontOfSize:18.0];
-    textEditorView.textColor = [UIColor whiteColor];
-    textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
-    textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [self.view addSubview:textEditorView];
+    self.textEditorView = [[UITextView alloc] initWithFrame:textEditorViewFrame];
+    self.textEditorView.backgroundColor = UIColorFromRGB(0x6B6B6B);
+    self.textEditorView.font = [UIFont systemFontOfSize:18.0];
+    self.textEditorView.textColor = [UIColor whiteColor];
+    self.textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self.view addSubview:self.textEditorView];
 }
 
 - (void)didReceiveMemoryWarning

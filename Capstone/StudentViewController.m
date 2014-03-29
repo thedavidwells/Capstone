@@ -195,7 +195,7 @@ static const int statusBarHeight = 20;
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
-                                                        message:[NSString stringWithFormat:@"%@ is unavailable at this time. Please contact your teacher if you think this is in error.", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
+                                                        message:[NSString stringWithFormat:@"%@ is unavailable at this time. Please contact your teacher if you think this is an error.", [[self.quizzesDataSource getQuizTitles] objectAtIndex:indexPath.row]]
                                                        delegate:self
                                               cancelButtonTitle:@"Okay"
                                               otherButtonTitles:nil];
