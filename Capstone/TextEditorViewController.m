@@ -7,6 +7,7 @@
 //
 
 #import "TextEditorViewController.h"
+#import "ResultsViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -96,12 +97,10 @@ static const int statusBarHeight = 20;
 
 - (IBAction)runCode:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Run Code"
-                                                    message:@"This feature is not yet implemented."
-                                                   delegate:self
-                                          cancelButtonTitle:@"Okay"
-                                          otherButtonTitles:nil];
-    [alert show];
+    ResultsViewController *resultsViewController = [[ResultsViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:resultsViewController];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

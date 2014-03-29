@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C0581C218D68BD5003D7C12 /* SupportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0581C118D68BD5003D7C12 /* SupportTableViewController.m */; };
+		3C2D91F618E6716D00CB23F4 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D91F518E6716D00CB23F4 /* ResultsViewController.m */; };
 		3C32D59018E3F62B006CA2DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C32D58F18E3F62B006CA2DE /* Parse.framework */; };
 		3C61DFD918E50AB700B99B2A /* LessonsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C61DFD818E50AB700B99B2A /* LessonsDataSource.m */; };
 		3C61DFDC18E519F900B99B2A /* SubLessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C61DFDB18E519F900B99B2A /* SubLessonViewController.m */; };
@@ -57,6 +58,8 @@
 /* Begin PBXFileReference section */
 		3C0581C018D68BD5003D7C12 /* SupportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportTableViewController.h; sourceTree = "<group>"; };
 		3C0581C118D68BD5003D7C12 /* SupportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportTableViewController.m; sourceTree = "<group>"; };
+		3C2D91F418E6716D00CB23F4 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		3C2D91F518E6716D00CB23F4 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		3C32D58F18E3F62B006CA2DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		3C61DFD718E50AB700B99B2A /* LessonsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonsDataSource.h; sourceTree = "<group>"; };
 		3C61DFD818E50AB700B99B2A /* LessonsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonsDataSource.m; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				3C61DFDB18E519F900B99B2A /* SubLessonViewController.m */,
 				3CF0A21B18E5F3E600C633EE /* TextEditorViewController.h */,
 				3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */,
+				3C2D91F418E6716D00CB23F4 /* ResultsViewController.h */,
+				3C2D91F518E6716D00CB23F4 /* ResultsViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				3CEF4EFF18E4A9E1006A1E8F /* StudentViewController.m in Sources */,
 				3CE1F19018D63E2D00DE7B86 /* main.m in Sources */,
 				3C8DCB6418D6A83400779B57 /* CurrentUser.m in Sources */,
+				3C2D91F618E6716D00CB23F4 /* ResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
