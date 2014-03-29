@@ -117,6 +117,10 @@
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyCheck"]];
+    imgView.center = CGPointMake(cell.frame.size.width - cell.frame.size.width/5, 25);
+    [cell addSubview:imgView];
+    
     cell.textLabel.text = s;
     return cell;
 }
