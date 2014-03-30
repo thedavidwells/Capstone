@@ -51,7 +51,6 @@ int subLessonTracker = 0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
                                                                                           target:self
                                                                                           action:@selector(runCode:)];
-    
     [self placeStepByStepInstructionView];
     [self placeTextEditorView];
 }
