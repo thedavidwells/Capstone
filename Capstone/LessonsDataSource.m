@@ -36,4 +36,11 @@
     return self.lessonTitles;
 }
 
+// hard coded for now, just as a demo
+- (NSString *)loadSubLessonStarterText:(int)subLessonTracker
+{
+    NSString *starterText = @"// This is a comment\n// you can make comments by using '//' to comment a line\n// or you can use '/* ... */' to comment a block of lines\n\n// try making your own comments below";
+    return starterText;
+}
+
 @end
