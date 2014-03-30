@@ -1,7 +1,7 @@
 'use strict';
 
 function scrollTo(ele, time){
-	time = time || 2000;
+	time = time || 1000;
 	$('html, body').animate({
         scrollTop: $(ele).offset().top - 30
     }, time);
@@ -49,23 +49,44 @@ function lastSection(){
 	});
 }
 
-$(document).ready(function(){
-
-
+function setupScreenSize(){
 	$('.fullscreen').css('height', $( window ).height());
 	$('.fullscreen').css('padding-top', $( '#header' ).height());
+}
+function checkvisible( elem ) {
+	var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+$(document).ready(function(){
+
+	setupScreenSize();
+	$(window).resize(setupScreenSize);
+	
 
 
 
 	// setup Navigation clicks
 	$('.nav a').click(function(){
-		console.log('clicked', $(this).html());
-		$(this).parent().siblings().removeClass('active');
-		$(this).parent().addClass('active');
 		var target = $(this).attr('target');
-		console.log(target);
 		scrollTo(target);
 		return false;
+	});
+	var targets = $('.nav a');
+	$(window).scroll(function(){
+		for(var i = 0; i < targets.length; i++){
+			var ele = $(targets[i]);
+			var target = ele.attr('target');
+			console.log('Checking if ' + target + ' is on screen', checkvisible(target));
+			if(checkvisible(target)){
+				ele.parent().siblings().removeClass('active');
+				ele.parent().addClass('active');
+			}
+		}
 	});
 
 	$('.continue').click(nextSection);
