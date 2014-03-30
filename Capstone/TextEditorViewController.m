@@ -48,8 +48,11 @@ static const int statusBarHeight = 20;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
                                                                                           target:self
                                                                                           action:@selector(runCode:)];
+    
     [self placeStepByStepInstructionView];
+    
     [self placeTextEditorView];
+    [self placeLineNumberLabels];
 }
 
 - (void)placeStepByStepInstructionView
@@ -66,9 +69,9 @@ static const int statusBarHeight = 20;
 - (void)placeTextEditorView
 {
     [[UITextView appearance] setTintColor:[UIColor whiteColor]];
-    CGRect textEditorViewFrame = CGRectMake(300,
+    CGRect textEditorViewFrame = CGRectMake(340,
                                       self.navigationController.navigationBar.frame.size.height + statusBarHeight,
-                                      724,
+                                      724-35,
                                       (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
     self.textEditorView = [[UITextView alloc] initWithFrame:textEditorViewFrame];
     self.textEditorView.backgroundColor = UIColorFromRGB(0x6B6B6B);
@@ -78,6 +81,46 @@ static const int statusBarHeight = 20;
     self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self.view addSubview:self.textEditorView];
 }
+
+
+- (void)placeLineNumberLabels
+{
+    CGRect lineNumbersFrame = CGRectMake(299,
+                                         self.navigationController.navigationBar.frame.size.height + statusBarHeight + 8,
+                                         45,
+                                         150);
+    
+    UILabel *lineNumbers = [[UILabel alloc] initWithFrame:lineNumbersFrame];
+    lineNumbers.backgroundColor = [UIColor whiteColor];
+    lineNumbers.font = [UIFont systemFontOfSize:18.0];
+    lineNumbers.textColor = [UIColor blackColor];
+    lineNumbers.textAlignment = NSTextAlignmentRight;
+    int numberOfLines = self.textEditorView.contentSize.height / self.textEditorView.font.lineHeight;
+    NSLog(@"Number of Lines: %d", numberOfLines);
+    
+    
+    NSMutableArray *lineNumberArray = [NSMutableArray new];
+    
+    for (int i = 1; i <= numberOfLines+1; i++) {
+        if (i < 10) {
+            NSString *lineNum = [NSString stringWithFormat:@"   %d: ", i];
+            NSLog(@" %d: ", i);
+            [lineNumberArray addObject:lineNum];
+        }else{
+            NSString *lineNum = [NSString stringWithFormat:@" %d: ", i];
+            NSLog(@"%d: ", i);
+            [lineNumberArray addObject:lineNum];
+        }
+        
+    }
+    lineNumbers.text =  [lineNumberArray componentsJoinedByString:@" \n"];
+    [lineNumbers adjustsFontSizeToFitWidth];
+    [lineNumbers setNumberOfLines:0];
+    [lineNumbers sizeToFit];
+    
+    [self.view addSubview:lineNumbers];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
