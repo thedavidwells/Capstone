@@ -8,14 +8,17 @@
 
 #import "TextEditorViewController.h"
 #import "ResultsViewController.h"
+#import "LineNumberTextView.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 static const int statusBarHeight = 20;
+int subLessonTracker = 0;
 
 @interface TextEditorViewController ()
 @property (nonatomic) NSString *subLessonTitle;
 @property (nonatomic) UITextView *textEditorView;
+@property (nonatomic) LineNumberTextView *lineNumberTextView;
 @end
 
 @implementation TextEditorViewController
@@ -52,7 +55,6 @@ static const int statusBarHeight = 20;
     [self placeStepByStepInstructionView];
     
     [self placeTextEditorView];
-    [self placeLineNumberLabels];
 }
 
 - (void)placeStepByStepInstructionView
@@ -68,59 +70,16 @@ static const int statusBarHeight = 20;
 
 - (void)placeTextEditorView
 {
-    [[UITextView appearance] setTintColor:[UIColor whiteColor]];
-    CGRect textEditorViewFrame = CGRectMake(340,
-                                      self.navigationController.navigationBar.frame.size.height + statusBarHeight,
-                                      724-35,
-                                      (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
-    self.textEditorView = [[UITextView alloc] initWithFrame:textEditorViewFrame];
-    self.textEditorView.backgroundColor = UIColorFromRGB(0x6B6B6B);
-    self.textEditorView.font = [UIFont systemFontOfSize:18.0];
-    self.textEditorView.textColor = [UIColor whiteColor];
-    self.textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [self.view addSubview:self.textEditorView];
+    [[UITextView appearance] setTintColor:[UIColor blackColor]];
+    CGRect textEditorViewFrame = CGRectMake(300,
+                                            self.navigationController.navigationBar.frame.size.height + statusBarHeight,
+                                            724,
+                                            (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
+    self.lineNumberTextView = [[LineNumberTextView alloc] initWithFrame:textEditorViewFrame];
+    self.lineNumberTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.lineNumberTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self.view addSubview:self.lineNumberTextView];
 }
-
-
-- (void)placeLineNumberLabels
-{
-    CGRect lineNumbersFrame = CGRectMake(299,
-                                         self.navigationController.navigationBar.frame.size.height + statusBarHeight + 8,
-                                         45,
-                                         150);
-    
-    UILabel *lineNumbers = [[UILabel alloc] initWithFrame:lineNumbersFrame];
-    lineNumbers.backgroundColor = [UIColor whiteColor];
-    lineNumbers.font = [UIFont systemFontOfSize:18.0];
-    lineNumbers.textColor = [UIColor blackColor];
-    lineNumbers.textAlignment = NSTextAlignmentRight;
-    int numberOfLines = self.textEditorView.contentSize.height / self.textEditorView.font.lineHeight;
-    NSLog(@"Number of Lines: %d", numberOfLines);
-    
-    
-    NSMutableArray *lineNumberArray = [NSMutableArray new];
-    
-    for (int i = 1; i <= numberOfLines+1; i++) {
-        if (i < 10) {
-            NSString *lineNum = [NSString stringWithFormat:@"   %d: ", i];
-            NSLog(@" %d: ", i);
-            [lineNumberArray addObject:lineNum];
-        }else{
-            NSString *lineNum = [NSString stringWithFormat:@" %d: ", i];
-            NSLog(@"%d: ", i);
-            [lineNumberArray addObject:lineNum];
-        }
-        
-    }
-    lineNumbers.text =  [lineNumberArray componentsJoinedByString:@" \n"];
-    [lineNumbers adjustsFontSizeToFitWidth];
-    [lineNumbers setNumberOfLines:0];
-    [lineNumbers sizeToFit];
-    
-    [self.view addSubview:lineNumbers];
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -152,16 +111,5 @@ static const int statusBarHeight = 20;
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
