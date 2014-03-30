@@ -41,7 +41,7 @@ static const int statusBarHeight = 20;
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = UIColorFromRGB(0xEBEBEB);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(exitLesson:)];
@@ -91,7 +91,7 @@ static const int statusBarHeight = 20;
                                          150);
     
     UILabel *lineNumbers = [[UILabel alloc] initWithFrame:lineNumbersFrame];
-    lineNumbers.backgroundColor = [UIColor whiteColor];
+    lineNumbers.backgroundColor = UIColorFromRGB(0xEBEBEB);
     lineNumbers.font = [UIFont systemFontOfSize:18.0];
     lineNumbers.textColor = [UIColor blackColor];
     lineNumbers.textAlignment = NSTextAlignmentRight;
