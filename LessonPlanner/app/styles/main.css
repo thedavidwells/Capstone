@@ -17,6 +17,8 @@ body {
 .footer {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 10px;
+    background: white;
 }
 
 /* Custom page header */
@@ -87,3 +89,4 @@ body {
         border-bottom: 0;
     }
 }
+.input-group {margin-bottom: 10px;}

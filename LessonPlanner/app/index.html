@@ -23,43 +23,68 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        <div class="container">
-            <div class="header">
+        <div id='header' class="header navbar-fixed-top">
+            <div class='container'>
                 <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Planning</a></li>
-                    <li><a href="#documentation">Documentation</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li class="active" ><a target='#startPlanning' href="#">Course Planning</a></li>
+                    <li><a href="#documentation" target='#documentation'>Documentation</a></li>
+                    <li><a href="#contact" target='#contact'>Contact</a></li>
                 </ul>
                 <h3 class="text-muted">Capstone Lesson Planner</h3>
             </div>
-
-            <div class="jumbotron">
-                <h1>Capstone Lesson Planner</h1>
-                <p class="lead">Generate lessons to use in your classroom.</p>
-                <p><a class="btn btn-lg btn-success" href="#">Lets Get Started! <span class="glyphicon glyphicon-ok"></span></a></p>
+        </div>
+        <div class="container">
+            <div class='fullscreen row' id='startPlanning'>
+                <div class="jumbotron slide">
+                    <div id="CreatFlow1">
+                        <h1>Capstone Lesson Planner</h1>
+                        <p class="lead">Generate lessons to use in your classroom.</p>
+                        <p><a class="btn btn-lg btn-success continue" id='getStarted' href="#">Lets Get Started <span class="glyphicon glyphicon-pencil" /></a></p>
+                    </div>
+                </div>
+                <div class="slide" style='display: none' displayBackButton="true" displayContinueButton="false">
+                    <div class='col-xs-12'>
+                        <h2>Name your course </h2>
+                        <hr />
+                        <div class='input-group'>
+                            <span class="input-group-addon">Course Title</span>
+                            <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" />
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="slide" style='display: none' displayBackButton="true" displayContinueButton="false">
+                    <div class='col-xs-12'>
+                        <h2>Create A Lesson Plan</h2>
+                        <hr />
+                        <div class='input-group'>
+                            <span class="input-group-addon">Lesson 1</span>
+                            <input name="courseTitle" class="form-control Lesson Title" placeholder="Introducing Variables." type="text" />
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class='col-xs-12'>
+                    <p class='pull-left' style="display:none" id="backButton">
+                        <a class="btn btn-lg btn-success goBack" href="#"><span class="glyphicon glyphicon-step-backward"></span> Go Back 
+                        </a>
+                    </p>
+                    <p class='pull-right' style="display:none" id="continueButton">
+                        <a class="btn btn-lg btn-success continue" href="#">Continue <span class="glyphicon glyphicon-step-forward"></span>
+                        </a>
+                    </p>
+                </div>
             </div>
+            
+            
 
-            <div class="row marketing">
-                <div class="col-lg-6">
-                    <br />
-                    <br />
-                    <br />
-                    <br /><br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+            <div class="fullscreen" id='documentation'>
                     <h4 > <a name="documentation"></a>Documentation</h4>
                     <p>TODO: Add documentation.</p>
-
-
-                    <br /><br /><br /><br /><br /><br /><br />
-                    <h4 > <a name="contact"></a>Contact Us</h4>
-                    <p>TODO: Add our contact information.</p>
-
-
-                </div>
+            </div>
+            <div class='fullscreen' id='contact'>
+                <h4 > <a name="contact"></a>Contact Us</h4>
+                <p>TODO: Add our contact information.</p>
             </div>
 
             <div class="footer">
