@@ -44,7 +44,7 @@ int subLessonTracker = 0;
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = UIColorFromRGB(0xEBEBEB);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(exitLesson:)];
@@ -53,7 +53,6 @@ int subLessonTracker = 0;
                                                                                           action:@selector(runCode:)];
     
     [self placeStepByStepInstructionView];
-    
     [self placeTextEditorView];
 }
 
