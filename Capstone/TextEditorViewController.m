@@ -7,6 +7,7 @@
 //
 
 #import "TextEditorViewController.h"
+#import "LessonsDataSource.h"
 #import "ResultsViewController.h"
 #import "LineNumberTextView.h"
 
@@ -19,6 +20,7 @@ int subLessonTracker = 0;
 @property (nonatomic) NSString *subLessonTitle;
 @property (nonatomic) UITextView *textEditorView;
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
+@property (nonatomic) LessonsDataSource *lessonsDataSource;
 @end
 
 @implementation TextEditorViewController
@@ -38,6 +40,14 @@ int subLessonTracker = 0;
         return nil;
     self.subLessonTitle = subLessonTitle;
     return self;
+}
+
+- (LessonsDataSource *)lessonsDataSource
+{
+    if (!_lessonsDataSource) {
+        _lessonsDataSource = [[LessonsDataSource alloc] init];
+    }
+    return _lessonsDataSource;
 }
 
 - (void)viewDidLoad
@@ -76,6 +86,9 @@ int subLessonTracker = 0;
     self.lineNumberTextView = [[LineNumberTextView alloc] initWithFrame:textEditorViewFrame];
     self.lineNumberTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.lineNumberTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    
+    // this is just an example of how we can pre-load sublesson text
+    self.lineNumberTextView.text = [self.lessonsDataSource loadSubLessonStarterText:0 /* we'll want to load the text relevant to the sublesson, 0 does nothing here*/];
     [self.view addSubview:self.lineNumberTextView];
 }
 
