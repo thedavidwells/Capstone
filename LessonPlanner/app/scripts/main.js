@@ -50,8 +50,11 @@ function lastSection(){
 }
 
 function setupScreenSize(){
-	$('.fullscreen').css('height', $( window ).height());
-	$('.fullscreen').css('padding-top', $( '#header' ).height());
+	$('.fullscreen').css('min-height', $( window ).height());
+	$('.fullscreen').css('padding-top', $( '#header' ).height() + 25);
+	var link = $('.active a').attr('target');
+	scrollTo($(link));
+
 }
 function checkvisible( elem ) {
 	var docViewTop = $(window).scrollTop();
@@ -81,7 +84,6 @@ $(document).ready(function(){
 		for(var i = 0; i < targets.length; i++){
 			var ele = $(targets[i]);
 			var target = ele.attr('target');
-			console.log('Checking if ' + target + ' is on screen', checkvisible(target));
 			if(checkvisible(target)){
 				ele.parent().siblings().removeClass('active');
 				ele.parent().addClass('active');

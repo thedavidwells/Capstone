@@ -172,7 +172,7 @@
             <div class='col-xs-12'>
                 <div class='input-group'>
                     <span class="input-group-addon">Lesson Title</span>
-                    <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" value='<%= Lesson.get("Title") %>'/>
+                    <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" />
                 </div>
             </div>
         </div>

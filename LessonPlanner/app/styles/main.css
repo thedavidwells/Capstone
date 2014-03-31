@@ -89,4 +89,6 @@ body {
         border-bottom: 0;
     }
 }
-.input-group {margin-bottom: 10px;}
+.input-group, select {margin-bottom: 10px;}
+.fullWidth: {width: 100%;}
+
