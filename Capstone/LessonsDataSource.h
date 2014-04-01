@@ -16,5 +16,6 @@
 - (NSString *)loadStepStarterText:(int)stepTracker;
 - (NSString *)loadStepTitleText:(int)stepTracker;
 - (NSString *)loadStepText:(int)stepTracker;
+- (NSString *)loadFreeCodeText:(int)stepTracker;
 
 @end

@@ -81,4 +81,10 @@
     return goalText;
 }
 
+- (NSString *)loadFreeCodeText:(int)stepTracker
+{
+    NSString *freeCodeText = @"// Welcome to your free code playground! \n// Write some code and have fun! \n";
+    return freeCodeText;
+}
+
 @end

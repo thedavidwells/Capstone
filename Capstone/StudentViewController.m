@@ -11,6 +11,7 @@
 #import "QuizzesDataSource.h"
 #import "SubLessonViewController.h"
 #import "CurrentUser.h"
+#import "FreeTextViewController.h"
 
 static const int navBarHeight = 44;
 static const int statusBarHeight = 20;
@@ -125,6 +126,9 @@ static const int statusBarHeight = 20;
 {
     
     NSLog(@"Transition to Free Code VC...");
+    FreeTextViewController *freeCode = [[FreeTextViewController alloc] init];
+    [self.navigationController pushViewController:freeCode animated:YES];
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
