@@ -11,6 +11,7 @@
 @interface LessonsDataSource()
 
 @property (nonatomic) NSMutableArray *lessonTitles;
+@property (nonatomic) NSMutableArray *subLessonTitles;
 
 @end
 
@@ -31,16 +32,53 @@
     return _lessonTitles;
 }
 
+- (NSMutableArray *)subLessonTitles
+{
+    if (!_subLessonTitles) {
+        _subLessonTitles = [[NSMutableArray alloc] initWithObjects:@"SubLesson 1",
+                         @"SubLesson 2",
+                         @"SubLesson 3",
+                         @"SubLesson 4",
+                         @"SubLesson 5", nil];
+    }
+    return _subLessonTitles;
+}
+
 - (NSMutableArray *)getLessonTitles
 {
     return self.lessonTitles;
 }
 
-// hard coded for now, just as a demo
-- (NSString *)loadSubLessonStarterText:(int)subLessonTracker
+- (NSMutableArray *)getSubLessonTitles
 {
-    NSString *starterText = @"// This is a comment\n// you can make comments by using '//' to comment a line\n// or you can use '/* ... */' to comment a block of lines\n\n// try making your own comments below";
+    return self.subLessonTitles;
+}
+
+/*
+    hard coded for now, just as a demo
+*/
+- (NSString *)loadStepStarterText:(int)stepTracker
+{
+    NSString *starterText = @"// This is a comment";
     return starterText;
+}
+
+- (NSString *)loadStepTitleText:(int)stepTracker
+{
+    NSString *titleText = @"Step Title";
+    return titleText;
+}
+
+- (NSString *)loadStepText:(int)stepTracker
+{
+    NSString *titleText = @"This is a body of text that contains one of the steps for the sublesson";
+    return titleText;
+}
+
+- (NSString *)loadStepGoal:(int)stepTracker
+{
+    NSString *goalText = @"goal a\n goal b";
+    return goalText;
 }
 
 @end

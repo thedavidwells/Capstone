@@ -11,6 +11,10 @@
 @interface LessonsDataSource : NSObject
 
 - (NSMutableArray *)getLessonTitles;
-- (NSString *)loadSubLessonStarterText:(int)subLessonTracker;
+- (NSMutableArray *)getSubLessonTitles;
+
+- (NSString *)loadStepStarterText:(int)stepTracker;
+- (NSString *)loadStepTitleText:(int)stepTracker;
+- (NSString *)loadStepText:(int)stepTracker;
 
 @end

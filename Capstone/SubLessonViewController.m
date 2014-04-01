@@ -8,12 +8,14 @@
 
 #import "SubLessonViewController.h"
 #import "TextEditorViewController.h"
+#import "LessonsDataSource.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface SubLessonViewController ()
 @property (nonatomic) NSString *lessonTitle;
 @property (nonatomic) UITableView *tView;
+@property (nonatomic) LessonsDataSource *lessonsDataSource;
 @end
 
 @implementation SubLessonViewController
@@ -33,6 +35,14 @@
         return nil;
     self.lessonTitle = lessonTitle;
     return self;
+}
+
+- (LessonsDataSource *)lessonsDataSource
+{
+    if (!_lessonsDataSource) {
+        _lessonsDataSource = [[LessonsDataSource alloc] init];
+    }
+    return _lessonsDataSource;
 }
 
 - (void)viewDidLoad
@@ -110,7 +120,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *s = @"test"; //[[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row];
+    NSString *s = [[self.lessonsDataSource getSubLessonTitles] objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -129,22 +139,11 @@
 {
     NSLog(@"row %li was selected", indexPath.row);
     
-    TextEditorViewController *textEditorViewController = [[TextEditorViewController alloc] init]; //initWithLesson:[[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row]];
+    TextEditorViewController *textEditorViewController = [[TextEditorViewController alloc] initWithSubLesson:[[self.lessonsDataSource getSubLessonTitles] objectAtIndex:indexPath.row]];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:textEditorViewController];
     nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
     [self.tView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

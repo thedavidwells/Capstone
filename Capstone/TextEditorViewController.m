@@ -14,11 +14,12 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 static const int statusBarHeight = 20;
-int subLessonTracker = 0;
+int stepTracker = 0;
 
 @interface TextEditorViewController ()
 @property (nonatomic) NSString *subLessonTitle;
 @property (nonatomic) UITextView *textEditorView;
+@property (nonatomic) UIView *stepByStepInstructionView;
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @end
@@ -61,6 +62,11 @@ int subLessonTracker = 0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
                                                                                           target:self
                                                                                           action:@selector(runCode:)];
+    [self contentReloadedAfterLaunchAndEachStep];
+}
+
+- (void)contentReloadedAfterLaunchAndEachStep
+{
     [self placeStepByStepInstructionView];
     [self placeTextEditorView];
 }
@@ -71,25 +77,70 @@ int subLessonTracker = 0;
                                   self.navigationController.navigationBar.frame.size.height + statusBarHeight,
                                   300,
                                   (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
-    UIView *stepByStepInstructionView = [[UIView alloc] initWithFrame:stepFrame];
-    stepByStepInstructionView.backgroundColor = UIColorFromRGB(0xEBEBEB);
-    [self.view addSubview:stepByStepInstructionView];
+    self.stepByStepInstructionView = [[UIView alloc] initWithFrame:stepFrame];
+    self.stepByStepInstructionView.backgroundColor = UIColorFromRGB(0xf3f3f3);
+    [self.view addSubview:self.stepByStepInstructionView];
+    
+    [self placeStepNavigationBar];
+    [self placeStepTitle];
+    [self placeStepText];
 }
 
 - (void)placeTextEditorView
 {
     [[UITextView appearance] setTintColor:[UIColor blackColor]];
-    CGRect textEditorViewFrame = CGRectMake(300,
+    CGRect textEditorViewFrame = CGRectMake(self.stepByStepInstructionView.frame.size.width,
                                             self.navigationController.navigationBar.frame.size.height + statusBarHeight,
-                                            724,
+                                            self.view.frame.size.height - self.stepByStepInstructionView.frame.size.width,
                                             (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
     self.lineNumberTextView = [[LineNumberTextView alloc] initWithFrame:textEditorViewFrame];
     self.lineNumberTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.lineNumberTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     // this is just an example of how we can pre-load sublesson text
-    self.lineNumberTextView.text = [self.lessonsDataSource loadSubLessonStarterText:0 /* we'll want to load the text relevant to the sublesson, 0 does nothing here*/];
+    self.lineNumberTextView.text = [self.lessonsDataSource loadStepStarterText:0 /* we'll want to load the text relevant to the sublesson, 0 does nothing here*/];
     [self.view addSubview:self.lineNumberTextView];
+}
+
+- (void)placeStepNavigationBar
+{
+    UINavigationItem *title = [[UINavigationItem alloc] initWithTitle:self.subLessonTitle];
+    CGRect navFrame = CGRectMake(0,
+                                 self.navigationController.navigationBar.frame.size.height + statusBarHeight,
+                                 self.stepByStepInstructionView.frame.size.width,
+                                 self.navigationController.navigationBar.frame.size.height);
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:navFrame];
+    navBar.items = [NSArray arrayWithObjects:title, nil];
+    [self.view addSubview:navBar];
+}
+
+- (void)placeStepTitle
+{
+    CGRect stepTitleFrame = CGRectMake(5,
+                                       (self.navigationController.navigationBar.frame.size.height*2) + statusBarHeight + 5,
+                                       self.stepByStepInstructionView.frame.size.width - statusBarHeight/2,
+                                       100);
+    UILabel *stepTitleLabel = [[UILabel alloc] initWithFrame:stepTitleFrame];
+    stepTitleLabel.text = [self.lessonsDataSource loadStepTitleText:0];
+    stepTitleLabel.font = [UIFont systemFontOfSize:22.0];
+    stepTitleLabel.numberOfLines = 0;
+    stepTitleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:stepTitleLabel];
+}
+
+- (void)placeStepText
+{
+    CGRect stepFrame = CGRectMake(5,
+                                  ((self.navigationController.navigationBar.frame.size.height*2) + statusBarHeight + 5) + 105,
+                                  self.stepByStepInstructionView.frame.size.width - statusBarHeight/2,
+                                  200);
+    UITextView *stepView = [[UITextView alloc] initWithFrame:stepFrame];
+    stepView.userInteractionEnabled = NO;
+    stepView.backgroundColor = [UIColor clearColor];
+    stepView.textAlignment = NSTextAlignmentCenter;
+    stepView.text = [self.lessonsDataSource loadStepText:0];
+    stepView.font = [UIFont systemFontOfSize:16.0];
+    [self.view addSubview:stepView];
 }
 
 - (void)didReceiveMemoryWarning
