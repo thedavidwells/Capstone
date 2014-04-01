@@ -2,10 +2,10 @@ $(function(){
 	Parse.$ = $;
 	Parse.initialize('29wOKycz8F6JaRXHNttPXiynbGOFKUqOYAZvKZVc',
                    '4iNIqeEGthAqjMAhYRIz5JVF1hKDnsTBDCPomf5o');
-	$.ajaxPrefilter(function(options, originalOptions, jqXHR){
-		console.log("SETUP REQUEST");
-		jqXHR.setRequestHeader('Access-Control-Allow-Origin', '*');
-	});
+
+	//////////////////////////////////////////////////////////////
+	/// Objects
+	//////////////////////////////////////////////////////////////
 	var Lesson = Parse.Object.extend('Lesson', {
 		defaults: {
 			Title: 'Lesson Title',
@@ -35,22 +35,32 @@ $(function(){
 			}
 		}
 	});
+
+
+	//////////////////////////////////////////////////////////////
+	/// Collections
+	//////////////////////////////////////////////////////////////
+
+
 	var Lessons = Parse.Collection.extend({
 		Model: Lesson
 	});
 
+	//////////////////////////////////////////////////////////////
+	/// Views
+	//////////////////////////////////////////////////////////////
 
 	var LessonView = Parse.View.extend({
 		el:('.content'),
 		template: _.template($('#LessonTemplate').html()),
 		initialize: function(){
-			
 			this.render();
 		},
 		render: function(){
 			this.$el.html(this.template({Lesson: this.model}));
 		}
 	});
+
 	var LessonSelectorView = Parse.View.extend({
 		el: '#LessonSelector',
 		initialize: function(ops){
@@ -61,6 +71,7 @@ $(function(){
 			$(this.$el).html(_.template($('#LessonSelectorTemplate').html(), {Lessons: this.lessons.toJSON()}));
 		}
 	});
+
 	var GetStartedView = Parse.View.extend({
 		events: {
 			'click .newLessonButton': 'newLesson'
@@ -152,6 +163,7 @@ $(function(){
 			this.delegateEvents();
 		}
 	});
+
 	var LoginInfo = Parse.View.extend({
 		events: {
 			'click .logout': 'logOut'
@@ -178,6 +190,10 @@ $(function(){
 			delete this;
 		},
 	});
+
+
+
+
 	if(!Parse.User.current()){
 		new LogInView();
 	} else {
