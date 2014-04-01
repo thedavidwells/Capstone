@@ -10,6 +10,7 @@
 #import "LessonsDataSource.h"
 #import "ResultsViewController.h"
 #import "LineNumberTextView.h"
+#import "CurrentUser.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -17,6 +18,7 @@ static const int statusBarHeight = 20;
 int stepTracker = 0;
 
 @interface TextEditorViewController ()
+@property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) NSString *subLessonTitle;
 @property (nonatomic) UITextView *textEditorView;
 @property (nonatomic) UIView *stepByStepInstructionView;
@@ -33,6 +35,14 @@ int stepTracker = 0;
         // Custom initialization
     }
     return self;
+}
+
+- (CurrentUser *)currentUser
+{
+    if (!_currentUser) {
+        _currentUser = [[CurrentUser alloc] init];
+    }
+    return _currentUser;
 }
 
 - (instancetype)initWithSubLesson:(NSString *)subLessonTitle
@@ -62,6 +72,8 @@ int stepTracker = 0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
                                                                                           target:self
                                                                                           action:@selector(runCode:)];
+    
+    self.title = [self.currentUser getFirstAndLastName];
     [self contentReloadedAfterLaunchAndEachStep];
 }
 

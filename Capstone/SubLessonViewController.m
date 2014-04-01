@@ -9,16 +9,27 @@
 #import "SubLessonViewController.h"
 #import "TextEditorViewController.h"
 #import "LessonsDataSource.h"
+#import "CurrentUser.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface SubLessonViewController ()
+@property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) NSString *lessonTitle;
 @property (nonatomic) UITableView *tView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @end
 
 @implementation SubLessonViewController
+
+
+- (CurrentUser *)currentUser
+{
+    if (!_currentUser) {
+        _currentUser = [[CurrentUser alloc] init];
+    }
+    return _currentUser;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +61,8 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.title = [self.currentUser getFirstAndLastName];
     
     [self placeLessonTitle];
     [self initializeTableView];
