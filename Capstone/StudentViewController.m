@@ -72,6 +72,12 @@ static const int statusBarHeight = 20;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(logoutAction:)];
+    
+    UIImage *freeCode = [UIImage imageNamed:@"freeCode"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:freeCode
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(freeCodeAction:)];
     [self placeLessonsLabel];
     [self placeQuizzesLabel];
     [self initializeTableViews];
@@ -113,6 +119,12 @@ static const int statusBarHeight = 20;
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes", nil];
     [alert show];
+}
+
+- (IBAction)freeCodeAction:(id)sender
+{
+    
+    NSLog(@"Transition to Free Code VC...");
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
