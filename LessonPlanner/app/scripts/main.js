@@ -68,7 +68,7 @@ function checkvisible( elem ) {
 $(document).ready(function(){
 
 	setupScreenSize();
-	$(window).resize(setupScreenSize);
+	// $(window).resize(setupScreenSize);
 	
 
 
@@ -103,7 +103,6 @@ $(document).ready(function(){
 		}	
 	});
 	slides = $('#startPlanning').children('.slide');
-
 
 });
 
