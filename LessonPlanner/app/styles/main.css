@@ -91,4 +91,6 @@ body {
 }
 .input-group, select {margin-bottom: 10px;}
 .fullWidth: {width: 100%;}
-
+.lesson{padding-top: 10px; border-left: 2px #357ebd solid; border-bottom: 2px #357ebd solid; padding-left: 10px; margin: 0 0 10px 10px}
+.step{padding-top: 10px; border-left: 2px #5bc0de solid; border-bottom: 2px #5bc0de solid; padding-left: 10px; margin: 0 0 10px 10px}
+.btn{margin-bottom: 10px;}
