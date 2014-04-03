@@ -81,9 +81,10 @@ static const int statusBarHeight = 20;
 {
     [[UITextView appearance] setTintColor:[UIColor blackColor]];
     CGRect textEditorViewFrame = CGRectMake(0,
-                                            self.navigationController.navigationBar.frame.size.height + statusBarHeight,
-                                            self.view.bounds.size.width,
+                                            self.navigationController.navigationBar.frame.size.height ,
+                                            self.navigationController.navigationBar.frame.size.width,
                                             (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height)));
+    
     self.lineNumberTextView = [[LineNumberTextView alloc] initWithFrame:textEditorViewFrame];
     self.lineNumberTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.lineNumberTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
