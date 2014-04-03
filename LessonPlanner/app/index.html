@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>LessonPlanner</title>
+    <title>CoursePlanner</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -13,6 +13,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/-/live-reload.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -30,8 +31,10 @@
                         <li><a href="#documentation" target='#documentation'>Documentation</a></li>
                         <li><a href="#contact" target='#contact'>Contact</a></li>
                     </ul>
-                    <h3 class="text-muted">Capstone Lesson Planner</h3>
+                    <h3 class="text-muted">Capstone Course Planner</h3>
+                    <img id='ajax_loader' src='images/ajax-loader.gif' class='pull-right' style='display:none'>
                     <div id='loginInfo'></div>
+
                 </div>
             </div>
             <div class="container">
@@ -136,47 +139,94 @@
 
 
 
-<script type="text/template" id="getStartedTemplate">
+<script type="text/template" id="SelectCourseView">
     <div class='row'>
         <div class='col-xs-12'>
-        <h1>Capstone Lesson Planner</h1>
-        <p class="lead">Generate lessons to use in your classroom.</p>
+        <h1>Capstone Course Planner</h1>
+        <p class="lead">Generate courses to use in your classroom.</p>
         </div>
     </div>
     <div class='row'>
-        <div class='col-lg-7' id='LessonSelector'>
+        <div class='col-lg-7' id='CourseSelector'>
             
         </div>
         <div class='col-lg-5'>
             <a 
-            class="btn btn-lg btn-success newLessonButton pull-right"
-            id='getStarted'
+            class="btn btn-lg btn-success newCourseButton pull-right"
+            id='newCourse'
             href="#" >
-                Create new Lesson <span class="glyphicon glyphicon-pencil " />
+                Create new Course <span class="glyphicon glyphicon-pencil " />
             </a>
         </div>
      </div>
  </script>
-<script type="text/template" id='LessonSelectorTemplate'>
+<script type="text/template" id='CourseDropdownTemplate'>
     <select style="margin-top: 10px" class="form-control">
-        <% if(Lessons.length > 0) { _.each(Lessons, function(lesson){%>
-            <option><%= lesson.get('title') %></option>
+        <% if(Courses.length > 0) { _.each(Courses, function(course){%>
+            <option><%= console.log(course) %></option>
         <% }); } else { %>
-            <option>No lessons have been created</option>
+            <option>No courses have been created</option>
         <% } %>
     </select>
 </script>
- <script type="text/template" id="LessonTemplate">
+ <script type="text/template" id="CourseTemplate">
      <div class='row'>       
         <div>
             <div class='col-xs-12'>
                 <div class='input-group'>
-                    <span class="input-group-addon">Lesson Title</span>
-                    <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" value='<%= Lesson.get("Title") %>'/>
+                    <span class="input-group-addon">Course Title</span>
+                    <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" value='<%= Course.get("title") %>'/>
                 </div>
+                <div class='input-group'>
+                    <span class="input-group-addon">Course Description</span>
+                    <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" value='<%= Course.get("description") %>'/>
+                </div>
+                <ol id='lessons'>
+
+                </ol>
+                 <a 
+                    class="btn btn-lg btn-primary newLessonButton pull-right"
+                    id='newLesson'
+                    href="#" >
+                        Create new Lesson <span class="glyphicon glyphicon-pencil " />
+                </a>
             </div>
         </div>
     </div>
+</script>
+<script type="text/template" id="LessonTemplate">
+<div class='lesson'>
+    <div class='input-group'>
+        <span class="input-group-addon">Lesson Title</span>
+        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Lesson.get("Title") %>'/>
+    </div>
+    <div class='input-group'>
+        <span class="input-group-addon">Lesson Goal</span>
+        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Lesson.get("Title") %>'/>
+    </div>
+    <div id='steps-<%= lessonNumber %>'>
+    </div>
+    <a 
+        class="btn btn-lg btn-info newStepButton center"
+        id='newStep-<%= lessonNumber %>'
+        href="#" >
+            Create new Step <span class="glyphicon glyphicon-pencil " />
+    </a>
+</div>
+</script>
+
+<script type="text/template" id="StepTemplate">
+
+<div class='step'>
+    <div class='input-group'>
+        <span class="input-group-addon">Lesson Title</span>
+        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Step.get("Title") %>'/>
+    </div>
+    <div class='input-group'>
+        <span class="input-group-addon">Lesson Goal</span>
+        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Step.get("Title") %>'/>
+    </div>
+</div>
 </script>
 
 <script type="text/template" id='loginInfoTemplate'>
@@ -187,14 +237,14 @@
         <% } %>
     </span>
 </script>
-<script type="text/template" id="lessonTemplate">
+<script type="text/template" id="courseTemplate">
     <div class='input-group'>
-        <span class="input-group-addon">Lesson Title</span>
-        <input name="lessonTitle" class="form-control" placeholder="Algebra 1" type="text" />
+        <span class="input-group-addon">Course Title</span>
+        <input name="courseTitle" class="form-control" placeholder="Algebra 1" type="text" />
     </div>
     <div class='input-group'>
-        <span class="input-group-addon">Lesson Description</span>
-        <input name="lessonDescription" class="form-controls" placeholder="Learn to balance equations" type="text" />
+        <span class="input-group-addon">Course Description</span>
+        <input name="courseDescription" class="form-controls" placeholder="Learn to balance equations" type="text" />
     </div>
 </script>
 </body>
