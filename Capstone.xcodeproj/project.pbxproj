@@ -46,6 +46,7 @@
 		3CF0A21D18E5F3E600C633EE /* TextEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */; };
 		3CF0A22018E611D600C633EE /* QuizzesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0A21F18E611D600C633EE /* QuizzesDataSource.m */; };
 		52B4FBB118EA79F5000FD5B3 /* FreeTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B4FBB018EA79F5000FD5B3 /* FreeTextViewController.m */; };
+		52E4FF4F18F475E300A45F57 /* free_code.js in Sources */ = {isa = PBXBuildFile; fileRef = 52E4FF4E18F475E300A45F57 /* free_code.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		3CF0A21F18E611D600C633EE /* QuizzesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizzesDataSource.m; sourceTree = "<group>"; };
 		52B4FBAF18EA79F5000FD5B3 /* FreeTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeTextViewController.h; sourceTree = "<group>"; };
 		52B4FBB018EA79F5000FD5B3 /* FreeTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeTextViewController.m; sourceTree = "<group>"; };
+		52E4FF4E18F475E300A45F57 /* free_code.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = free_code.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 				3CE1F19918D63E2D00DE7B86 /* ViewController.m */,
 				3C4596C418D758AD006E63BD /* Login */,
 				3C4596C518D79197006E63BD /* Views */,
+				52E4FF4D18F475AF00A45F57 /* JavaScript Files */,
 				3C0581C318D68F0A003D7C12 /* DataSource */,
 				3CE1F1D118D65BCE00DE7B86 /* Settings */,
 				3CE1F19B18D63E2D00DE7B86 /* Images.xcassets */,
@@ -369,6 +372,14 @@
 				52B4FBB018EA79F5000FD5B3 /* FreeTextViewController.m */,
 			);
 			name = "Free Code Editor VC's";
+			sourceTree = "<group>";
+		};
+		52E4FF4D18F475AF00A45F57 /* JavaScript Files */ = {
+			isa = PBXGroup;
+			children = (
+				52E4FF4E18F475E300A45F57 /* free_code.js */,
+			);
+			name = "JavaScript Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,6 +481,7 @@
 			files = (
 				3CF0A21D18E5F3E600C633EE /* TextEditorViewController.m in Sources */,
 				3CE1F1D018D6402700DE7B86 /* LoginViewController.m in Sources */,
+				52E4FF4F18F475E300A45F57 /* free_code.js in Sources */,
 				3CE1F19A18D63E2D00DE7B86 /* ViewController.m in Sources */,
 				3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */,
 				3CBEA47318E88E8E00D78DA0 /* LineNumberTextView.m in Sources */,
