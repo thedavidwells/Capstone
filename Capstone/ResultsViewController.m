@@ -31,29 +31,25 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(dismissResults:)];
+    
+    NSString *pageTitle = @"Code Result: ";
+    self.title = pageTitle;
+    
     CGRect resultLabelFrame = CGRectMake(50,
                                          50,
-                                         100,
+                                         self.view.frame.size.height,
                                          100);
 
-    
-    UILabel *titleText = [[UILabel alloc] initWithFrame:resultLabelFrame];
-    titleText.text = @"RESULT: ";
-    titleText.font = [UIFont systemFontOfSize:22.0];
-    
-    CGRect actualResultFrame = CGRectMake(50,
-                                          titleText.frame.size.height + 10,
-                                          100,
-                                          300);
-    self.resultLabel = [[UILabel alloc] initWithFrame:actualResultFrame];
-    [self.resultLabel setText: @"<enter code>"];
+
+    self.resultLabel = [[UILabel alloc] initWithFrame:resultLabelFrame];
+    [self.resultLabel setText: @"<Running code...>"];
     self.resultLabel.numberOfLines = 0;
     self.resultLabel.font = [UIFont systemFontOfSize:22.0];
     [self.resultLabel sizeToFit];
     NSLog(@"Inside RESULTS VC");
     
     [self.view addSubview:self.resultLabel];
-    [self.view addSubview:titleText];
+
 }
 
 - (void)didReceiveMemoryWarning

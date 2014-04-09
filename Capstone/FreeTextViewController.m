@@ -71,6 +71,8 @@ static const int statusBarHeight = 20;
     return _resultsViewController;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -86,15 +88,12 @@ static const int statusBarHeight = 20;
     NSString *pageTitle = [NSString stringWithFormat:@"%@ Free Code",[self.currentUser getFirstAndLastName] ];
     self.title = pageTitle;
     
-
-    
     [self.webView loadHTMLString:@"<script src=\"free_code.js\"></script>" baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
 
-
-    
-    
     [self contentReloadedAfterLaunchAndEachStep];
 }
+
+
 
 - (void)contentReloadedAfterLaunchAndEachStep
 {
@@ -148,30 +147,20 @@ static const int statusBarHeight = 20;
 
 - (IBAction)runCode:(id)sender
 {
-    NSLog(@"Function called to run code...");
-    
     self.textEditor = self.lineNumberTextView.text;
     NSLog(@"In text editor: %@", self.textEditor);
     
-    
 	NSString *result = [self.webView stringByEvaluatingJavaScriptFromString:self.textEditor];
     result = [self.webView stringByEvaluatingJavaScriptFromString:self.textEditor];
-    
-    
-    [self.resultsViewController.resultLabel setText:result];
-    NSLog(@"Result is: %@", result);
-    
+
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.resultsViewController];
-    
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
 
     [self presentViewController:nav animated:YES completion:^{
         NSLog(@"Function called inside vc...");
         [self.resultsViewController.resultLabel setText:result];
-
         NSLog(@"Result is: %@", result);
-    
     }];
 
     
