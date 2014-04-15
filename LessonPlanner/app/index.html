@@ -3,249 +3,80 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>CoursePlanner</title>
+    <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <script src="/-/live-reload.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-</head>
-<body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
-            <div id='header' class="header navbar-fixed-top">
-                <div class='container'>
-                    <ul class="nav nav-pills pull-right">
-                        <li class="active" ><a target='#startPlanning' href="#">Course Planning</a></li>
-                        <li><a href="#documentation" target='#documentation'>Documentation</a></li>
-                        <li><a href="#contact" target='#contact'>Contact</a></li>
-                    </ul>
-                    <h3 class="text-muted">Capstone Course Planner</h3>
-                    <img id='ajax_loader' src='images/ajax-loader.gif' class='pull-right' style='display:none'>
-                    <div id='loginInfo'></div>
+  </head>
+  <body ng-app="lessonPlannerApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-                </div>
-            </div>
-            <div class="container">
-                <div class='fullscreen row' id='startPlanning'>
-                    <div id="content" class="content">
-                    </div>
-                </div>
+    <!-- Add your site or application content here -->
+    <div class='container'>
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a ng-href="#">Home</a></li>
+          <li><a ng-href="#">About</a></li>
+          <li><a ng-href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">LessonPlanner</h3>
+      </div>
+      <div ng-view=""></div>
+      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> Lesson planner etc</p>
+      </div>
+    </div>
 
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
 
-                <div class="fullscreen" id='documentation'>
-                    <h4 > <a name="documentation"></a>Documentation</h4>
-                    <p>TODO: Add documentation.</p>
-                </div>
-                <div class='fullscreen' id='contact'>
-                    <h4 > <a name="contact"></a>Contact Us</h4>
-                    <p>TODO: Add our contact information.</p>
-                </div>
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
 
-                <div class="footer">
-                    <p><span class="glyphicon glyphicon-tower"></span> Created By: Steve Kyles, David Wells, and Eric Wooley </p>
-                </div>
-
-            </div>
-
-
-            <!-- build:js scripts/vendor.js -->
-            <!-- bower:js -->
-            <script src="bower_components/jquery/dist/jquery.js"></script>
-            <!-- endbower -->
-            <!-- endbuild -->
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. 
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-    -->
-    <!-- build:js scripts/plugins.js -->
-    <script src="bower_components/bootstrap/js/affix.js"></script>
-    <script src="bower_components/bootstrap/js/alert.js"></script>
-    <script src="bower_components/bootstrap/js/dropdown.js"></script>
-    <script src="bower_components/bootstrap/js/tooltip.js"></script>
-    <script src="bower_components/bootstrap/js/modal.js"></script>
-    <script src="bower_components/bootstrap/js/transition.js"></script>
-    <script src="bower_components/bootstrap/js/button.js"></script>
-    <script src="bower_components/bootstrap/js/popover.js"></script>
-    <script src="bower_components/bootstrap/js/carousel.js"></script>
-    <script src="bower_components/bootstrap/js/scrollspy.js"></script>
-    <script src="bower_components/bootstrap/js/collapse.js"></script>
-    <script src="bower_components/bootstrap/js/tab.js"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/parse-angular-patch/dist/parse-angular.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-
+    <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/parse-1.2.18.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/capstone.js"></script>
-    <!-- endbuild -->
-    <!-- Templates -->
-    <script type="text/template" id="login-template">
-      <header id="header"></header>
-      <div class="login col-xs-12">
-        <form class="login-form">
-            <h2>Log In</h2>
-            <div class="error" style="display:none"></div>
-            <div class='input-group'>
-                <span class="input-group-addon">Username</span>
-                <input type="text" class='form-control' id="login-username" placeholder="Username" />
-            </div>
-            <div class='input-group'>
-                <span class="input-group-addon">Password</span>
-                <input type="password" class='form-control' id="login-password" placeholder="Password" />
-            </div>
-            <p>
-                <a class="btn btn-lg btn-success login-button" style='width: 100%'>Log in</a>
-            </p>
-        </form>
-        <hr />
-        <form class="signup-form">
-            <h2>Sign Up</h2>
-            <div class="error" style="display:none"></div>
-            <div class='input-group'>
-                <span class="input-group-addon">Username</span>
-                <input type="text" class='form-control' id="signup-username" placeholder="Username" />
-            </div>
-            <div class='input-group'>
-                <span class="input-group-addon">Password</span>
-                <input type="password" class='form-control' id="signup-password" placeholder="Password" />
-            </div>
-            <p>
-                <a class="btn btn-lg btn-success register-button" style='width: 100%'>Sign Up</a>
-            </p>
-        </form>
-</div>
-</script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/auth.js"></script>
+        <script src="scripts/lib/parse-1.2.18.min.js"></script>
 
-
-
-<script type="text/template" id="SelectCourseView">
-    <div class='row'>
-        <div class='col-xs-12'>
-        <h1>Capstone Course Planner</h1>
-        <p class="lead">Generate courses to use in your classroom.</p>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-lg-7' id='CourseSelector'>
-            
-        </div>
-        <div class='col-lg-5'>
-            <a 
-            class="btn btn-lg btn-success newCourseButton pull-right"
-            id='newCourse'
-            href="#" >
-                Create new Course <span class="glyphicon glyphicon-pencil " />
-            </a>
-        </div>
-     </div>
- </script>
-<script type="text/template" id='CourseDropdownTemplate'>
-    <select style="margin-top: 10px" class="form-control">
-        <% if(Courses.length > 0) { _.each(Courses, function(course){%>
-            <option><%= console.log(course) %></option>
-        <% }); } else { %>
-            <option>No courses have been created</option>
-        <% } %>
-    </select>
-</script>
- <script type="text/template" id="CourseTemplate">
-     <div class='row'>       
-        <div>
-            <div class='col-xs-12'>
-                <div class='input-group'>
-                    <span class="input-group-addon">Course Title</span>
-                    <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" value='<%= Course.get("title") %>'/>
-                </div>
-                <div class='input-group'>
-                    <span class="input-group-addon">Course Description</span>
-                    <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter in a title for your course. Example: Algebra 1" type="text" value='<%= Course.get("description") %>'/>
-                </div>
-                <ol id='lessons'>
-
-                </ol>
-                 <a 
-                    class="btn btn-lg btn-primary newLessonButton pull-right"
-                    id='newLesson'
-                    href="#" >
-                        Create new Lesson <span class="glyphicon glyphicon-pencil " />
-                </a>
-            </div>
-        </div>
-    </div>
-</script>
-<script type="text/template" id="LessonTemplate">
-<div class='lesson'>
-    <div class='input-group'>
-        <span class="input-group-addon">Lesson Title</span>
-        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Lesson.get("Title") %>'/>
-    </div>
-    <div class='input-group'>
-        <span class="input-group-addon">Lesson Goal</span>
-        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Lesson.get("Title") %>'/>
-    </div>
-    <div id='steps-<%= lessonNumber %>'>
-    </div>
-    <a 
-        class="btn btn-lg btn-info newStepButton center"
-        id='newStep-<%= lessonNumber %>'
-        href="#" >
-            Create new Step <span class="glyphicon glyphicon-pencil " />
-    </a>
-</div>
-</script>
-
-<script type="text/template" id="StepTemplate">
-
-<div class='step'>
-    <div class='input-group'>
-        <span class="input-group-addon">Lesson Title</span>
-        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Step.get("Title") %>'/>
-    </div>
-    <div class='input-group'>
-        <span class="input-group-addon">Lesson Goal</span>
-        <input name="courseTitle" id="courseTitle" class="form-control" placeholder="Enter a lesson title Ex: balancing equations" type="text" value='<%= Step.get("Title") %>'/>
-    </div>
-</div>
-</script>
-
-<script type="text/template" id='loginInfoTemplate'>
-    <span>
-        <% if(user) { %>
-            <%= user.get('username') %>
-            <a href="#" class='logout' > logout? </a> 
-        <% } %>
-    </span>
-</script>
-<script type="text/template" id="courseTemplate">
-    <div class='input-group'>
-        <span class="input-group-addon">Course Title</span>
-        <input name="courseTitle" class="form-control" placeholder="Algebra 1" type="text" />
-    </div>
-    <div class='input-group'>
-        <span class="input-group-addon">Course Description</span>
-        <input name="courseDescription" class="form-controls" placeholder="Learn to balance equations" type="text" />
-    </div>
-</script>
+        <script src="scripts/controllers/mylessons.js"></script>
+        <script src="scripts/services/parsewrapper.js"></script>
+        <script src="scripts/controllers/editlesson.js"></script>
+        <!-- endbuild -->
 </body>
 </html>

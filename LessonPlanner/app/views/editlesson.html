@@ -1,0 +1,40 @@
+<div class="input-group">
+  <span class="input-group-addon needSpace">Lesson Title</span>
+  <input class='form-control' ng-model='lesson.title' ng-blur="saveLesson()"/>
+</div>
+<div class="input-group needSpace">
+  <span class="input-group-addon">Description</span>
+  <input class='form-control' ng-model='lesson.description' ng-blur="saveLesson()"/>
+</div>
+<div class="input-group needSpace">
+  <span class="input-group-addon">Goal</span>
+  <input class='form-control' ng-model='lesson.goal' ng-blur="saveLesson()"/>
+</div>
+<hr />
+<h3>Steps</h3>
+<ol>
+	<li ng-repeat="step in lesson.steps track by step.id">
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Title</span>
+		  <input class='form-control' ng-model='step.title' ng-blur="saveLesson()"/>
+		</div>
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Description</span>
+		  <input class='form-control' ng-model='step.description' ng-blur="saveLesson()"/>
+		</div>
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Goal</span>
+		  <input class='form-control' ng-model='step.goal' ng-blur="saveLesson()"/>
+		</div>
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Starting Text</span>
+		  <textarea class='form-control' ng-model='step.initialText' ng-blur="saveLesson()"/>
+		</div>
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Answer</span>
+		  <input class='form-control' ng-model='step.goal' ng-blur="saveLesson()"/>
+		</div>
+	</li>
+</ol>
+<button class='btn btn-info' ng-click="newStep()">Create new step</button>
+

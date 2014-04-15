@@ -1,0 +1,20 @@
+  <div ng-hide="currentUser">
+    <form ng-show="scenario == 'Sign up'" role='form'>
+		<h2>Sign up</h2>
+		<input type="email" class='form-control' placeholder='Email' ng-model="user.email" /><br />
+		<input type="username" class='form-control' placeholder='Username' ng-model="user.username" /><br />
+		<input type="password" class='form-control' placeholder='Password' ng-model="user.password" /><br />
+		<input type="password" class='form-control' placeholder='Password' ng-model="passwordConfirm" /><br />
+		<button class='btn btn-info' ng-click="signUp(user)">Sign up</button>
+		or <a href="#/Auth" ng-click='scenario="Log in"'>Log in</a>
+    </form>
+    
+    <form ng-show="scenario == 'Log in'" role='form'>
+      	<h2>Log in</h2>
+      	<input type="text" class='form-control' placeholder='Username' ng-model="user.username" /><br />
+		<input type="password" class='form-control' placeholder='Password' ng-model="user.password" /><br />
+      	<button class='btn btn-info' ng-click="logIn(user)">Log in</button>
+      	or <a href="#/Auth" ng-click='scenario="Sign up"'>Sign up</a>
+    </form>
+  </div>
+</div>
