@@ -1,0 +1,15 @@
+<div class='lessons'>
+<h2>My Courses</h2>
+<div class='row'>
+	<div class='col-lg-6'>
+		<ul>
+			<li ng-repeat="course in courses.models" ><a href='#/editCourse/{{course.id}}'>{{ course.getTitle() }}</a></li>
+		</ul>
+	</div>
+	<div class='col-lg-6'>
+		<center>
+			<a class='btn btn-info' ng-click="createCourse()">Create New Course</a>
+		</center>
+	</div>
+</div>
+</div>

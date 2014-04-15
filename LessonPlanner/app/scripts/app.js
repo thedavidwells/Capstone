@@ -27,6 +27,14 @@ angular
         templateUrl: 'views/editlesson.html',
         controller: 'EditlessonCtrl'
       })
+      .when('/myCourses', {
+        templateUrl: 'views/mycourses.html',
+        controller: 'MycoursesCtrl'
+      })
+      .when('/editCourse/:course', {
+        templateUrl: 'views/editcourse.html',
+        controller: 'EditcourseCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

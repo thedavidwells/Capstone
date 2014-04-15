@@ -1,0 +1,47 @@
+<div class="input-group">
+  <span class="input-group-addon needSpace">Course Title</span>
+  <input class='form-control' ng-model='course.title' ng-blur="saveCourse()"/>
+</div>
+<div class="input-group needSpace">
+  <span class="input-group-addon">Description</span>
+  <input class='form-control' ng-model='course.description' ng-blur="saveCourse()"/>
+</div>
+<div class="input-group needSpace">
+  <span class="input-group-addon">Goal</span>
+  <input class='form-control' ng-model='course.goal' ng-blur="saveCourse()"/>
+</div>
+<hr />
+<div class='clearfix'>
+<button class='btn btn-success pull-left' ng-click="newLesson()">+</button> <h5>Lessons</h5>
+</div>
+<ol>
+	<li ng-repeat="lesson in course.lessons track by lesson.id">
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Title</span>
+		  <input class='form-control' ng-model='lesson.title' ng-blur="saveCourse()"/>
+		</div>
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Description</span>
+		  <input class='form-control' ng-model='lesson.description' ng-blur="saveCourse()"/>
+		</div>
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Goal</span>
+		  <input class='form-control' ng-model='lesson.goal' ng-blur="saveCourse()"/>
+		</div>
+		<div class='clearfix'>
+			<button class='btn btn-success pull-left' ng-click="newSubLesson(lesson)">+</button> <h5>SubLessons</h5> 
+		</div>
+		<ol>
+			<li ng-repeat="sublesson in lesson.sublessons track by sublesson.id">sublesson</li>
+		</ol>
+		<!-- <div class="input-group needSpace">
+		  <span class="input-group-addon">Starting Text</span>
+		  <textarea class='form-control' ng-model='lesson.initialText' ng-blur="saveCourse()"/>
+		</div>
+		<div class="input-group needSpace">
+		  <span class="input-group-addon">Answer</span>
+		  <input class='form-control' ng-model='lesson.answer' ng-blur="saveCourse()"/>
+		</div> -->
+	</li>
+</ol>
+

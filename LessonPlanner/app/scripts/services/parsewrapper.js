@@ -5,53 +5,46 @@ angular.module('lessonPlannerApp')
     var currentUser = Parse.User.current();
     var LessonModel = Parse.Object.extend({
       className: 'Lesson',
-      attrs: ['title', 'Author', 'description', 'goal', 'steps']
+      attrs: ['title', 'Author', 'description', 'goal', 'lessons']
     });
-    var lesson = new LessonModel();
-    lesson.setTitle('new lesson');
-    var LessonCollection = Parse.Collection.extend({
+    var CourseModel = Parse.Object.extend({
+      className: 'Course',
+      attrs: ['title', 'Author', 'description', 'goal', 'lessons']
+    });
+    var course = new CourseModel();
+    course.setTitle('Untitled Course');
+    var CourseCollection = Parse.Collection.extend({
       model: LessonModel,
       className:'Lesson',
-
     });
-    var myLessons = new LessonCollection();
-    myLessons.query = new Parse.Query('Lesson');
-    myLessons.query.equalTo('Author', currentUser);
+    var myCourses = new CourseCollection();
+    myCourses.query = new Parse.Query('Course');
+    myCourses.query.equalTo('Author', currentUser);
     
-    var StepModel = Parse.Object.extend({
-      className: 'Step',
-      attrs: ['title', 'description', 'hints', 'initialText', 'goal']
-    });
     // Public API here
     return {
-      getLessons: function () {
-        return myLessons.fetch()
+      logout: function(){
+        return Parse.User.logOut();
       },
-      getLesson: function(id){
-        return myLessons.fetch()
+      newLesson: function(){
+        return {title: '', description: '', initialText:'', sublessons:[]};
+      },
+      getCourses: function () {
+        return myCourses.fetch()
+      },
+      getCourse: function(id){
+        return myCourses.fetch()
         .then(function(){
-          return myLessons.get(id);
+          return myCourses.get(id);
         },function(e){
           console.warn('error', e);
         });
       },
-      logout: function(){
-        return Parse.User.logOut();
-      },
-      createLesson:function(){
-        var l = new LessonModel();
-        l.setTitle('New Title');
-        l.setAuthor(currentUser);
-        return l.save(null);
-      },
-      newStep: function(){
-        return {title: '', description: '', goal:'', initialText:'', hints:[]};
-      },
-      stepFromObject: function(obj){
-        var s = new StepModel();
-        s.set(obj);
-        return s;
+      createCourse:function(){
+        var c = new CourseModel();
+        c.setTitle('New Title');
+        c.setAuthor(currentUser);
+        return c.save(null);
       }
-
     };
   });

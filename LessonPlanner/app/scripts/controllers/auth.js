@@ -5,7 +5,7 @@ angular.module('lessonPlannerApp')
 	console.log($scope.currentUser);
 	if($scope.currentUser){
 		console.log('redirecting');
-		$location.path( '/myLessons' );
+		$location.path( '/myCourses' );
 	}
 }])
 .run(['$rootScope', '$location', function($scope, $location) {

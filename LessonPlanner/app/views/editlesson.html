@@ -11,7 +11,7 @@
   <input class='form-control' ng-model='lesson.goal' ng-blur="saveLesson()"/>
 </div>
 <hr />
-<h3>Steps</h3>
+<h4>Steps</h4>
 <ol>
 	<li ng-repeat="step in lesson.steps track by step.id">
 		<div class="input-group needSpace">
@@ -32,7 +32,7 @@
 		</div>
 		<div class="input-group needSpace">
 		  <span class="input-group-addon">Answer</span>
-		  <input class='form-control' ng-model='step.goal' ng-blur="saveLesson()"/>
+		  <input class='form-control' ng-model='step.answer' ng-blur="saveLesson()"/>
 		</div>
 	</li>
 </ol>
