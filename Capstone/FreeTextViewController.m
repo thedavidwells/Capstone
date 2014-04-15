@@ -13,6 +13,7 @@
 #import "CurrentUser.h"
 
 
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 static const int statusBarHeight = 20;
@@ -22,6 +23,8 @@ static const int statusBarHeight = 20;
 @property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
+@property (nonatomic) ResultsViewController *resultsViewController;
+
 @end
 
 @implementation FreeTextViewController
@@ -51,6 +54,24 @@ static const int statusBarHeight = 20;
     return _currentUser;
 }
 
+-(UIWebView *)webView
+{
+    if (!_webView) {
+        _webView = [[UIWebView alloc] init];
+
+    }
+    return _webView;
+}
+
+-(ResultsViewController *) resultsViewController
+{
+    if (!_resultsViewController) {
+        _resultsViewController = [[ResultsViewController alloc] init];
+    }
+    return _resultsViewController;
+}
+
+
 
 - (void)viewDidLoad
 {
@@ -66,13 +87,19 @@ static const int statusBarHeight = 20;
     
     NSString *pageTitle = [NSString stringWithFormat:@"%@ Free Code",[self.currentUser getFirstAndLastName] ];
     self.title = pageTitle;
+    
+    [self.webView loadHTMLString:@"<script src=\"free_code.js\"></script>" baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
+
     [self contentReloadedAfterLaunchAndEachStep];
 }
+
+
 
 - (void)contentReloadedAfterLaunchAndEachStep
 {
 
     [self placeTextEditorView];
+
 }
 
 
@@ -91,6 +118,8 @@ static const int statusBarHeight = 20;
     
     // this is just an example of how we can pre-load sublesson text
     self.lineNumberTextView.text = [self.lessonsDataSource loadFreeCodeText:0 /* we'll want to load the text relevant to the sublesson, 0 does nothing here*/];
+
+    
     [self.view addSubview:self.lineNumberTextView];
 }
 
@@ -118,10 +147,23 @@ static const int statusBarHeight = 20;
 
 - (IBAction)runCode:(id)sender
 {
-    ResultsViewController *resultsViewController = [[ResultsViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:resultsViewController];
+    self.textEditor = self.lineNumberTextView.text;
+    NSLog(@"In text editor: %@", self.textEditor);
+    
+	NSString *result = [self.webView stringByEvaluatingJavaScriptFromString:self.textEditor];
+    result = [self.webView stringByEvaluatingJavaScriptFromString:self.textEditor];
+
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.resultsViewController];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:nav animated:YES completion:nil];
+
+    [self presentViewController:nav animated:YES completion:^{
+        NSLog(@"Function called inside vc...");
+        [self.resultsViewController.resultLabel setText:result];
+        NSLog(@"Result is: %@", result);
+    }];
+
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

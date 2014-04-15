@@ -24,6 +24,8 @@ int stepTracker = 0;
 @property (nonatomic) UIView *stepByStepInstructionView;
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
+@property (nonatomic) UIWebView *webView;
+@property (nonatomic) ResultsViewController *resultsViewController;
 @end
 
 @implementation TextEditorViewController
@@ -61,6 +63,25 @@ int stepTracker = 0;
     return _lessonsDataSource;
 }
 
+
+-(ResultsViewController *) resultsViewController
+{
+    if (!_resultsViewController) {
+        _resultsViewController = [[ResultsViewController alloc] init];
+    }
+    return _resultsViewController;
+}
+
+-(UIWebView *)webView
+{
+    if (!_webView) {
+        _webView = [[UIWebView alloc] init];
+        
+    }
+    return _webView;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -74,6 +95,9 @@ int stepTracker = 0;
                                                                                           action:@selector(runCode:)];
     
     self.title = [self.currentUser getFirstAndLastName];
+    
+    [self.webView loadHTMLString:@"<script src=\"free_code.js\"></script>" baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
+    
     [self contentReloadedAfterLaunchAndEachStep];
 }
 
@@ -172,13 +196,25 @@ int stepTracker = 0;
 
 }
 
+
 - (IBAction)runCode:(id)sender
 {
-    ResultsViewController *resultsViewController = [[ResultsViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:resultsViewController];
+
+	NSString *result = [self.webView stringByEvaluatingJavaScriptFromString:self.lineNumberTextView.text];
+    result = [self.webView stringByEvaluatingJavaScriptFromString:self.lineNumberTextView.text];
+    
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.resultsViewController];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:nav animated:YES completion:nil];
+    
+    [self presentViewController:nav animated:YES completion:^{
+        NSLog(@"Function called inside vc...");
+        [self.resultsViewController.resultLabel setText:result];
+        NSLog(@"Result is: %@", result);
+    }];
+    
 }
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

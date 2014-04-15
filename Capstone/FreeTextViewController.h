@@ -10,6 +10,10 @@
 
 @interface FreeTextViewController : UIViewController <UITextViewDelegate>
 
+@property (nonatomic) NSString *textEditor;
 
+@property (nonatomic) UILabel *resultLabel;
+
+@property (nonatomic) UIWebView *webView;
 
 @end

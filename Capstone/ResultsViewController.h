@@ -10,4 +10,6 @@
 
 @interface ResultsViewController : UIViewController
 
+@property (nonatomic) UILabel *resultLabel;
+
 @end
