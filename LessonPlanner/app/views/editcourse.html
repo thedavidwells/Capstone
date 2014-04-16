@@ -1,47 +1,112 @@
-<div class="input-group">
-  <span class="input-group-addon needSpace">Course Title</span>
-  <input class='form-control' ng-model='course.title' ng-blur="saveCourse()"/>
-</div>
-<div class="input-group needSpace">
-  <span class="input-group-addon">Description</span>
-  <input class='form-control' ng-model='course.description' ng-blur="saveCourse()"/>
-</div>
-<div class="input-group needSpace">
-  <span class="input-group-addon">Goal</span>
-  <input class='form-control' ng-model='course.goal' ng-blur="saveCourse()"/>
-</div>
-<hr />
-<div class='clearfix'>
-<button class='btn btn-success pull-left' ng-click="newLesson()">+</button> <h5>Lessons</h5>
-</div>
-<ol>
-	<li ng-repeat="lesson in course.lessons track by lesson.id">
-		<div class="input-group needSpace">
-		  <span class="input-group-addon">Title</span>
-		  <input class='form-control' ng-model='lesson.title' ng-blur="saveCourse()"/>
-		</div>
-		<div class="input-group needSpace">
-		  <span class="input-group-addon">Description</span>
-		  <input class='form-control' ng-model='lesson.description' ng-blur="saveCourse()"/>
-		</div>
-		<div class="input-group needSpace">
-		  <span class="input-group-addon">Goal</span>
-		  <input class='form-control' ng-model='lesson.goal' ng-blur="saveCourse()"/>
-		</div>
-		<div class='clearfix'>
-			<button class='btn btn-success pull-left' ng-click="newSubLesson(lesson)">+</button> <h5>SubLessons</h5> 
-		</div>
-		<ol>
-			<li ng-repeat="sublesson in lesson.sublessons track by sublesson.id">sublesson</li>
-		</ol>
-		<!-- <div class="input-group needSpace">
-		  <span class="input-group-addon">Starting Text</span>
-		  <textarea class='form-control' ng-model='lesson.initialText' ng-blur="saveCourse()"/>
-		</div>
-		<div class="input-group needSpace">
-		  <span class="input-group-addon">Answer</span>
-		  <input class='form-control' ng-model='lesson.answer' ng-blur="saveCourse()"/>
-		</div> -->
-	</li>
-</ol>
+<div class='card-container course'>
+	<div class="input-group">
+	  <span class="input-group-addon lineUp needSpace">Course Title</span>
+	  <input class='form-control' ng-model='course.title' ng-blur="saveCourse()"/>
+	</div>
+	<div class="input-group needSpace">
+	  <span class="input-group-addon lineUp">Description</span>
+	  <input class='form-control' ng-model='course.description' ng-blur="saveCourse()"/>
+	</div>
+	<div class="input-group needSpace">
+	  <span class="input-group-addon lineUp">Goal</span>
+	  <input class='form-control' ng-model='course.goal' ng-blur="saveCourse()"/>
+	</div>
+	<hr />
+	<div class='clearfix'>
+		<button class='btn btn-success pull-left plusButton' ng-click="newLesson()">+</button>
+		<h5 ng-click="hideLower(course)">
+			Lessons
+			<span class='glyphicon glyphicon-chevron-down' ng-hide="course.hideLower"></span>
+			<span class='glyphicon glyphicon-chevron-right' ng-show="course.hideLower"></span>
+		</h5>
 
+	</div>
+	<ol class='clearfix' ng-hide="course.hideLower">
+		<li ng-repeat="lesson in course.lessons track by lesson.id" class='card-container lessons'>
+			<div class="input-group needSpace">
+			  <span class="input-group-addon lineUp">Title</span>
+			  <input class='form-control' ng-model='lesson.title' ng-blur="saveCourse()"/>
+			</div>
+			<div class="input-group needSpace">
+			  <span class="input-group-addon lineUp">Description</span>
+			  <input class='form-control' ng-model='lesson.description' ng-blur="saveCourse()"/>
+			</div>
+			<div class="input-group needSpace">
+			  <span class="input-group-addon lineUp">Goal</span>
+			  <input class='form-control' ng-model='lesson.goal' ng-blur="saveCourse()"/>
+			</div>
+			<div class='clearfix'>
+				<button class='btn btn-success pull-left plusButton' ng-click="newSubLesson(lesson)">+</button> 
+				<h5 ng-click="hideLower(lesson)">
+					SubLessons
+					<span class='glyphicon glyphicon-chevron-down' ng-hide="lesson.hideLower"></span>
+					<span class='glyphicon glyphicon-chevron-right' ng-show="lesson.hideLower"></span>
+				</h5> 
+			</div>
+			<ol class='clearfix' ng-hide="lesson.hideLower">
+				<li ng-repeat="sublesson in lesson.sublessons track by sublesson.id" class='card-container sublessons'>
+					<div class="input-group needSpace">
+					  <span class="input-group-addon lineUp">Title</span>
+					  <input class='form-control' ng-model='sublesson.title' ng-blur="saveCourse()"/>
+					</div>
+					<div class="input-group needSpace">
+					  <span class="input-group-addon lineUp">Description</span>
+					  <input class='form-control' ng-model='sublesson.description' ng-blur="saveCourse()"/>
+					</div>
+					<div class="input-group needSpace">
+					  <span class="input-group-addon lineUp">Goal</span>
+					  <input class='form-control' ng-model='sublesson.goal' ng-blur="saveCourse()"/>
+					</div>
+					<div class='clearfix'>
+						<button class='btn btn-success pull-left plusButton' ng-click="newStep(sublesson)">+</button> 
+						<h5 ng-click="hideLower(sublesson)">
+							Steps
+							<span class='glyphicon glyphicon-chevron-down' ng-hide="sublesson.hideLower"></span>
+							<span class='glyphicon glyphicon-chevron-right' ng-show="sublesson.hideLower"></span>
+						</h5> 
+					</div>
+					<ol class='clearfix' ng-hide="sublesson.hideLower">
+						<li ng-repeat="step in sublesson.steps track by step.id" class='card-container steps'>
+							<div class="input-group needSpace">
+							  <span class="input-group-addon lineUp">Title</span>
+							  <input class='form-control' ng-model='step.title' ng-blur="saveCourse()"/>
+							</div>
+							<div class="input-group needSpace">
+							  <span class="input-group-addon lineUp">Description</span>
+							  <input class='form-control' ng-model='step.description' ng-blur="saveCourse()"/>
+							</div>
+							<div class="input-group needSpace">
+							  <span class="input-group-addon lineUp">Goal</span>
+							  <input class='form-control' ng-model='step.goal' ng-blur="saveCourse()"/>
+							</div>
+							<div class='clearfix'>
+								<button class='btn btn-success pull-left plusButton' ng-click="newHint(step)">+</button> 
+								<h5 ng-click="hideLower(step)">
+									hints
+									<span class='glyphicon glyphicon-chevron-down' ng-hide="step.hideLower"></span>
+							<span class='glyphicon glyphicon-chevron-right' ng-show="step.hideLower"></span>
+								</h5>
+							</div>
+							<ol class='clearfix' ng-hide="step.hideLower">
+								<li ng-repeat="hint in step.hints track by hint.id" class='card-container hints'>
+									<div class="input-group needSpace">
+									  <span class="input-group-addon">Hint</span>
+									  <input class='form-control' ng-model='hint.text' ng-blur="saveCourse()"/>
+									</div>
+								</li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+			</ol>
+			<!-- <div class="input-group needSpace">
+			  <span class="input-group-addon lineUp">Starting Text</span>
+			  <textarea class='form-control' ng-model='lesson.initialText' ng-blur="saveCourse()"/>
+			</div>
+			<div class="input-group needSpace">
+			  <span class="input-group-addon lineUp">Answer</span>
+			  <input class='form-control' ng-model='lesson.answer' ng-blur="saveCourse()"/>
+			</div> -->
+		</li>
+	</ol>
+</div>

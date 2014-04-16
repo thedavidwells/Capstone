@@ -2,8 +2,8 @@
 
 angular.module('lessonPlannerApp')
   .controller('MycoursesCtrl', function ($scope, $location, parseWrapper) {
-    parseWrapper.getLessons().then(function(data){
-			$scope.lessons = data;
+    parseWrapper.getCourses().then(function(data){
+			$scope.courses = data;
 		}, function(e){
 				console.warn(e);
 			});
@@ -15,4 +15,5 @@ angular.module('lessonPlannerApp')
 				console.warn(e);
 			})
 		}
+
   });

@@ -10,21 +10,15 @@ angular.module('lessonPlannerApp')
 			if(!$scope.course.lessons){
 				$scope.course.lessons = [];
 			}
-			stopWatching = $scope.$watchCollection('course', function(value){
+			stopWatching = $scope.$watch('course', function(value){
 				$scope.courseModel.set(value);
-			});
+			}, true);
 		}
 		parseWrapper.getCourse($routeParams.course)
 		.then(function(course){
 			$scope.courseModel = course;
 			bindCourse();
-			setInterval(function(){
-				$scope.courseModel = course;
-				$scope.courseModel.save(null).then(function(){
-					console.log('saved');
-				});
-
-			}, 60000);
+			setInterval($scope.saveCourse, 60000);
 		});
 
 		$scope.saveCourse = function(){
@@ -39,22 +33,45 @@ angular.module('lessonPlannerApp')
 			);
 		}
 		$scope.newLesson = function(){
-			var newLesson = parseWrapper.newLesson();
-			var lessons = $scope.courseModel.getLessons();
-
-			if(!lessons){
-				lessons = [];
-			}
-			newLesson.id = lessons.length;
-			lessons.push(newLesson);
-			console.log(newLesson);
-			$scope.courseModel.setLessons(lessons);
-			$scope.courseModel.save().then(function(newModel){
-				$scope.courseModel = newModel;
-				bindCourse();
-			});
+			$scope.course.lessons.push(
+				{
+					id: $scope.course.lessons.length,
+					title: 'New lesson ' +$scope.course.lessons.length + 1,
+					sublessons: []
+				}
+			);
+			$scope.saveCourse();
 		}
 		$scope.newSubLesson = function(lesson){
-			lesson.sublessons.push({id: lesson.sublessons.length, title: 'this'});
+			lesson.sublessons.push(
+				{
+					id: lesson.sublessons.length,
+					title: 'New sublesson ' + lesson.sublessons.length + 1,
+					steps: []
+				}
+			);
+			$scope.saveCourse();
+		}
+		$scope.newStep = function(sublesson){
+			sublesson.steps.push(
+				{
+					id: sublesson.steps.length,
+					title: 'New Step ' + sublesson.steps.length + 1,
+					hints: []
+				}
+			);
+			$scope.saveCourse();
+		}
+		$scope.newHint = function(step){
+			step.hints.push(
+				{
+					id: step.hints.length,
+					title: 'New Hint ' + step.hints.length + 1,
+				}
+			);
+			$scope.saveCourse();
+		}
+		$scope.hideLower = function(obj){
+			obj.hideLower = !obj.hideLower;
 		}
 	}]);
