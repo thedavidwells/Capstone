@@ -23,13 +23,14 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class='container'>
+    <div class='container' id='outerContainer'>
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="#">Home</a></li>
           <li><a ng-href="#/myCourses">My Courses</a></li>
         </ul>
         <h3 class="text-muted">LessonPlanner</h3>
+        <input type='checkbox' id='fsCheckbox'> fullscreen
       </div>
       <div ng-view=""></div>
       <div class="footer">

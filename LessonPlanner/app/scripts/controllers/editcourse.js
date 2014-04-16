@@ -36,7 +36,7 @@ angular.module('lessonPlannerApp')
 			$scope.course.lessons.push(
 				{
 					id: $scope.course.lessons.length,
-					title: 'New lesson ' +$scope.course.lessons.length + 1,
+					title: 'New lesson ' + ($scope.course.lessons.length + 1),
 					sublessons: []
 				}
 			);
@@ -46,7 +46,7 @@ angular.module('lessonPlannerApp')
 			lesson.sublessons.push(
 				{
 					id: lesson.sublessons.length,
-					title: 'New sublesson ' + lesson.sublessons.length + 1,
+					title: 'New sublesson ' + (lesson.sublessons.length + 1),
 					steps: []
 				}
 			);
@@ -56,7 +56,7 @@ angular.module('lessonPlannerApp')
 			sublesson.steps.push(
 				{
 					id: sublesson.steps.length,
-					title: 'New Step ' + sublesson.steps.length + 1,
+					title: 'New Step ' + (sublesson.steps.length + 1),
 					hints: []
 				}
 			);
@@ -66,7 +66,7 @@ angular.module('lessonPlannerApp')
 			step.hints.push(
 				{
 					id: step.hints.length,
-					title: 'New Hint ' + step.hints.length + 1,
+					title: 'New Hint ' + (step.hints.length + 1),
 				}
 			);
 			$scope.saveCourse();

@@ -1,5 +1,18 @@
 'use strict';
 
+$(document).ready(function(){
+  console.log('happens');
+  $('#fsCheckbox').change(function() {
+    if($(this).is(':checked')) {
+      $('#outerContainer').removeClass('container');
+      return $('#outerContainer').addClass('spaceMe');
+    } else {
+      return $('#outerContainer').addClass('container');
+    }
+        // $('#textbox1').val($(this).is(':checked'));
+  });
+});
+
 angular
   .module('lessonPlannerApp', [
     'ngCookies',
