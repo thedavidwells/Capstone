@@ -57,7 +57,11 @@ angular.module('lessonPlannerApp')
 				{
 					id: sublesson.steps.length,
 					title: 'New Step ' + (sublesson.steps.length + 1),
-					hints: []
+					hints: [],
+					expectedResult: {
+						type: 'Number',
+						result: 'Enter in your result here'
+					}
 				}
 			);
 			$scope.saveCourse();
@@ -75,3 +79,24 @@ angular.module('lessonPlannerApp')
 			obj.hideLower = !obj.hideLower;
 		}
 	}]);
+/*
+Course
+	Title √
+	Ratings ¬
+	Description √
+	Author √ 
+	Description √
+	Lessons √
+		Title √
+		Description √
+		Steps √
+			Title √
+			Description √
+			Goal √
+			Expected Result
+				Type (Number, string, etc)
+				expectation
+			Hints √
+			Initial text
+
+ */
