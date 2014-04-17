@@ -10,9 +10,9 @@ angular.module('lessonPlannerApp')
 			if(!$scope.course.lessons){
 				$scope.course.lessons = [];
 			}
-			stopWatching = $scope.$watch('course', function(value){
-				$scope.courseModel.set(value);
-			}, true);
+			// stopWatching = $scope.$watch('course', function(value){
+				// $scope.courseModel.set(value);
+			// }, true);
 		}
 		parseWrapper.getCourse($routeParams.course)
 		.then(function(course){
@@ -23,6 +23,7 @@ angular.module('lessonPlannerApp')
 
 		$scope.saveCourse = function(){
 			console.log('attempting save');
+			$scope.courseModel.set($scope.lesson);
 			$scope.courseModel.save(null).then(
 				function(){
 					console.log('saved');
@@ -75,8 +76,19 @@ angular.module('lessonPlannerApp')
 			);
 			$scope.saveCourse();
 		}
+		$scope.cmFocus = function(e){
+			var textarea = $(e.target);
+			var editor = CodeMirror.fromTextArea(e.target, {
+			    mode: "text/javascript"
+			});
+		}
 		$scope.hideLower = function(obj){
 			obj.hideLower = !obj.hideLower;
+		}
+		$scope.aceLoaded = function(_editor){
+			_editor.on('blur', function(){
+				$scope.saveCourse();
+			})
 		}
 	}]);
 /*

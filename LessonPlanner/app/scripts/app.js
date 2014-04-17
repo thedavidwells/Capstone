@@ -20,7 +20,8 @@ angular
     'ngSanitize',
     'ngRoute',
     'parse-angular',
-    'parse-angular.enhance'
+    'parse-angular.enhance',
+    'ui.ace'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -51,4 +52,10 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }).value('ui.config', {
+    codemirror: {
+        mode: 'text/javascript',
+        lineNumbers: true,
+        matchBrackets: true
+    }
+});;
