@@ -9,7 +9,7 @@ npm install;
 sudo npm install -g yo;
 sudo npm install -g generator-angular;
 sudo gem install compass;
-bower isntall -f;
+bower install -f;
 echo "grunt bowerInstall;" | sudo tee -a /home/vagrant/.bashrc;
 echo "cd /vagrant/;" | sudo tee -a /home/vagrant/.bashrc;
 echo "bower install;" | sudo tee -a /home/vagrant/.bashrc;
