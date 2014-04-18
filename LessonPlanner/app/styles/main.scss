@@ -97,14 +97,58 @@ body {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.background{
+    position: absolute; 
+    z-index: 1;
+    background-position: 50% 0px;
+    
+    margin:0; padding: 0;
+    /*height: 100%; width: 100%;*/
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+body{ 
+    background-color: #222;
+    background-image: url('/images/classroom.jpg');
+}
+.photo {
+    background-attachment: fixed;
+    background-position: 60% 0;
+    background-repeat: no-repeat;
+    height: 800px;
+    position: relative;
+}
+.photo span {
+      bottom: 0;
+      color: white;
+      display: block;
+      left: 50%;
+      margin-left: -640px;
+      font-size: 38px;
+      padding: 10px;
+      position: absolute;
+      text-shadow: 0 2px 0 black, 0 0 10px black;
+      width: 1280px;
+    }
+#bg-1{background-image: url('/images/playing.jpg');}
+#bg-2{background-image: url('/images/apple.jpg');}
+#outerContainer{position: relative; z-index: 2;
+    background-color: rgba(0, 0, 0, .3);
+}
 ul{list-style-type: none;}
 .lineUp{min-width: 110px; text-align: right;}
-.card-container{border: 1px solid #AAA; padding: 5px; margin-bottom: 5px;}
-.course{background-color: #E8E8E1;}
+.card-container{
+    border: 1px solid #AAA; padding: 5px; margin-bottom: 5px;
+    background-color: rgba(0, 0, 0, .2);
+    color: white;
+}
+/*.course{background-color: #E8E8E1;}
 .lessons{background-color: #E0E0E0;}
 .sublessons{background-color: #E8E8E8;}
 .steps{background-color: #EFEFEF;}
-.hints{background-color: #FFFFFF;}
+.hints{background-color: #FFFFFF;}*/
 .plusButton{margin: 0 15px 10px 0 ;}
 .spaceMe{padding: 0 20px 0 20px;}
 .ace_editor { height: 200px; margin-top: 10px;}
