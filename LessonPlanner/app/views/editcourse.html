@@ -21,8 +21,11 @@
 		</h5>
 
 	</div>
-	<ol ng-hide="course.hideLower">
+	<ul ng-hide="course.hideLower">
 		<li ng-repeat="lesson in course.lessons track by lesson.id" class='card-container lessons'>
+			<div style='text-align: right'>
+				<btn href='' ng-click="delete(lesson)" class='glyphicon glyphicon-remove'></btn>
+			</div>
 			<div class="input-group needSpace">
 			  <span class="input-group-addon lineUp">Title</span>
 			  <input class='form-control' ng-model='lesson.title' ng-blur="saveCourse()"/>
@@ -147,5 +150,5 @@
 				+ Lesson
 			</button>
 		</li>
-	</ol>
+	</ul>
 </div>
