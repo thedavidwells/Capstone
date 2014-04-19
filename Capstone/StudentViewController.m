@@ -7,16 +7,19 @@
 //
 
 #import "StudentViewController.h"
+#import "DownloadAssistant.h"
 #import "LessonsDataSource.h"
 #import "QuizzesDataSource.h"
 #import "SubLessonViewController.h"
 #import "CurrentUser.h"
 #import "FreeTextViewController.h"
+#import "Lesson.h"
 
 static const int navBarHeight = 44;
 static const int statusBarHeight = 20;
 
 @interface StudentViewController ()
+@property (nonatomic) DownloadAssistant *downloadAssistant;
 @property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @property (nonatomic) QuizzesDataSource *quizzesDataSource;
@@ -44,14 +47,6 @@ static const int statusBarHeight = 20;
     return _currentUser;
 }
 
-- (LessonsDataSource *)lessonsDataSource
-{
-    if (!_lessonsDataSource) {
-        _lessonsDataSource = [[LessonsDataSource alloc] init];
-    }
-    return _lessonsDataSource;
-}
-
 - (QuizzesDataSource *)quizzesDataSource
 {
     if (!_quizzesDataSource) {
@@ -63,6 +58,9 @@ static const int statusBarHeight = 20;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.downloadAssistant = [DownloadAssistant sharedInstance];
+    self.lessonsDataSource = [[DownloadAssistant sharedInstance] lessonsDataSource];
     
     // height and width are switched to account for iPad's orientation
     self.viewFrame = CGRectMake(0, statusBarHeight, self.view.frame.size.height, self.view.frame.size.width - statusBarHeight);
@@ -173,6 +171,9 @@ static const int statusBarHeight = 20;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (tableView == self.lessonTableView) {
+        return [self.lessonsDataSource numberOfLessons];
+    }
     return 8;
 }
 
@@ -186,14 +187,18 @@ static const int statusBarHeight = 20;
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyCheck"]];
     imgView.center = CGPointMake(cell.frame.size.width - cell.frame.size.width/5, 30);
     
     if (tableView == self.lessonTableView) {
-        NSString *s = [[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row];
+        Lesson *lesson = [self.lessonsDataSource lessonAtIndex:indexPath.row];
+        NSString *s = lesson.title;
+        NSString *ss = lesson.lessonDescription;
+        
         cell.textLabel.text = s;
+        cell.detailTextLabel.text = ss;
         [cell addSubview:imgView];
     }
     else {
@@ -209,7 +214,7 @@ static const int statusBarHeight = 20;
     NSLog(@"row %li was selected", indexPath.row);
     
     if (tableView == self.lessonTableView) {
-        SubLessonViewController *subLessonViewController = [[SubLessonViewController alloc] initWithLesson:[[self.lessonsDataSource getLessonTitles] objectAtIndex:indexPath.row]];
+        SubLessonViewController *subLessonViewController = [[SubLessonViewController alloc] initWithLesson:[self.lessonsDataSource lessonAtIndex:indexPath.row]];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:subLessonViewController];
         nav.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:nav animated:YES completion:nil];

@@ -7,11 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Lesson.h"
 
 @interface LessonsDataSource : NSObject
 
-- (NSMutableArray *)getLessonTitles;
-- (NSMutableArray *)getSubLessonTitles;
+- (instancetype)initWithJSONArray:(NSArray *)jsonArray;
+
+- (Lesson *)lessonWithTitle:(NSString *)lessonTitle;
+- (Lesson *)lessonAtIndex:(NSInteger)idx;
+
+- (NSMutableArray *)getAllLessons;
+
+- (NSUInteger)numberOfLessons;
 
 - (NSString *)loadStepStarterText:(int)stepTracker;
 - (NSString *)loadStepTitleText:(int)stepTracker;
