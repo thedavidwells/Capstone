@@ -90,6 +90,9 @@ angular.module('lessonPlannerApp')
 				$scope.saveCourse();
 			})
 		}
+		$scope.deleteThing = function(lesson){
+			alert(lesson.title);
+		}
 	}]);
 /*
 Course

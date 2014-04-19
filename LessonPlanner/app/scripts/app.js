@@ -21,7 +21,8 @@ angular
     'ngRoute',
     'parse-angular',
     'parse-angular.enhance',
-    'ui.ace'
+    'ui.ace',
+    'angular-parallax'
   ])
   .config(function ($routeProvider) {
     $routeProvider
