@@ -15,7 +15,7 @@
     right:0;
 }
 body{ 
-    background-color: #DDD;
+    background-color: #333;
     /*background-image: url('/images/classroom.jpg');*/
     color: white;
 }
@@ -44,9 +44,6 @@ h1, h2, h3, h4, h5, h6{color: white;}
 #bg-1{background-image: url('/images/playing.jpg');}
 #bg-2{background-image: url('/images/apple.jpg');}
 #outerContainer{position: relative; z-index: 2;
-    background-color: rgba(0, 0, 0, .7);
-    border: 1px solid white;
-    border-radius: 20px;
 }
 ul{list-style-type: none;}
 .lineUp{min-width: 110px; text-align: right;}
