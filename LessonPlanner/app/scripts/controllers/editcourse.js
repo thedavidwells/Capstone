@@ -100,7 +100,7 @@ angular.module('lessonPlannerApp')
 				$scope.saveCourse();
 			})
 		}
-		$scope.delete = function(parent, obj, type){
+		$scope.delete = function(parent, obj){
 			if(!confirm('Are you sure you want to delete \'' + obj.title + '\'?')) return;
 			console.log(parent);
 			if(parent.lessons)
@@ -112,6 +112,30 @@ angular.module('lessonPlannerApp')
 			else if(parent.hints)
 				parent.hints = _.without(parent.hints, obj);
 			$scope.saveCourse();
+
+		}
+		$scope.moveUp = function(parent, obj){
+			for (var i = 1; i < parent.length; i++) {
+				var lastObj = parent[i-1];
+				if(parent[i].id == obj.id){
+					parent[i-1] = parent[i];
+					parent[i] = lastObj;
+					$scope.saveCourse();
+					return;
+				}
+			}
+			$scope.saveCourse();
+		}
+		$scope.moveDown = function(parent, obj){
+			for (var i = 0; i < parent.length-1; i++) {
+				if(parent[i].id == obj.id){
+					var nextObj = parent[i+1];
+					parent[i+1] = parent[i];
+					parent[i] = nextObj;
+					$scope.saveCourse();
+					return;
+				}
+			}
 
 		}
 	}]);

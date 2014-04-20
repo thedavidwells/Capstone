@@ -22,8 +22,10 @@
 
 	</div>
 	<ul ng-hide="course.hideLower">
-		<li ng-repeat="lesson in course.lessons track by lesson.id" class='card-container lessons'>
+		<li ng-repeat="lesson in course.lessons track by $index" class='card-container lessons'>
 			<div style='text-align: right'>
+				<btn ng-click="moveDown(course.lessons, lesson)" class='glyphicon glyphicon-arrow-down'></btn>
+				<btn ng-click="moveUp(course.lessons, lesson)" class='glyphicon glyphicon-arrow-up'></btn>
 				<btn ng-click="delete(course, lesson)" class='glyphicon glyphicon-remove'></btn>
 			</div>
 			<div class="input-group needSpace">
@@ -48,6 +50,8 @@
 			<ol ng-hide="lesson.hideLower">
 				<li ng-repeat="sublesson in lesson.sublessons track by sublesson.id" class='card-container sublessons'>
 					<div style='text-align: right'>
+						<btn ng-click="moveDown(lesson.sublessons, sublesson)" class='glyphicon glyphicon-arrow-down'></btn>
+						<btn ng-click="moveUp(lesson.sublessons, sublesson)" class='glyphicon glyphicon-arrow-up'></btn>
 						<btn ng-click="delete(lesson, sublesson)" class='glyphicon glyphicon-remove'></btn>
 					</div>
 					<div class="input-group needSpace">
@@ -72,6 +76,8 @@
 					<ol ng-hide="sublesson.hideLower">
 						<li ng-repeat="step in sublesson.steps track by step.id" class='card-container steps'>
 							<div style='text-align: right'>
+								<btn ng-click="moveDown(sublesson.steps, step)" class='glyphicon glyphicon-arrow-down'></btn>
+								<btn ng-click="moveUp(sublesson.steps, step)" class='glyphicon glyphicon-arrow-up'></btn>
 								<btn ng-click="delete(sublesson, step)" class='glyphicon glyphicon-remove'></btn>
 							</div>
 							<div class="input-group needSpace">
@@ -122,6 +128,8 @@
 							<ol ng-hide="step.hideLower">
 								<li ng-repeat="hint in step.hints track by hint.id" class='card-container hints'>
 									<div style='text-align: right'>
+										<btn ng-click="moveDown(step.hints, hint)" class='glyphicon glyphicon-arrow-down'></btn>
+										<btn ng-click="moveUp(step.hints, hint)" class='glyphicon glyphicon-arrow-up'></btn>
 										<btn ng-click="delete(step, hint)" class='glyphicon glyphicon-remove'></btn>
 									</div>
 									<div class="input-group needSpace">
