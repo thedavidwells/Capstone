@@ -1,5 +1,15 @@
 'use strict';
 
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+               .toString(16)
+               .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+         s4() + '-' + s4() + s4() + s4();
+}
+
 angular.module('lessonPlannerApp')
 	.controller('EditcourseCtrl', ['$scope', '$routeParams', 'parseWrapper', function($scope, $routeParams, parseWrapper) {
 		var stopWatching;
@@ -23,7 +33,7 @@ angular.module('lessonPlannerApp')
 
 		$scope.saveCourse = function(){
 			console.log('attempting save');
-			$scope.courseModel.set($scope.lesson);
+			$scope.courseModel.set($scope.course);
 			$scope.courseModel.save(null).then(
 				function(){
 					console.log('saved');
@@ -36,7 +46,7 @@ angular.module('lessonPlannerApp')
 		$scope.newLesson = function(){
 			$scope.course.lessons.push(
 				{
-					id: $scope.course.lessons.length,
+					id: guid(),
 					title: 'New lesson ' + ($scope.course.lessons.length + 1),
 					sublessons: []
 				}
@@ -46,7 +56,7 @@ angular.module('lessonPlannerApp')
 		$scope.newSubLesson = function(lesson){
 			lesson.sublessons.push(
 				{
-					id: lesson.sublessons.length,
+					id: guid(),
 					title: 'New sublesson ' + (lesson.sublessons.length + 1),
 					steps: []
 				}
@@ -56,7 +66,7 @@ angular.module('lessonPlannerApp')
 		$scope.newStep = function(sublesson){
 			sublesson.steps.push(
 				{
-					id: sublesson.steps.length,
+					id: guid(),
 					title: 'New Step ' + (sublesson.steps.length + 1),
 					hints: [],
 					expectedResult: {
@@ -70,7 +80,7 @@ angular.module('lessonPlannerApp')
 		$scope.newHint = function(step){
 			step.hints.push(
 				{
-					id: step.hints.length,
+					id: guid(),
 					title: 'New Hint ' + (step.hints.length + 1),
 				}
 			);
@@ -89,6 +99,44 @@ angular.module('lessonPlannerApp')
 			_editor.on('blur', function(){
 				$scope.saveCourse();
 			})
+		}
+		$scope.delete = function(parent, obj){
+			if(!confirm('Are you sure you want to delete \'' + obj.title + '\'?')) return;
+			console.log(parent);
+			if(parent.lessons)
+				parent.lessons = _.without(parent.lessons, obj);
+			else if(parent.sublessons)
+				parent.sublessons = _.without(parent.sublessons, obj);
+			else if(parent.steps)
+				parent.steps = _.without(parent.steps, obj);
+			else if(parent.hints)
+				parent.hints = _.without(parent.hints, obj);
+			$scope.saveCourse();
+
+		}
+		$scope.moveUp = function(parent, obj){
+			for (var i = 1; i < parent.length; i++) {
+				var lastObj = parent[i-1];
+				if(parent[i].id == obj.id){
+					parent[i-1] = parent[i];
+					parent[i] = lastObj;
+					$scope.saveCourse();
+					return;
+				}
+			}
+			$scope.saveCourse();
+		}
+		$scope.moveDown = function(parent, obj){
+			for (var i = 0; i < parent.length-1; i++) {
+				if(parent[i].id == obj.id){
+					var nextObj = parent[i+1];
+					parent[i+1] = parent[i];
+					parent[i] = nextObj;
+					$scope.saveCourse();
+					return;
+				}
+			}
+
 		}
 	}]);
 /*

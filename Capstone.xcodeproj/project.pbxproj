@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3C0581C218D68BD5003D7C12 /* SupportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0581C118D68BD5003D7C12 /* SupportTableViewController.m */; };
+		3C07633C1902D3E70077773E /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C07633B1902D3E70077773E /* Lesson.m */; };
+		3C07633F1902DA1D0077773E /* DownloadAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C07633E1902DA1D0077773E /* DownloadAssistant.m */; };
 		3C2D91F618E6716D00CB23F4 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D91F518E6716D00CB23F4 /* ResultsViewController.m */; };
 		3C32D59018E3F62B006CA2DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C32D58F18E3F62B006CA2DE /* Parse.framework */; };
 		3C61DFD918E50AB700B99B2A /* LessonsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C61DFD818E50AB700B99B2A /* LessonsDataSource.m */; };
@@ -66,6 +68,10 @@
 /* Begin PBXFileReference section */
 		3C0581C018D68BD5003D7C12 /* SupportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportTableViewController.h; sourceTree = "<group>"; };
 		3C0581C118D68BD5003D7C12 /* SupportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportTableViewController.m; sourceTree = "<group>"; };
+		3C07633A1902D3E70077773E /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lesson.h; sourceTree = "<group>"; };
+		3C07633B1902D3E70077773E /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lesson.m; sourceTree = "<group>"; };
+		3C07633D1902DA1D0077773E /* DownloadAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadAssistant.h; sourceTree = "<group>"; };
+		3C07633E1902DA1D0077773E /* DownloadAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadAssistant.m; sourceTree = "<group>"; };
 		3C2D91F418E6716D00CB23F4 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		3C2D91F518E6716D00CB23F4 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		3C32D58F18E3F62B006CA2DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -181,6 +187,8 @@
 		3C0581C318D68F0A003D7C12 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				3C07633D1902DA1D0077773E /* DownloadAssistant.h */,
+				3C07633E1902DA1D0077773E /* DownloadAssistant.m */,
 				3C2D91F818E673D900CB23F4 /* User Data */,
 				3C2D91F918E673DF00CB23F4 /* Lesson Data */,
 				3C2D91FA18E673F400CB23F4 /* Quiz Data */,
@@ -212,6 +220,8 @@
 		3C2D91F918E673DF00CB23F4 /* Lesson Data */ = {
 			isa = PBXGroup;
 			children = (
+				3C07633A1902D3E70077773E /* Lesson.h */,
+				3C07633B1902D3E70077773E /* Lesson.m */,
 				3C61DFD718E50AB700B99B2A /* LessonsDataSource.h */,
 				3C61DFD818E50AB700B99B2A /* LessonsDataSource.m */,
 			);
@@ -512,6 +522,7 @@
 				52E4FF4F18F475E300A45F57 /* free_code.js in Sources */,
 				52A7594619007AB400784169 /* CYRToken.m in Sources */,
 				3CE1F19A18D63E2D00DE7B86 /* ViewController.m in Sources */,
+				3C07633F1902DA1D0077773E /* DownloadAssistant.m in Sources */,
 				3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */,
 				3CBEA47318E88E8E00D78DA0 /* LineNumberTextView.m in Sources */,
 				52A7594519007AB400784169 /* CYRTextView.m in Sources */,
@@ -526,6 +537,7 @@
 				3CBEA47618E88FB200D78DA0 /* LineNumberLayoutManager.m in Sources */,
 				3CEF4EFF18E4A9E1006A1E8F /* StudentViewController.m in Sources */,
 				3CE1F19018D63E2D00DE7B86 /* main.m in Sources */,
+				3C07633C1902D3E70077773E /* Lesson.m in Sources */,
 				3C8DCB6418D6A83400779B57 /* CurrentUser.m in Sources */,
 				3C2D91F618E6716D00CB23F4 /* ResultsViewController.m in Sources */,
 			);
@@ -656,7 +668,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/BlueOwl/Desktop/Capstone,
+					/Users/BlueOwl/Capstone,
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -674,7 +686,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/BlueOwl/Desktop/Capstone,
+					/Users/BlueOwl/Capstone,
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

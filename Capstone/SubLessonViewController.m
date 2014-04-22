@@ -15,6 +15,7 @@
 
 @interface SubLessonViewController ()
 @property (nonatomic) CurrentUser *currentUser;
+@property (nonatomic) Lesson *lesson;
 @property (nonatomic) NSString *lessonTitle;
 @property (nonatomic) UITableView *tView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
@@ -40,20 +41,13 @@
     return self;
 }
 
-- (instancetype)initWithLesson:(NSString *)lessonTitle
+- (instancetype)initWithLesson:(Lesson*)lesson
 {
     if( (self = [super init]) == nil )
         return nil;
-    self.lessonTitle = lessonTitle;
+    self.lesson = lesson;
+    self.lessonTitle = self.lesson.title;
     return self;
-}
-
-- (LessonsDataSource *)lessonsDataSource
-{
-    if (!_lessonsDataSource) {
-        _lessonsDataSource = [[LessonsDataSource alloc] init];
-    }
-    return _lessonsDataSource;
 }
 
 - (void)viewDidLoad
@@ -106,7 +100,7 @@
 
 - (void)initializeTableView
 {
-    self.tView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300, self.view.bounds.size.width - self.view.bounds.size.width/2)
+    self.tView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 400, self.view.bounds.size.width - self.view.bounds.size.width/2)
                                               style:UITableViewStyleGrouped];
     self.tView.delegate = self;
     self.tView.dataSource = self;
@@ -123,7 +117,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [self.lesson numberOfSubLessons];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,7 +127,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *s = [[self.lessonsDataSource getSubLessonTitles] objectAtIndex:indexPath.row];
+    NSString *s = [[self.lesson.sublessons objectAtIndex:indexPath.row] valueForKey:@"title"];
     
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -141,7 +135,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyCheck"]];
-    imgView.center = CGPointMake(cell.frame.size.width - cell.frame.size.width/5, 25);
+    imgView.center = CGPointMake(cell.frame.size.width + 35, 25);
     [cell addSubview:imgView];
     
     cell.textLabel.text = s;
@@ -152,7 +146,8 @@
 {
     NSLog(@"row %li was selected", indexPath.row);
     
-    TextEditorViewController *textEditorViewController = [[TextEditorViewController alloc] initWithSubLesson:[[self.lessonsDataSource getSubLessonTitles] objectAtIndex:indexPath.row]];
+    TextEditorViewController *textEditorViewController = [[TextEditorViewController alloc] initWithSubLessonSteps:[[self.lesson.sublessons objectAtIndex:indexPath.row] valueForKey:@"steps"]];
+    textEditorViewController.subLessonTitle = [[self.lesson.sublessons objectAtIndex:indexPath.row] valueForKey:@"title"];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:textEditorViewController];
     nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];

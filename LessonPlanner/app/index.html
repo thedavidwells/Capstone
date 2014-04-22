@@ -11,11 +11,11 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/extra.css">
     <!-- endbuild -->
   </head>
   <body ng-app="lessonPlannerApp">
@@ -23,16 +23,23 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+  <!-- <div class='background'>
+    <div id='bg-1' parallax-background parallax-ratio="2" class='photo'>
+      <span style="font-size:1em;"></span>
+    </div>
+    <div id='bg-2' parallax-background parallax-ratio="3" class='photo'>
+      <span style="font-size:1em;"></span>
+    </div>
+  </div> -->
     <!-- Add your site or application content here -->
-    <div class='container' id='outerContainer'>
+    <div class='container' id='outerContainer' >
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
+          <li><a ng-href="#">Home</a></li>
           <li><a ng-href="#/myCourses">My Courses</a></li>
         </ul>
-        <h3 class="text-muted">LessonPlanner</h3>
-        <div class="checkbox">
+        <h3 >LessonPlanner</h3>
+        <div class="checkbox visible-md visible-lg">
           <label>
             <input type='checkbox' id='fsCheckbox'> fullscreen
           </label>
@@ -43,14 +50,6 @@
         <p><span class="glyphicon glyphicon-heart"></span> Lesson planner etc</p>
       </div>
     </div>
-        <div ui-codemirror="{
-        lineNumbers: true,
-        theme:'twilight',
-        lineWrapping : true,
-        mode: 'javascript'
-      }" ></div>
-
-
   
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -63,7 +62,7 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
-
+    <script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -80,10 +79,10 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/parse-angular-patch/dist/parse-angular.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/codemirror/lib/codemirror.js"></script>
-    <script src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
     <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
-    <script src="bower_components/ace-builds/src-min/ace.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <script src="bower_components/ng-parallax/angular-parallax.min.js"></script>
+    <script src="bower_components/angular-parallax/scripts/angular-parallax.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -99,5 +98,6 @@
         <script src="scripts/controllers/mycourses.js"></script>
         <script src="scripts/controllers/editcourse.js"></script>
         <!-- endbuild -->
+
 </body>
 </html>

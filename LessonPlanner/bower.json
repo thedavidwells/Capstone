@@ -13,8 +13,9 @@
     "angular-route": "1.2.15",
     "parse-angular-patch": "*",
     "underscore": "~1.6.0",
-    "angular-ui-codemirror": "~0.1.0",
-    "angular-ui-ace": "~0.1.0"
+    "angular-ui-ace": "~0.1.0",
+    "ng-parallax": "~0.1.7",
+    "angular-parallax": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",

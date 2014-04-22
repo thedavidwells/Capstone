@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Lesson.h"
 
 @interface SubLessonViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-- (instancetype)initWithLesson:(NSString *)lessonTitle;
+- (instancetype)initWithLesson:(Lesson*)lessonTitle;
 
 @end

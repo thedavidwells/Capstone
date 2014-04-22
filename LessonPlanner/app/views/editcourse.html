@@ -21,8 +21,13 @@
 		</h5>
 
 	</div>
-	<ol ng-hide="course.hideLower">
-		<li ng-repeat="lesson in course.lessons track by lesson.id" class='card-container lessons'>
+	<ul ng-hide="course.hideLower">
+		<li ng-repeat="lesson in course.lessons track by $index" class='card-container lessons'>
+			<div style='text-align: right'>
+				<btn ng-show='$index < course.lessons.length - 1' ng-click="moveDown(course.lessons, lesson)" class='glyphicon glyphicon-arrow-down'></btn>
+				<btn ng-show='$index > 0' ng-click="moveUp(course.lessons, lesson)" class='glyphicon glyphicon-arrow-up'></btn>
+				<btn ng-click="delete(course, lesson)" class='glyphicon glyphicon-remove'></btn>
+			</div>
 			<div class="input-group needSpace">
 			  <span class="input-group-addon lineUp">Title</span>
 			  <input class='form-control' ng-model='lesson.title' ng-blur="saveCourse()"/>
@@ -44,6 +49,11 @@
 			</div>
 			<ol ng-hide="lesson.hideLower">
 				<li ng-repeat="sublesson in lesson.sublessons track by sublesson.id" class='card-container sublessons'>
+					<div style='text-align: right'>
+						<btn ng-show='$index < lesson.sublessons.length - 1' ng-click="moveDown(lesson.sublessons, sublesson)" class='glyphicon glyphicon-arrow-down'></btn>
+						<btn ng-show='$index > 0' ng-click="moveUp(lesson.sublessons, sublesson)" class='glyphicon glyphicon-arrow-up'></btn>
+						<btn ng-click="delete(lesson, sublesson)" class='glyphicon glyphicon-remove'></btn>
+					</div>
 					<div class="input-group needSpace">
 					  <span class="input-group-addon lineUp">Title</span>
 					  <input class='form-control' ng-model='sublesson.title' ng-blur="saveCourse()"/>
@@ -65,6 +75,11 @@
 					</div>
 					<ol ng-hide="sublesson.hideLower">
 						<li ng-repeat="step in sublesson.steps track by step.id" class='card-container steps'>
+							<div style='text-align: right'>
+								<btn ng-show='$index < sublesson.steps.length - 1' ng-click="moveDown(sublesson.steps, step)" class='glyphicon glyphicon-arrow-down'></btn>
+								<btn ng-show='$index > 0' ng-click="moveUp(sublesson.steps, step)" class='glyphicon glyphicon-arrow-up'></btn>
+								<btn ng-click="delete(sublesson, step)" class='glyphicon glyphicon-remove'></btn>
+							</div>
 							<div class="input-group needSpace">
 							  <span class="input-group-addon lineUp">Title</span>
 							  <input class='form-control' ng-model='step.title' ng-blur="saveCourse()"/>
@@ -102,10 +117,6 @@
 										}"
 									  	ng-model='step.expectedResult.result' > </div>
 							</div>
-							<div class="input-group needSpace">
-							  <span class="input-group-addon lineUp">Goal</span>
-							  <input class='form-control' ng-model='step.goal' ng-blur="saveCourse()"/>
-							</div>
 							<div>
 								
 								<h5 ng-click="hideLower(step)">
@@ -116,6 +127,11 @@
 							</div>
 							<ol ng-hide="step.hideLower">
 								<li ng-repeat="hint in step.hints track by hint.id" class='card-container hints'>
+									<div style='text-align: right'>
+										<btn ng-show='$index < step.hints.length - 1' ng-click="moveDown(step.hints, hint)" class='glyphicon glyphicon-arrow-down'></btn>
+										<btn ng-show='$index > 0' ng-click="moveUp(step.hints, hint)" class='glyphicon glyphicon-arrow-up'></btn>
+										<btn ng-click="delete(step, hint)" class='glyphicon glyphicon-remove'></btn>
+									</div>
 									<div class="input-group needSpace">
 									  <span class="input-group-addon">Hint</span>
 									  <input class='form-control' ng-model='hint.text' ng-blur="saveCourse()"/>
@@ -147,5 +163,5 @@
 				+ Lesson
 			</button>
 		</li>
-	</ol>
+	</ul>
 </div>

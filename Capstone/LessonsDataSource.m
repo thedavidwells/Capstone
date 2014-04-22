@@ -7,51 +7,64 @@
 //
 
 #import "LessonsDataSource.h"
+#import <Parse/Parse.h>
+
+static const BOOL _debug = NO;
 
 @interface LessonsDataSource()
 
-@property (nonatomic) NSMutableArray *lessonTitles;
-@property (nonatomic) NSMutableArray *subLessonTitles;
+@property (nonatomic) NSMutableArray *allLessons;
 
 @end
 
 @implementation LessonsDataSource
 
-- (NSMutableArray *)lessonTitles
+- (NSMutableArray *)allLessons
 {
-    if (!_lessonTitles) {
-        _lessonTitles = [[NSMutableArray alloc] initWithObjects:@"Introduction",
-                         @"Functions",
-                         @"'For' Loops",
-                         @"'While' Loops",
-                         @"Control Flow",
-                         @"Data Structures",
-                         @"Objects I",
-                         @"Objects II", nil];
+    if (!_allLessons)
+        _allLessons = [[NSMutableArray alloc] init];
+    return _allLessons;
+}
+
+- (instancetype)initWithJSONArray:(NSArray *)jsonArray
+{
+    if((self = [super init]) == nil)
+        return nil;
+    
+    for (NSDictionary *lessonTuple in jsonArray) {
+        Lesson *lesson = [[Lesson alloc] initWithDictionary:lessonTuple];
+        if (_debug)
+            [lesson print];
+        [self.allLessons addObject:lesson];
     }
-    return _lessonTitles;
+    return self;
 }
 
-- (NSMutableArray *)subLessonTitles
+- (Lesson *)lessonWithTitle:(NSString *)lessonTitle
 {
-    if (!_subLessonTitles) {
-        _subLessonTitles = [[NSMutableArray alloc] initWithObjects:@"SubLesson 1",
-                         @"SubLesson 2",
-                         @"SubLesson 3",
-                         @"SubLesson 4",
-                         @"SubLesson 5", nil];
-    }
-    return _subLessonTitles;
+	if([self.allLessons count] == 0)
+		return nil;
+    for(Lesson *lesson in self.allLessons)
+        if([lesson.title isEqualToString:lessonTitle])
+            return lesson;
+    return nil;
 }
 
-- (NSMutableArray *)getLessonTitles
+- (Lesson *)lessonAtIndex:(NSInteger)idx
 {
-    return self.lessonTitles;
+	if(idx >= [self.allLessons count])
+        return nil;
+	return [self.allLessons objectAtIndex:idx];
 }
 
-- (NSMutableArray *)getSubLessonTitles
+- (NSArray *)getAllLessons
 {
-    return self.subLessonTitles;
+    return self.allLessons;
+}
+
+- (NSUInteger)numberOfLessons
+{
+	return [self.allLessons count];
 }
 
 /*

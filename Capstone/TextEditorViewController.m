@@ -19,13 +19,13 @@ int stepTracker = 0;
 
 @interface TextEditorViewController ()
 @property (nonatomic) CurrentUser *currentUser;
-@property (nonatomic) NSString *subLessonTitle;
 @property (nonatomic) UITextView *textEditorView;
 @property (nonatomic) UIView *stepByStepInstructionView;
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @property (nonatomic) UIWebView *webView;
 @property (nonatomic) ResultsViewController *resultsViewController;
+@property (nonatomic) NSArray *subLessonSteps;
 @end
 
 @implementation TextEditorViewController
@@ -47,11 +47,11 @@ int stepTracker = 0;
     return _currentUser;
 }
 
-- (instancetype)initWithSubLesson:(NSString *)subLessonTitle
+- (instancetype)initWithSubLessonSteps:(NSArray *)steps
 {
     if( (self = [super init]) == nil )
         return nil;
-    self.subLessonTitle = subLessonTitle;
+    self.subLessonSteps = steps;
     return self;
 }
 
@@ -99,6 +99,15 @@ int stepTracker = 0;
     [self.webView loadHTMLString:@"<script src=\"free_code.js\"></script>" baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
     
     [self contentReloadedAfterLaunchAndEachStep];
+    
+    [self printStepsForSublesson];
+}
+
+- (void)printStepsForSublesson
+{
+    for (int i=0; i<[self.subLessonSteps count]; i++) {
+        NSLog(@"%@", [self.subLessonSteps objectAtIndex:i]);
+    }
 }
 
 - (void)contentReloadedAfterLaunchAndEachStep

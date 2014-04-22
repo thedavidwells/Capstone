@@ -10,6 +10,7 @@
 
 @interface TextEditorViewController : UIViewController <UITextViewDelegate>
 
-- (instancetype)initWithSubLesson:(NSString *)subLessonTitle;
+- (instancetype)initWithSubLessonSteps:(NSArray*)steps;
+@property (nonatomic) NSString *subLessonTitle;
 
 @end
