@@ -47,6 +47,10 @@
 		3CEF4EFF18E4A9E1006A1E8F /* StudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEF4EFE18E4A9E1006A1E8F /* StudentViewController.m */; };
 		3CF0A21D18E5F3E600C633EE /* TextEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */; };
 		3CF0A22018E611D600C633EE /* QuizzesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0A21F18E611D600C633EE /* QuizzesDataSource.m */; };
+		52A7594319007AB400784169 /* CYRLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A7593C19007AB400784169 /* CYRLayoutManager.m */; };
+		52A7594419007AB400784169 /* CYRTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A7593E19007AB400784169 /* CYRTextStorage.m */; };
+		52A7594519007AB400784169 /* CYRTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A7594019007AB400784169 /* CYRTextView.m */; };
+		52A7594619007AB400784169 /* CYRToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A7594219007AB400784169 /* CYRToken.m */; };
 		52B4FBB118EA79F5000FD5B3 /* FreeTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B4FBB018EA79F5000FD5B3 /* FreeTextViewController.m */; };
 		52E4FF4F18F475E300A45F57 /* free_code.js in Sources */ = {isa = PBXBuildFile; fileRef = 52E4FF4E18F475E300A45F57 /* free_code.js */; };
 /* End PBXBuildFile section */
@@ -122,6 +126,14 @@
 		3CF0A21C18E5F3E600C633EE /* TextEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditorViewController.m; sourceTree = "<group>"; };
 		3CF0A21E18E611D600C633EE /* QuizzesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizzesDataSource.h; sourceTree = "<group>"; };
 		3CF0A21F18E611D600C633EE /* QuizzesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizzesDataSource.m; sourceTree = "<group>"; };
+		52A7593B19007AB400784169 /* CYRLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRLayoutManager.h; sourceTree = "<group>"; };
+		52A7593C19007AB400784169 /* CYRLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRLayoutManager.m; sourceTree = "<group>"; };
+		52A7593D19007AB400784169 /* CYRTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRTextStorage.h; sourceTree = "<group>"; };
+		52A7593E19007AB400784169 /* CYRTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRTextStorage.m; sourceTree = "<group>"; };
+		52A7593F19007AB400784169 /* CYRTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRTextView.h; sourceTree = "<group>"; };
+		52A7594019007AB400784169 /* CYRTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRTextView.m; sourceTree = "<group>"; };
+		52A7594119007AB400784169 /* CYRToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRToken.h; sourceTree = "<group>"; };
+		52A7594219007AB400784169 /* CYRToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRToken.m; sourceTree = "<group>"; };
 		52B4FBAF18EA79F5000FD5B3 /* FreeTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeTextViewController.h; sourceTree = "<group>"; };
 		52B4FBB018EA79F5000FD5B3 /* FreeTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeTextViewController.m; sourceTree = "<group>"; };
 		52E4FF4E18F475E300A45F57 /* free_code.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = free_code.js; sourceTree = "<group>"; };
@@ -339,6 +351,7 @@
 		3CE1F18A18D63E2D00DE7B86 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				52A7593A19007AB400784169 /* CYRTextView */,
 				3CE1F18B18D63E2D00DE7B86 /* Capstone-Info.plist */,
 				3CE1F18C18D63E2D00DE7B86 /* InfoPlist.strings */,
 				3CE1F18F18D63E2D00DE7B86 /* main.m */,
@@ -373,6 +386,21 @@
 				3C0581BF18D68BBE003D7C12 /* Support */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		52A7593A19007AB400784169 /* CYRTextView */ = {
+			isa = PBXGroup;
+			children = (
+				52A7593B19007AB400784169 /* CYRLayoutManager.h */,
+				52A7593C19007AB400784169 /* CYRLayoutManager.m */,
+				52A7593D19007AB400784169 /* CYRTextStorage.h */,
+				52A7593E19007AB400784169 /* CYRTextStorage.m */,
+				52A7593F19007AB400784169 /* CYRTextView.h */,
+				52A7594019007AB400784169 /* CYRTextView.m */,
+				52A7594119007AB400784169 /* CYRToken.h */,
+				52A7594219007AB400784169 /* CYRToken.m */,
+			);
+			path = CYRTextView;
 			sourceTree = "<group>";
 		};
 		52B4FBAE18EA798D000FD5B3 /* Free Code Editor VC's */ = {
@@ -492,10 +520,14 @@
 				3CF0A21D18E5F3E600C633EE /* TextEditorViewController.m in Sources */,
 				3CE1F1D018D6402700DE7B86 /* LoginViewController.m in Sources */,
 				52E4FF4F18F475E300A45F57 /* free_code.js in Sources */,
+				52A7594619007AB400784169 /* CYRToken.m in Sources */,
 				3CE1F19A18D63E2D00DE7B86 /* ViewController.m in Sources */,
 				3C07633F1902DA1D0077773E /* DownloadAssistant.m in Sources */,
 				3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */,
 				3CBEA47318E88E8E00D78DA0 /* LineNumberTextView.m in Sources */,
+				52A7594519007AB400784169 /* CYRTextView.m in Sources */,
+				52A7594419007AB400784169 /* CYRTextStorage.m in Sources */,
+				52A7594319007AB400784169 /* CYRLayoutManager.m in Sources */,
 				3CF0A22018E611D600C633EE /* QuizzesDataSource.m in Sources */,
 				3C61DFD918E50AB700B99B2A /* LessonsDataSource.m in Sources */,
 				3C0581C218D68BD5003D7C12 /* SupportTableViewController.m in Sources */,
