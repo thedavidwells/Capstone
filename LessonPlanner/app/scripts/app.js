@@ -24,6 +24,9 @@ angular
     'ui.ace',
     'angular-parallax'
   ])
+  .controller('lessonPlannerApp', ['', function($scope){
+    $scope.currentUser = Parse.User.currentUser();
+  }])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -53,10 +56,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  }).value('ui.config', {
-    codemirror: {
-        mode: 'text/javascript',
-        lineNumbers: true,
-        matchBrackets: true
-    }
-});;
+  });

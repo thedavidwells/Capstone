@@ -38,7 +38,7 @@ angular.module('lessonPlannerApp')
 			success: function(user) {
 				$scope.currentUser = user;
 				$scope.$apply();
-				$location.path( '/myLessons' );
+				$location.path( '/myCourses' );
 			},
 			error: function(user, error) {
 				alert('Unable to log in: ' + error.code + ' ' + error.message);

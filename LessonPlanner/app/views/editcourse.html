@@ -21,7 +21,7 @@
 		</h5>
 
 	</div>
-	<ul ng-hide="course.hideLower">
+	<ol ng-hide="course.hideLower">
 		<li ng-repeat="lesson in course.lessons track by $index" class='card-container lessons'>
 			<div style='text-align: right'>
 				<btn ng-show='$index < course.lessons.length - 1' ng-click="moveDown(course.lessons, lesson)" class='glyphicon glyphicon-arrow-down'></btn>
@@ -163,5 +163,5 @@
 				+ Lesson
 			</button>
 		</li>
-	</ul>
+	</ol>
 </div>

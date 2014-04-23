@@ -44,6 +44,10 @@ angular.module('lessonPlannerApp')
         var c = new CourseModel();
         c.setTitle('New Title');
         c.setAuthor(currentUser);
+        var groupACL = new Parse.ACL();
+        groupACL.setWriteAccess(currentUser, true);
+        groupACL.setPublicReadAccess(true);
+        c.setACL(groupACL);
         return c.save(null);
       }
     };

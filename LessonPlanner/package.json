@@ -1,7 +1,9 @@
 {
   "name": "lessonplanner",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "eventemitter2": "~0.4.13"
+  },
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-autoprefixer": "~0.4.0",
