@@ -16,6 +16,7 @@
 		3C61DFDC18E519F900B99B2A /* SubLessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C61DFDB18E519F900B99B2A /* SubLessonViewController.m */; };
 		3C8DCB6418D6A83400779B57 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8DCB6318D6A83400779B57 /* CurrentUser.m */; };
 		3C8DCB6618D6B66B00779B57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8DCB6518D6B66B00779B57 /* MessageUI.framework */; };
+		3CA151CB19096A3100E06BF5 /* TeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA151CA19096A3100E06BF5 /* TeacherViewController.m */; };
 		3CBEA47318E88E8E00D78DA0 /* LineNumberTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEA47218E88E8E00D78DA0 /* LineNumberTextView.m */; };
 		3CBEA47618E88FB200D78DA0 /* LineNumberLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEA47518E88FB200D78DA0 /* LineNumberLayoutManager.m */; };
 		3CE1F18418D63E2D00DE7B86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE1F18318D63E2D00DE7B86 /* Foundation.framework */; };
@@ -82,6 +83,8 @@
 		3C8DCB6218D6A83400779B57 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		3C8DCB6318D6A83400779B57 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		3C8DCB6518D6B66B00779B57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3CA151C919096A3100E06BF5 /* TeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherViewController.h; sourceTree = "<group>"; };
+		3CA151CA19096A3100E06BF5 /* TeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherViewController.m; sourceTree = "<group>"; };
 		3CBEA47118E88E8E00D78DA0 /* LineNumberTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineNumberTextView.h; sourceTree = "<group>"; };
 		3CBEA47218E88E8E00D78DA0 /* LineNumberTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineNumberTextView.m; sourceTree = "<group>"; };
 		3CBEA47418E88FB100D78DA0 /* LineNumberLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineNumberLayoutManager.h; sourceTree = "<group>"; };
@@ -267,12 +270,22 @@
 		3C4596C518D79197006E63BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3CA151C8190969F700E06BF5 /* Teacher VC */,
 				3C2D91FB18E6741D00CB23F4 /* Student VC's */,
 				52B4FBAE18EA798D000FD5B3 /* Free Code Editor VC's */,
 				3C2D91FC18E6743000CB23F4 /* Sub Lesson VC's */,
 				3C2D91F718E6739B00CB23F4 /* Text Editor VC's */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		3CA151C8190969F700E06BF5 /* Teacher VC */ = {
+			isa = PBXGroup;
+			children = (
+				3CA151C919096A3100E06BF5 /* TeacherViewController.h */,
+				3CA151CA19096A3100E06BF5 /* TeacherViewController.m */,
+			);
+			name = "Teacher VC";
 			sourceTree = "<group>";
 		};
 		3CBEA47018E88E3000D78DA0 /* LineNumber TextView */ = {
@@ -339,8 +352,8 @@
 				3CE1F19918D63E2D00DE7B86 /* ViewController.m */,
 				3C4596C418D758AD006E63BD /* Login */,
 				3C4596C518D79197006E63BD /* Views */,
-				52E4FF4D18F475AF00A45F57 /* JavaScript Files */,
 				3C0581C318D68F0A003D7C12 /* DataSource */,
+				52E4FF4D18F475AF00A45F57 /* JavaScript Files */,
 				3CE1F1D118D65BCE00DE7B86 /* Settings */,
 				3CE1F19B18D63E2D00DE7B86 /* Images.xcassets */,
 				3CE1F18A18D63E2D00DE7B86 /* Supporting Files */,
@@ -522,6 +535,7 @@
 				52E4FF4F18F475E300A45F57 /* free_code.js in Sources */,
 				52A7594619007AB400784169 /* CYRToken.m in Sources */,
 				3CE1F19A18D63E2D00DE7B86 /* ViewController.m in Sources */,
+				3CA151CB19096A3100E06BF5 /* TeacherViewController.m in Sources */,
 				3C07633F1902DA1D0077773E /* DownloadAssistant.m in Sources */,
 				3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */,
 				3CBEA47318E88E8E00D78DA0 /* LineNumberTextView.m in Sources */,

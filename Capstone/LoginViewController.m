@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "ViewController.h"
 #import "StudentViewController.h"
+#import "TeacherViewController.h"
 #import "CurrentUser.h"
 #import <Parse/Parse.h>
 
@@ -92,6 +93,12 @@
                                             if ([self.userType isEqualToString:@"student"]) {
                                                 StudentViewController *studentViewController = [[StudentViewController alloc] init];
                                                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:studentViewController];
+                                                nav.modalPresentationStyle = UIModalPresentationFullScreen;
+                                                [self presentViewController:nav animated:YES completion:nil];
+                                            }
+                                            else {
+                                                TeacherViewController *teacherViewController = [[TeacherViewController alloc] init];
+                                                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:teacherViewController];
                                                 nav.modalPresentationStyle = UIModalPresentationFullScreen;
                                                 [self presentViewController:nav animated:YES completion:nil];
                                             }
