@@ -21,40 +21,6 @@ angular.module('lessonPlannerApp')
 				$scope.course.lessons = [];
 			}
 		}
-		$scope.enroll = function(student){
-			console.log(student.id)
-			parseWrapper.getStudent(student.id).then(function(studentModel){
-				if(student.enrolled){
-					var courses = studentModel.getCourses();
-					var currentCourses = _.without(courses, $scope.courseModel);
-					currentCourses.push($scope.courseModel);
-					studentModel.setCourses(currentCourses).save().then(function(){
-						console.log('enrolled');
-					},
-					function(e){
-						console.log('error', e);
-					});
-				} else {
-					var courses = studentModelgetCourses();
-					var currentCourses = _.without($scope.courseModel);
-					studentModel.setCourses(currentCourses).save().then(function(){
-						console.log('not enrolled');
-					},
-					function(e){
-						console.log('error', e);
-					});
-				}
-			});
-			
-		}
-		parseWrapper.getStudents().then(function(students){
-			$scope.students = [];
-			students.forEach(function (student) {
-				$scope.students.push(student.attributes);
-				$scope.students[$scope.students.length -1].id = student.id;
-				console.log(student.id)
-			});
-		});
 
 		parseWrapper.getCourse($routeParams.course)
 		.then(function(course){

@@ -1,24 +1,10 @@
-<div class='students in class'>
-	<div class="input-group">
-	  <span class="input-group-addon lineUp needSpace">Student Search:</span>
-	  <input class='form-control' ng-model='studentSearch' ng-blur=""/>
-	</div>
-	<table id="searchTextResults">
-		<tr>
-			<td>Enrolled</td>
-			<td>UserName</td>
-		</tr>
-		<tr ng-repeat="student in students | filter:studentSearch:attributes | limitTo: 20">
-			<td>
-				<input type='checkbox' ng-model='student.enrolled' ng-click="enroll(student)"/>
-			</td>
-			<td>
-				{{student.username}}
-			</td>
-		</tr>
-	</table>
-</div>
 <div class='card-container course'>
+	<div class="input-group">
+	  <span class="input-group-addon lineUp needSpace">Course Enrollment ID</span>
+	  <input class='form-control' ng-model='course.enrollId' ng-blur="saveCourse()"/>
+	  <span class="input-group-addon lineUp needSpace">Course Enrollment Password</span>
+	  <input class='form-control' ng-model='course.enrollPassword' ng-blur="saveCourse()"/>
+	</div>
 	<div class="input-group">
 	  <span class="input-group-addon lineUp needSpace">Course Title</span>
 	  <input class='form-control' ng-model='course.title' ng-blur="saveCourse()"/>
