@@ -1,0 +1,15 @@
+<div class='lessons'>
+<h2>My Schools</h2>
+<div class='row'>
+	<div class='col-lg-6'>
+		<ul>
+			<li ng-repeat="school in schools.models" ><a href='#/editSchool/{{school.id}}'>{{ school.getTitle() }}</a></li>
+		</ul>
+	</div>
+	<div class='col-lg-6'>
+		<center>
+			<a class='btn btn-info' ng-click="createSchool()">Create New School</a>
+		</center>
+	</div>
+</div>
+</div>

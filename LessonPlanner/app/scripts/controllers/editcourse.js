@@ -20,10 +20,42 @@ angular.module('lessonPlannerApp')
 			if(!$scope.course.lessons){
 				$scope.course.lessons = [];
 			}
-			// stopWatching = $scope.$watch('course', function(value){
-				// $scope.courseModel.set(value);
-			// }, true);
 		}
+		$scope.enroll = function(student){
+			console.log(student.id)
+			parseWrapper.getStudent(student.id).then(function(studentModel){
+				if(student.enrolled){
+					var courses = studentModel.getCourses();
+					var currentCourses = _.without(courses, $scope.courseModel);
+					currentCourses.push($scope.courseModel);
+					studentModel.setCourses(currentCourses).save().then(function(){
+						console.log('enrolled');
+					},
+					function(e){
+						console.log('error', e);
+					});
+				} else {
+					var courses = studentModelgetCourses();
+					var currentCourses = _.without($scope.courseModel);
+					studentModel.setCourses(currentCourses).save().then(function(){
+						console.log('not enrolled');
+					},
+					function(e){
+						console.log('error', e);
+					});
+				}
+			});
+			
+		}
+		parseWrapper.getStudents().then(function(students){
+			$scope.students = [];
+			students.forEach(function (student) {
+				$scope.students.push(student.attributes);
+				$scope.students[$scope.students.length -1].id = student.id;
+				console.log(student.id)
+			});
+		});
+
 		parseWrapper.getCourse($routeParams.course)
 		.then(function(course){
 			$scope.courseModel = course;
@@ -139,24 +171,3 @@ angular.module('lessonPlannerApp')
 
 		}
 	}]);
-/*
-Course
-	Title √
-	Ratings ¬
-	Description √
-	Author √ 
-	Description √
-	Lessons √
-		Title √
-		Description √
-		Steps √
-			Title √
-			Description √
-			Goal √
-			Expected Result
-				Type (Number, string, etc)
-				expectation
-			Hints √
-			Initial text
-
- */

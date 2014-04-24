@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function(){
-  console.log('happens');
   $('#fsCheckbox').change(function() {
     if($(this).is(':checked')) {
       $('#outerContainer').removeClass('container');
@@ -41,10 +40,6 @@ angular
         templateUrl: 'views/mylessons.html',
         controller: 'MyLessonsCtrl'
       })
-      .when('/editLesson/:lesson', {
-        templateUrl: 'views/editlesson.html',
-        controller: 'EditlessonCtrl'
-      })
       .when('/myCourses', {
         templateUrl: 'views/mycourses.html',
         controller: 'MycoursesCtrl'
@@ -52,6 +47,18 @@ angular
       .when('/editCourse/:course', {
         templateUrl: 'views/editcourse.html',
         controller: 'EditcourseCtrl'
+      })
+      .when('/schoolmanager', {
+        templateUrl: 'views/schoolmanager.html',
+        controller: 'SchoolmanagerCtrl'
+      })
+      .when('/editSchool/:school', {
+        templateUrl: 'views/editschool.html',
+        controller: 'EditschoolCtrl'
+      })
+      .when('/mySchool', {
+        templateUrl: 'views/myschool.html',
+        controller: 'MyschoolCtrl'
       })
       .otherwise({
         redirectTo: '/'

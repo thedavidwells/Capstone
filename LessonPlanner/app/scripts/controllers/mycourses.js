@@ -14,6 +14,16 @@ angular.module('lessonPlannerApp')
 			}, function(e){
 				console.warn(e);
 			})
+		},
+		$scope.destroyCourse = function(course){
+			if(confirm('Are you sure you want to destroy \''+course.getTitle() +'\'')){
+				parseWrapper.getCourse(course.id).then(function(c){
+					parseWrapper.destroyCourse(c).then(function(){
+						
+					}, function(e){
+						alert(e);
+					})
+				});
+			}
 		}
-
   });
