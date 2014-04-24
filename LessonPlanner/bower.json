@@ -16,7 +16,7 @@
     "ng-parallax": "~0.1.7",
     "angular-parallax": "*",
     "bootstrap-ios7": "~1.2.0",
-    "bootstrap-sass-official": "~3.1.1+2"
+    "bootstrap-sass-official": "~3.1.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
