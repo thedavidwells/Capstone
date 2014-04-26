@@ -277,6 +277,7 @@
 				3C2D91FB18E6741D00CB23F4 /* Student VC's */,
 				3C2D91FC18E6743000CB23F4 /* Sub Lesson VC's */,
 				3C2D91F718E6739B00CB23F4 /* Text Editor VC's */,
+				52B4FBAE18EA798D000FD5B3 /* Free Code Editor VC's */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -355,7 +356,6 @@
 				3CE1F19518D63E2D00DE7B86 /* Main.storyboard */,
 				3C4596C418D758AD006E63BD /* Login */,
 				3C4596C518D79197006E63BD /* Views */,
-				52B4FBAE18EA798D000FD5B3 /* Free Code Editor VC's */,
 				3C0581C318D68F0A003D7C12 /* DataSource */,
 				52E4FF4D18F475AF00A45F57 /* JavaScript Files */,
 				3CE1F1D118D65BCE00DE7B86 /* Settings */,
@@ -538,11 +538,7 @@
 				3CE1F1D018D6402700DE7B86 /* LoginViewController.m in Sources */,
 				52E4FF4F18F475E300A45F57 /* free_code.js in Sources */,
 				52A7594619007AB400784169 /* CYRToken.m in Sources */,
-<<<<<<< HEAD
-=======
-				3CE1F19A18D63E2D00DE7B86 /* ViewController.m in Sources */,
 				523AA17F190B70A400E484AC /* SyntaxHighlighting.m in Sources */,
->>>>>>> 0118bd99cc3c60ce2fd54dbcdfb57737e07caab1
 				3CA151CB19096A3100E06BF5 /* TeacherViewController.m in Sources */,
 				3C07633F1902DA1D0077773E /* DownloadAssistant.m in Sources */,
 				3CE1F1D418D65BED00DE7B86 /* SettingsTableViewController.m in Sources */,

@@ -21,14 +21,10 @@ int stepTracker;
 
 @interface TextEditorViewController ()
 @property (nonatomic) CurrentUser *currentUser;
-<<<<<<< HEAD
-=======
 @property (nonatomic) SyntaxHighlighting *textEditorView;
 @property (nonatomic) UIView *stepByStepInstructionView;
->>>>>>> 0118bd99cc3c60ce2fd54dbcdfb57737e07caab1
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
-@property (nonatomic) UITextView *textEditorView;
 @property (nonatomic) UIView *stepGutterView;
 @property (nonatomic) UILabel *stepTitleLabel;
 @property (nonatomic) UITextView *stepTextView;
@@ -140,22 +136,13 @@ int stepTracker;
                                             self.navigationController.navigationBar.frame.size.height + statusBarHeight,
                                             self.view.frame.size.height - self.stepGutterView.frame.size.width,
                                             (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
-    self.lineNumberTextView = [[LineNumberTextView alloc] initWithFrame:textEditorViewFrame];
-    self.lineNumberTextView.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.lineNumberTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.lineNumberTextView.text = @"// enter your code below\n";
-    [self.view addSubview:self.lineNumberTextView];
-<<<<<<< HEAD
-=======
-    
     self.textEditorView = [[SyntaxHighlighting alloc] initWithFrame:textEditorViewFrame];
     self.textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     // this is just an example of how we can pre-load sublesson text
-    self.textEditorView.text = [self.lessonsDataSource loadExampleSyntaxHighlightingText];
+    self.textEditorView.text = [self.lessonsDataSource loadStepText];
     [self.view addSubview:self.textEditorView];
->>>>>>> 0118bd99cc3c60ce2fd54dbcdfb57737e07caab1
 }
 
 - (void)placeStepNavigationBar

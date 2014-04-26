@@ -75,6 +75,11 @@ static const BOOL _debug = NO;
     return freeCodeText;
 }
 
+- (NSString*)loadStepText
+{
+    return @"// enter your code below";
+}
+
 - (NSString *)loadExampleSyntaxHighlightingText
 {
     NSString *example = @"// Test comment\n\n"\
