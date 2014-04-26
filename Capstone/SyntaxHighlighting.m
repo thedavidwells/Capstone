@@ -20,7 +20,6 @@
     if (self) {
         // Initialization code
         [self commonSetup];
-        
     }
     return self;
 }

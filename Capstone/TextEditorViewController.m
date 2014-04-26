@@ -22,9 +22,10 @@ int stepTracker;
 @interface TextEditorViewController ()
 @property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) SyntaxHighlighting *textEditorView;
-@property (nonatomic) UIView *stepByStepInstructionView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @property (nonatomic) UIView *stepGutterView;
+@property (nonatomic) UILabel *subLessonTitleLabel;
+@property (nonatomic) UILabel *exerciseNumberLabel;
 @property (nonatomic) UILabel *stepTitleLabel;
 @property (nonatomic) UITextView *stepTextView;
 @property (nonatomic) UIWebView *webView;
@@ -80,7 +81,7 @@ int stepTracker;
     [super viewDidLoad];
     stepTracker = 0;
     
-    self.view.backgroundColor = UIColorFromRGB(0xEBEBEB);
+    self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(exitLesson:)];
@@ -94,7 +95,7 @@ int stepTracker;
     
     [self placeStepGutterView];
     [self placeTextEditorView];
-    [self placeStepNavigationBar];
+    [self placeSubLessonTitleBar];
     [self contentLoadedAfterLaunchAndEachStep];
 }
 
@@ -107,6 +108,7 @@ int stepTracker;
 - (void)contentLoadedAfterLaunchAndEachStep
 {
     [self placeStepTitle];
+    [self placeExerciseNumberText];
     [self placeStepTextView];
     
     if (_debug) {
@@ -125,6 +127,7 @@ int stepTracker;
 {
     self.textEditorView.text = [self.lessonsDataSource loadStepText];
     [self.stepTitleLabel removeFromSuperview];
+    [self.exerciseNumberLabel removeFromSuperview];
     [self.stepTextView removeFromSuperview];
 }
 
@@ -144,32 +147,44 @@ int stepTracker;
     [self.view addSubview:self.textEditorView];
 }
 
-- (void)placeStepNavigationBar
-{
-    UINavigationItem *title = [[UINavigationItem alloc] initWithTitle:self.subLessonTitle];
-    CGRect navFrame = CGRectMake(0,
-                                 self.navigationController.navigationBar.frame.size.height + statusBarHeight,
-                                 self.stepGutterView.frame.size.width,
-                                 self.navigationController.navigationBar.frame.size.height);
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:navFrame];
-    navBar.items = [NSArray arrayWithObjects:title, nil];
-    [self.view addSubview:navBar];
-}
-
 - (void)placeStepGutterView
 {
     CGRect stepFrame = CGRectMake(0,
-                                  self.navigationController.navigationBar.frame.size.height + statusBarHeight,
-                                  300,
+                                  self.navigationController.navigationBar.frame.size.height + statusBarHeight + 5,
+                                  350,
                                   (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
     self.stepGutterView = [[UIView alloc] initWithFrame:stepFrame];
     [self.view addSubview:self.stepGutterView];
 }
 
+- (void)placeSubLessonTitleBar
+{
+    CGRect frame = CGRectMake(0,
+                              self.navigationController.navigationBar.frame.size.height + statusBarHeight,
+                              self.stepGutterView.frame.size.width,
+                              self.navigationController.navigationBar.frame.size.height);
+    self.subLessonTitleLabel = [[UILabel alloc] initWithFrame:frame];
+    self.subLessonTitleLabel.text = self.subLessonTitle;
+    self.subLessonTitleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.subLessonTitleLabel];
+}
+
+- (void)placeExerciseNumberText
+{
+    CGRect frame = CGRectMake(0,
+                              (self.navigationController.navigationBar.frame.size.height + statusBarHeight) + statusBarHeight*1.5,
+                              self.stepGutterView.frame.size.width,
+                              self.navigationController.navigationBar.frame.size.height);
+    self.exerciseNumberLabel = [[UILabel alloc] initWithFrame:frame];
+    self.exerciseNumberLabel.text = [NSString stringWithFormat:@"Exercise %i:", stepTracker+1];
+    self.exerciseNumberLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.exerciseNumberLabel];
+}
+
 - (void)placeStepTitle
 {
     CGRect stepTitleFrame = CGRectMake(5,
-                                       (self.navigationController.navigationBar.frame.size.height*2) + statusBarHeight + 5,
+                                       (self.navigationController.navigationBar.frame.size.height*2) + statusBarHeight,
                                        self.stepGutterView.frame.size.width - statusBarHeight/2,
                                        100);
     self.stepTitleLabel = [[UILabel alloc] initWithFrame:stepTitleFrame];

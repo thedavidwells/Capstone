@@ -35,7 +35,7 @@
 
 #import "CYRLayoutManager.h"
 
-static CGFloat kMinimumGutterWidth = 30.f;
+static CGFloat kMinimumGutterWidth = 20.f;
 
 @interface CYRLayoutManager ()
 
