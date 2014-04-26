@@ -23,7 +23,6 @@ int stepTracker;
 @property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) SyntaxHighlighting *textEditorView;
 @property (nonatomic) UIView *stepByStepInstructionView;
-@property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @property (nonatomic) UIView *stepGutterView;
 @property (nonatomic) UILabel *stepTitleLabel;
@@ -124,7 +123,7 @@ int stepTracker;
 
 - (void)clearViewForReload
 {
-    self.lineNumberTextView.text = @"// enter your code below\n";
+    self.textEditorView.text = [self.lessonsDataSource loadStepText];
     [self.stepTitleLabel removeFromSuperview];
     [self.stepTextView removeFromSuperview];
 }
@@ -199,9 +198,9 @@ int stepTracker;
 - (IBAction)runCode:(id)sender
 {
     // dismiss keyboard right away
-    [self.lineNumberTextView resignFirstResponder];
+    [self.textEditorView resignFirstResponder];
     
-	NSString *result = [self.webView stringByEvaluatingJavaScriptFromString:self.lineNumberTextView.text];
+	NSString *result = [self.webView stringByEvaluatingJavaScriptFromString:self.textEditorView.text];
     self.expectedResult = [[self.subLessonSteps objectAtIndex:stepTracker] valueForKey:@"expectedResult"];
     
     if (_debug) {
