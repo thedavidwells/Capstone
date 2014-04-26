@@ -82,8 +82,8 @@
 {
     [super drawBackgroundForGlyphRange:glyphsToShow atPoint:origin];
     
-    NSDictionary* atts = @{NSFontAttributeName : [UIFont systemFontOfSize:10.0],
-                           NSForegroundColorAttributeName : [UIColor grayColor]};
+    NSDictionary* atts = @{NSFontAttributeName : [UIFont systemFontOfSize:16.0],
+                           NSForegroundColorAttributeName : [UIColor darkGrayColor]};
     
     [self enumerateLineFragmentsForGlyphRange:glyphsToShow
                                    usingBlock:^(CGRect rect, CGRect usedRect, NSTextContainer *textContainer, NSRange glyphRange, BOOL *stop) {

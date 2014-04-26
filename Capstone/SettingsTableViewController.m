@@ -7,6 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "SupportTableViewController.h"
 #import <Parse/Parse.h>
 
 @interface SettingsTableViewController ()
@@ -36,6 +37,10 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Settings";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                                                          target:self
+                                                                                          action:@selector(dismiss:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +50,7 @@
 
 - (IBAction)dismiss:(id)sender
 {
-    [self.delegate settingsTableViewControllerViewControllerDidCancel:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -63,8 +68,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellTitle = [self.tableOptions objectAtIndex:indexPath.row];
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
     // Configure the cell...
     if (indexPath.section == 0) {
@@ -76,8 +83,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"showSupport" sender:self];
+        SupportTableViewController *svc = [[SupportTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:svc animated:YES];
     }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

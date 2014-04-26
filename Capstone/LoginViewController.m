@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "ViewController.h"
 #import "StudentViewController.h"
 #import "TeacherViewController.h"
 #import "CurrentUser.h"

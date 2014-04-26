@@ -26,7 +26,7 @@
     [textStorage addLayoutManager:lineNumberLayoutManager];
     
     if ((self = [super initWithFrame:frame textContainer:textContainer])) {
-        self.typingAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:16.0],
+        self.typingAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:18.0],
                                   NSParagraphStyleAttributeName : [NSParagraphStyle defaultParagraphStyle]};
     }
     return self;

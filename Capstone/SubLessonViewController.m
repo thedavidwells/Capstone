@@ -147,11 +147,17 @@
     NSLog(@"row %li was selected", indexPath.row);
     
     TextEditorViewController *textEditorViewController = [[TextEditorViewController alloc] initWithSubLessonSteps:[[self.lesson.sublessons objectAtIndex:indexPath.row] valueForKey:@"steps"]];
+    textEditorViewController.delegate = self;
     textEditorViewController.subLessonTitle = [[self.lesson.sublessons objectAtIndex:indexPath.row] valueForKey:@"title"];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:textEditorViewController];
     nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
     [self.tView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)textEditorViewController:(TextEditorViewController *)controller exitedWithStep:(int)stepNumber
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class ResultsViewController;
+
+@protocol ResultsViewControllerDelegate <NSObject>
+- (void)resultsViewController:(ResultsViewController *)controller exitedWithResult:(NSString *)result;
+@end
+
 @interface ResultsViewController : UIViewController
 
+@property (nonatomic, weak) id <ResultsViewControllerDelegate> delegate;
+@property (nonatomic) NSString *result;
 @property (nonatomic) UILabel *resultLabel;
+@property (nonatomic) int stepNumber;
+@property (nonatomic) BOOL correctStatus;
 
 @end

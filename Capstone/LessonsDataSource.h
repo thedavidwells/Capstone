@@ -12,17 +12,10 @@
 @interface LessonsDataSource : NSObject
 
 - (instancetype)initWithJSONArray:(NSArray *)jsonArray;
-
 - (Lesson *)lessonWithTitle:(NSString *)lessonTitle;
 - (Lesson *)lessonAtIndex:(NSInteger)idx;
-
 - (NSMutableArray *)getAllLessons;
-
 - (NSUInteger)numberOfLessons;
-
-- (NSString *)loadStepStarterText:(int)stepTracker;
-- (NSString *)loadStepTitleText:(int)stepTracker;
-- (NSString *)loadStepText:(int)stepTracker;
 - (NSString *)loadFreeCodeText:(int)stepTracker;
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextEditorViewController.h"
 #import "Lesson.h"
 
-@interface SubLessonViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SubLessonViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TextEditorViewControllerDelegate>
 
 - (instancetype)initWithLesson:(Lesson*)lessonTitle;
 

@@ -7,6 +7,7 @@
 //
 
 #import "TeacherViewController.h"
+#import "SettingsTableViewController.h"
 #import "CurrentUser.h"
 
 @interface TeacherViewController ()
@@ -42,6 +43,10 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                           target:self
                                                                                           action:@selector(logoutAction:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(showSettings:)];
     [self loadWebView];
 }
 
@@ -65,6 +70,14 @@
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes", nil];
     [alert show];
+}
+
+- (IBAction)showSettings:(id)sender
+{
+    SettingsTableViewController *settingsViewController = [[SettingsTableViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

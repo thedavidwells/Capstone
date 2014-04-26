@@ -15,13 +15,10 @@
 - (NSString*)title;
 - (NSString*)index;
 - (NSString *)lessonDescription;
-
 - (NSUInteger)numberOfSubLessons;
 - (NSUInteger)numberOfSubLessonSteps;
-
 - (NSArray*)sublessons;
 - (NSArray*)sublessonSteps;
-
 - (void)print;
 
 @end

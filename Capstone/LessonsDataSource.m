@@ -59,39 +59,14 @@ static const BOOL _debug = NO;
 
 - (NSArray *)getAllLessons
 {
+    NSLog(@"all lessons: %@", self.allLessons);
+    
     return self.allLessons;
 }
 
 - (NSUInteger)numberOfLessons
 {
 	return [self.allLessons count];
-}
-
-/*
-    hard coded for now, just as a demo
-*/
-- (NSString *)loadStepStarterText:(int)stepTracker
-{
-    NSString *starterText = @"// This is a comment";
-    return starterText;
-}
-
-- (NSString *)loadStepTitleText:(int)stepTracker
-{
-    NSString *titleText = @"Step Title";
-    return titleText;
-}
-
-- (NSString *)loadStepText:(int)stepTracker
-{
-    NSString *titleText = @"This is a body of text that contains one of the steps for the sublesson";
-    return titleText;
-}
-
-- (NSString *)loadStepGoal:(int)stepTracker
-{
-    NSString *goalText = @"goal a\n goal b";
-    return goalText;
 }
 
 - (NSString *)loadFreeCodeText:(int)stepTracker
