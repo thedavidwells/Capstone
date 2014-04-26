@@ -48,18 +48,6 @@ angular
         templateUrl: 'views/editcourse.html',
         controller: 'EditcourseCtrl'
       })
-      .when('/schoolmanager', {
-        templateUrl: 'views/schoolmanager.html',
-        controller: 'SchoolmanagerCtrl'
-      })
-      .when('/editSchool/:school', {
-        templateUrl: 'views/editschool.html',
-        controller: 'EditschoolCtrl'
-      })
-      .when('/mySchool', {
-        templateUrl: 'views/myschool.html',
-        controller: 'MyschoolCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });

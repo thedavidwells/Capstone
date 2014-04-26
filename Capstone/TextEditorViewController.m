@@ -11,6 +11,7 @@
 #import "ResultsViewController.h"
 #import "LineNumberTextView.h"
 #import "CurrentUser.h"
+#import "SyntaxHighlighting.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -20,6 +21,11 @@ int stepTracker;
 
 @interface TextEditorViewController ()
 @property (nonatomic) CurrentUser *currentUser;
+<<<<<<< HEAD
+=======
+@property (nonatomic) SyntaxHighlighting *textEditorView;
+@property (nonatomic) UIView *stepByStepInstructionView;
+>>>>>>> 0118bd99cc3c60ce2fd54dbcdfb57737e07caab1
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @property (nonatomic) UITextView *textEditorView;
@@ -139,6 +145,17 @@ int stepTracker;
     self.lineNumberTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.lineNumberTextView.text = @"// enter your code below\n";
     [self.view addSubview:self.lineNumberTextView];
+<<<<<<< HEAD
+=======
+    
+    self.textEditorView = [[SyntaxHighlighting alloc] initWithFrame:textEditorViewFrame];
+    self.textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    
+    // this is just an example of how we can pre-load sublesson text
+    self.textEditorView.text = [self.lessonsDataSource loadExampleSyntaxHighlightingText];
+    [self.view addSubview:self.textEditorView];
+>>>>>>> 0118bd99cc3c60ce2fd54dbcdfb57737e07caab1
 }
 
 - (void)placeStepNavigationBar

@@ -1,7 +1,0 @@
-<div class='lessons'>
-<h2>My Lessons</h2>
-	<a class='btn btn-info' ng-click="createLesson()">Create New lesson</a>
-	<ul>
-		<li ng-repeat="lesson in lessons.models" ><a href='#/editLesson/{{lesson.id}}'>{{ lesson.getTitle() }}</a></li>
-	</ul>
-</div>
