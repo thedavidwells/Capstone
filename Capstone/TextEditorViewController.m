@@ -172,7 +172,7 @@ int stepTracker;
 - (void)placeExerciseNumberText
 {
     CGRect frame = CGRectMake(0,
-                              (self.navigationController.navigationBar.frame.size.height + statusBarHeight) + statusBarHeight*1.5,
+                              (self.navigationController.navigationBar.frame.size.height + statusBarHeight*2.5),
                               self.stepGutterView.frame.size.width,
                               self.navigationController.navigationBar.frame.size.height);
     self.exerciseNumberLabel = [[UILabel alloc] initWithFrame:frame];
@@ -184,9 +184,9 @@ int stepTracker;
 - (void)placeStepTitle
 {
     CGRect stepTitleFrame = CGRectMake(5,
-                                       (self.navigationController.navigationBar.frame.size.height*2) + statusBarHeight,
+                                       (self.navigationController.navigationBar.frame.size.height*2 + statusBarHeight*2.5) ,
                                        self.stepGutterView.frame.size.width - statusBarHeight/2,
-                                       100);
+                                       self.navigationController.navigationBar.frame.size.height);
     self.stepTitleLabel = [[UILabel alloc] initWithFrame:stepTitleFrame];
     self.stepTitleLabel.text = [[self.subLessonSteps objectAtIndex:stepTracker] valueForKey:@"title"];
     self.stepTitleLabel.font = [UIFont systemFontOfSize:22.0];
@@ -198,7 +198,7 @@ int stepTracker;
 - (void)placeStepTextView
 {
     CGRect stepFrame = CGRectMake(5,
-                                  ((self.navigationController.navigationBar.frame.size.height*2) + statusBarHeight + 5) + 105,
+                                  ((self.navigationController.navigationBar.frame.size.height*3) + statusBarHeight*3),
                                   self.stepGutterView.frame.size.width - statusBarHeight/2,
                                   500);
     self.stepTextView = [[UITextView alloc] initWithFrame:stepFrame];
