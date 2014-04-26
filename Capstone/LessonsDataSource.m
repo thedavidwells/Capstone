@@ -77,7 +77,7 @@ static const BOOL _debug = NO;
 
 - (NSString*)loadStepText
 {
-    return @"// enter your code below";
+    return @"// enter your code below\n";
 }
 
 - (NSString *)loadExampleSyntaxHighlightingText

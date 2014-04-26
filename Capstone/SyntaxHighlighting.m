@@ -27,9 +27,9 @@
 
 - (void)commonSetup
 {
-    _defaultFont = [UIFont systemFontOfSize:14.0f];
-    _boldFont = [UIFont boldSystemFontOfSize:14.0f];
-    _italicFont = [UIFont fontWithName:@"HelveticaNeue-Oblique" size:14.0f];
+    _defaultFont = [UIFont systemFontOfSize:18.0f];
+    _boldFont = [UIFont boldSystemFontOfSize:18.0f];
+    _italicFont = [UIFont fontWithName:@"HelveticaNeue-Oblique" size:18.0f];
     
     self.font = _defaultFont;
     
@@ -40,7 +40,7 @@
     if (_italicFont == nil && ([UIFontDescriptor class] != nil))
     {
         // This works around a bug in 7.0.3 where HelveticaNeue-Italic is not present as a UIFont option
-        _italicFont = (__bridge_transfer UIFont*)CTFontCreateWithName(CFSTR("HelveticaNeue-Italic"), 14.0f, NULL);
+        _italicFont = (__bridge_transfer UIFont*)CTFontCreateWithName(CFSTR("HelveticaNeue-Italic"), 18.0f, NULL);
     }
     
     self.tokens = [self solverTokens];
