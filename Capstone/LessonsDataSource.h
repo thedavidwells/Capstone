@@ -24,5 +24,6 @@
 - (NSString *)loadStepTitleText:(int)stepTracker;
 - (NSString *)loadStepText:(int)stepTracker;
 - (NSString *)loadFreeCodeText:(int)stepTracker;
+- (NSString *)loadExampleSyntaxHighlightingText;
 
 @end

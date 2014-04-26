@@ -11,6 +11,7 @@
 #import "ResultsViewController.h"
 #import "LineNumberTextView.h"
 #import "CurrentUser.h"
+#import "SyntaxHighlighting.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -19,7 +20,7 @@ int stepTracker = 0;
 
 @interface TextEditorViewController ()
 @property (nonatomic) CurrentUser *currentUser;
-@property (nonatomic) UITextView *textEditorView;
+@property (nonatomic) SyntaxHighlighting *textEditorView;
 @property (nonatomic) UIView *stepByStepInstructionView;
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
@@ -138,13 +139,14 @@ int stepTracker = 0;
                                             self.navigationController.navigationBar.frame.size.height + statusBarHeight,
                                             self.view.frame.size.height - self.stepByStepInstructionView.frame.size.width,
                                             (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
-    self.lineNumberTextView = [[LineNumberTextView alloc] initWithFrame:textEditorViewFrame];
-    self.lineNumberTextView.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.lineNumberTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    
+    self.textEditorView = [[SyntaxHighlighting alloc] initWithFrame:textEditorViewFrame];
+    self.textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     // this is just an example of how we can pre-load sublesson text
-    self.lineNumberTextView.text = [self.lessonsDataSource loadStepStarterText:0 /* we'll want to load the text relevant to the sublesson, 0 does nothing here*/];
-    [self.view addSubview:self.lineNumberTextView];
+    self.textEditorView.text = [self.lessonsDataSource loadExampleSyntaxHighlightingText];
+    [self.view addSubview:self.textEditorView];
 }
 
 - (void)placeStepNavigationBar
