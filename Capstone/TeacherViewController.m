@@ -52,7 +52,12 @@
 
 - (void)loadWebView
 {
-    self.webView.frame = self.view.frame;
+    NSURL *websiteUrl = [NSURL URLWithString:@"http://courseowl.herokuapp.com"];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width)];
+    [self.webView loadRequest:urlRequest];
+    
     [self.view addSubview:self.webView];
 }
 
