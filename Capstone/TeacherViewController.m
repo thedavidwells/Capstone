@@ -1,9 +1,13 @@
 //
 //  TeacherViewController.m
-//  Capstone
 //
-//  Created by Stephen Kyles on 4/24/14.
-//  Copyright (c) 2014 Blue Owl Labs. All rights reserved.
+//  CourseOwl
+//
+//  CS470 - Capstone
+//  Spring 2014
+//
+//  Created by Stephen Kyles, David Wells, and Eric Wooley.
+//  Copyright (c) 2014. All rights reserved.
 //
 
 #import "TeacherViewController.h"
