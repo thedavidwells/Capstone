@@ -21,7 +21,7 @@
 - (NSMutableArray *)getAllLessons;
 - (NSUInteger)numberOfLessons;
 - (NSString *)loadFreeCodeText:(int)stepTracker;
-- (NSString *)loadExampleSyntaxHighlightingText;
+
 - (NSString*)loadStepText;
 
 @end

@@ -15,7 +15,7 @@
 #import "ResultsViewController.h"
 #import "LineNumberTextView.h"
 #import "CurrentUser.h"
-#import "SyntaxHighlighting.h"
+
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -25,7 +25,7 @@ int stepTracker;
 
 @interface TextEditorViewController ()
 @property (nonatomic) CurrentUser *currentUser;
-@property (nonatomic) SyntaxHighlighting *textEditorView;
+@property (nonatomic) LineNumberTextView *textEditorView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
 @property (nonatomic) UIView *stepGutterView;
 @property (nonatomic) UILabel *subLessonTitleLabel;
@@ -142,7 +142,7 @@ int stepTracker;
                                             self.navigationController.navigationBar.frame.size.height + statusBarHeight,
                                             self.view.frame.size.height - self.stepGutterView.frame.size.width,
                                             (self.view.bounds.size.width - (self.navigationController.navigationBar.frame.size.height + statusBarHeight)));
-    self.textEditorView = [[SyntaxHighlighting alloc] initWithFrame:textEditorViewFrame];
+    self.textEditorView = [[LineNumberTextView alloc] initWithFrame:textEditorViewFrame];
     self.textEditorView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textEditorView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
