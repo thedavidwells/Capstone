@@ -220,7 +220,7 @@ int stepTracker;
     [self.textEditorView resignFirstResponder];
     
 	NSString *result = [self.webView stringByEvaluatingJavaScriptFromString:self.textEditorView.text];
-    self.expectedResult = [[self.subLessonSteps objectAtIndex:stepTracker] valueForKey:@"expectedResult"];
+    self.expectedResult = [[[self.subLessonSteps objectAtIndex:stepTracker] valueForKey:@"expectedResult"] valueForKey:@"result"];
     
     if (_debug) {
         NSLog(@"Result is: %@", result);
