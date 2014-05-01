@@ -21,6 +21,12 @@
 @end
 
 @implementation LoginViewController
+- (IBAction)openCourseEditor:(id)sender {
+    TeacherViewController *teacherViewController = [[TeacherViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:teacherViewController];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:nav animated:YES completion:nil];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,18 +99,18 @@
                                     block:^(PFUser *user, NSError *error) {
                                         if (!error) {
                                             self.userType = [self.currentUser getUserType];
-                                            if ([self.userType isEqualToString:@"student"]) {
+//                                            if ([self.userType isEqualToString:@"student"]) {
                                                 StudentViewController *studentViewController = [[StudentViewController alloc] init];
                                                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:studentViewController];
                                                 nav.modalPresentationStyle = UIModalPresentationFullScreen;
                                                 [self presentViewController:nav animated:YES completion:nil];
-                                            }
-                                            else {
-                                                TeacherViewController *teacherViewController = [[TeacherViewController alloc] init];
-                                                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:teacherViewController];
-                                                nav.modalPresentationStyle = UIModalPresentationFullScreen;
-                                                [self presentViewController:nav animated:YES completion:nil];
-                                            }
+//                                            }
+//                                            else {
+//                                                TeacherViewController *teacherViewController = [[TeacherViewController alloc] init];
+//                                                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:teacherViewController];
+//                                                nav.modalPresentationStyle = UIModalPresentationFullScreen;
+//                                                [self presentViewController:nav animated:YES completion:nil];
+//                                            }
                                         }
                                         else {
                                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Failed"
