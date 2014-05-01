@@ -12,7 +12,7 @@
 
 #import "FreeTextViewController.h"
 #import "LessonsDataSource.h"
-#import "ResultsViewController.h"
+#import "FreeTextResultsVC.h"
 #import "LineNumberTextView.h"
 #import "CurrentUser.h"
 
@@ -22,7 +22,7 @@
 @property (nonatomic) CurrentUser *currentUser;
 @property (nonatomic) LineNumberTextView *lineNumberTextView;
 @property (nonatomic) LessonsDataSource *lessonsDataSource;
-@property (nonatomic) ResultsViewController *resultsViewController;
+@property (nonatomic) FreeTextResultsVC *resultsViewController;
 
 @end
 
@@ -62,10 +62,10 @@
     return _webView;
 }
 
--(ResultsViewController *) resultsViewController
+-(FreeTextResultsVC *) resultsViewController
 {
     if (!_resultsViewController) {
-        _resultsViewController = [[ResultsViewController alloc] init];
+        _resultsViewController = [[FreeTextResultsVC alloc] init];
     }
     return _resultsViewController;
 }
@@ -146,6 +146,7 @@
 
 - (IBAction)runCode:(id)sender
 {
+    [self.lineNumberTextView resignFirstResponder];
     self.textEditor = self.lineNumberTextView.text;
     NSLog(@"In text editor: %@", self.textEditor);
     
