@@ -21,12 +21,6 @@
 @end
 
 @implementation LoginViewController
-- (IBAction)openCourseEditor:(id)sender {
-    TeacherViewController *teacherViewController = [[TeacherViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:teacherViewController];
-    nav.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:nav animated:YES completion:nil];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,6 +42,11 @@
 {
     [super viewDidLoad];
     [self UISetupForLogIn];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -87,9 +86,11 @@
     self.loginButton.layer.backgroundColor = [UIColor whiteColor].CGColor;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+- (IBAction)openCourseEditor:(id)sender {
+    TeacherViewController *teacherViewController = [[TeacherViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:teacherViewController];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (IBAction)loginAction:(id)sender

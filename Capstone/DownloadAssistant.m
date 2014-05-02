@@ -29,7 +29,7 @@
         return nil;
     
     PFQuery *courseQuery = [PFQuery queryWithClassName:@"Course"];
-    self.lessonsDataSource = [[LessonsDataSource alloc] initWithJSONArray:[[courseQuery getObjectWithId:@"w9IzbA6xU3"] valueForKey:@"lessons"]];
+    self.lessonsDataSource = [[LessonsDataSource alloc] initWithJSONArray:[[courseQuery getObjectWithId:@"laJMbRXhM9"] valueForKey:@"lessons"]];
     
     return self;
 }
